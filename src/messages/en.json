@@ -53,17 +53,23 @@
         "6": "Evaluated research and survey-taking methods, and recommended bias-reduction techniques."
       }
     },
-    "ferrisoft" : {
-      "title": "Software Engineer",
+    "colgate-its" : {
+      "title": "IT Consultant",
       "description": {
-        "1": "Implemented a WCF 3rd party service secured with an SSL certificate for compliance with a gov institution.",
-        "2": "Improved Entity Framework performance by 30%. Removing unnecessary tracking on read-only queries."
+        "1": "Work in a customer-facing role on the phone and in-person.",
+        "2": "Assist the campus community in the usage of technology on campus, including multi-factor authentication, Office 365 Apps, Adobe Software, and Google software.",
+        "3": "Write detailed trouble tickets for users who have issues that need to be escalated to other departments.",
+        "4": "Use Salesforce software to provide support and solutions to affected students, faculty, and staff in various departments.",
+        "5": "Collaborate with a diverse team in a fast-paced atmosphere."
       }
     },
-    "navicu": {
-      "title": "Software Engineer",
+    "marketing-africa": {
+      "title": "Marketing Intern",
       "description": {
-        "1": "Developed Node.js BFFs for web and mobile apps, customizing API clients to their specific requirements."
+        "1": "Worked within the sales team, selling our services and calling potential leads for attendance at the Marketer's Night in Nairobi and Marketer's Quiznite all over Kenya.",
+        "2": "Used Excel and mail analytics to manage and execute the distribution of the Marketing Africa magazine all over Kenya.",
+        "3": "Amalgamated the client database from various social media platforms using Microsoft Excel so as to broaden the reach of the company.",
+        "4": "Collaborated with colleagues to ensure full customer satisfaction in the advertisement sector of the company."
       }
     },
     "tecfenix": {
