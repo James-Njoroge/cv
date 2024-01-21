@@ -5,14 +5,11 @@ import { useResumeData } from "@/data/use-resume-data";
 import { ModeToggle } from "@/components/ui/mode-toggle";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { useTranslations } from "next-intl";
-import LocaleSwitcher from "@/components/locale-switcher";
 import { WorkExperienceSection } from "./work-experience-section";
 import { AboutSection } from "./about-section";
 import { EducationSection } from "./education-section";
 import { SkillsSection } from "./skills-section";
 import { ProjectsSection } from "./projects-section";
-import { CertificationsSection } from "@/app/[locale]/certifications-section";
-import { PublicationsSection } from "@/app/[locale]/publications-section";
 import { GlobeIcon } from "@radix-ui/react-icons";
 
 type Props = {
@@ -36,7 +33,6 @@ export default function Page({ params: { locale } }: Props) {
     <main className="container relative mx-auto scroll-my-12 overflow-auto p-4 print:p-12 md:p-16">
       <section className="mx-auto w-full max-w-2xl space-y-8 print:space-y-6">
         <div className="flex flex-row justify-end   gap-x-2 print:hidden">
-          <LocaleSwitcher />
           <ModeToggle />
         </div>
         <div className="flex items-center justify-between">
@@ -65,8 +61,8 @@ export default function Page({ params: { locale } }: Props) {
               ))}
             </div>
           </div>
-          <Avatar className="h-28 w-28">
-            <AvatarImage alt={resumeData.name} src={resumeData.avatarUrl} />
+          <Avatar className="h-40 w-40">
+          <AvatarImage alt={resumeData.name} src={resumeData.avatarUrl} />
             <AvatarFallback>{resumeData.initials}</AvatarFallback>
           </Avatar>
         </div>
@@ -80,8 +76,6 @@ export default function Page({ params: { locale } }: Props) {
           }}
         />
         <EducationSection />
-        <CertificationsSection />
-        <PublicationsSection />
         <SkillsSection />
         <ProjectsSection />
       </section>

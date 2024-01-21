@@ -4,8 +4,10 @@ import AlphasLogo from "@/images/logos/alphas-logo.png";
 import FerrisoftLogo from "@/images/logos/ferrisoft-logo.png";
 import NavicuLogo from "@/images/logos/navicu-logo.png";
 import TecFenixLogo from "@/images/logos/tecfenix-logo.png";
-import UniversityOfCaraboboLogo from "@/images/logos/uc.png";
-import AzureDeveloperBadge from "@/images/logos/microsoft-certified-associate-badge.svg";
+import ColgateLogo from "@/images/logos/colgate.png";
+import ManchesterLogo from "@/images/logos/manchester.png";
+import choateLogo from "@/images/logos/choate.png";
+import colgateJobLogo from "@/images/logos/colgate-work.png";
 import { GitHubLogoIcon, HomeIcon, LinkedInLogoIcon, TwitterLogoIcon } from "@radix-ui/react-icons";
 import { useTranslations } from "next-intl";
 
@@ -13,112 +15,96 @@ export const useResumeData = () => {
   const t = useTranslations();
 
   return {
-    name: "Jesus Santander",
-    initials: "JS",
-    location: "Valencia, VE, EST",
+    name: "James Njoroge",
+    initials: "JN",
+    location: "Hamilton, NY, USA, EST",
     about: t("about"),
     summary: t("summary"),
-    locationLink: "https://www.google.com/maps/place/Valencia,+Carabobo,+Venezuela",
-    avatarUrl: "https://avatars.githubusercontent.com/u/15827589?v=4",
-    personalWebsiteUrl: "https://jsantanders.dev",
+    locationLink: "https://www.google.com/maps/place/Hamilton,+NY+13346",
+    avatarUrl: "/images/headshot.png",
     contact: {
       social: [
         {
           name: "GitHub",
-          url: "https://github.com/jsantanders",
+          url: "https://github.com/James-Njoroge",
           icon: GitHubLogoIcon,
         },
         {
           name: "LinkedIn",
-          url: "https://www.linkedin.com/in/jsantanders/",
+          url: "https://www.linkedin.com/in/james-ngugi-njoroge/",
           icon: LinkedInLogoIcon,
-        },
-        {
-          name: "X",
-          url: "https://x.com/jsantanders",
-          icon: TwitterLogoIcon,
-        },
-        {
-          name: "Website",
-          url: "https://jsantanders.dev",
-          icon: HomeIcon,
         },
       ],
     },
     education: [
       {
-        school: t("education.master.school"),
-        degree: t("education.master.degree"),
-        start: "2022",
-        end: t("present"),
-        logo: UniversityOfCaraboboLogo,
-      },
-      {
         school: t("education.bachelor.school"),
-        degree: t("education.bachelor.degree"),
-        start: "2010",
-        end: "2015",
-        logo: UniversityOfCaraboboLogo,
+        degree: t("education.bachelor.major"),
+        start: "2021",
+        end: "2025",
+        logo: ColgateLogo,
       },
-    ],
-    certifications: [
       {
-        issuer: t("certifications.azure.issuer"),
-        date: "2023",
-        title: t("certifications.azure.title"),
-        badge: AzureDeveloperBadge,
-        link: "https://learn.microsoft.com/api/credentials/share/en-us/jsantanders/99E494EC83B32890?sharingId=889F6D6C033C9537",
+        school: t("education.abroad.school"),
+        degree: t("education.abroad.classes"),
+        start: "Sep 2023",
+        end: "Jan 2024",
+        logo: ManchesterLogo,
       },
-    ],
-    publications: [
       {
-        title: t("publications.1.title"),
-        publisher: t("publications.1.publisher"),
-        date: "Aug 1, 2017",
-        link: "https://www.researchgate.net/publication/321062609_Procedure_for_access_to_the_ERS_and_ENVISAT_mission_data_through_the_ESA_portal_and_the_interactive_tool_EOLI-SA",
+        school: t("education.highSchool.school"),
+        degree: t("education.highSchool.degree"),
+        start: "2018",
+        end: "2021",
+        logo: choateLogo,
       },
     ],
     work: [
       {
-        company: "Laika",
-        link: "https://www.linkedin.com/company/laika-app",
-        badges: ["Remote"],
-        title: t("work.laika.title"),
-        logo: LaikaLogo,
-        start: "Oct 2022",
+        company: "Colgate Computer Science",
+        link: "https://www.colgate.edu/academics/departments-programs/department-computer-science",
+        badges: ["Data Structures & Algorithms"],
+        title: t("work.colgate-ta.title"),
+        logo: colgateJobLogo,
+        start: "Jan 2023",
         end: t("present"),
         description: [
-          t("work.laika.description.1"),
-          t("work.laika.description.2"),
-          t("work.laika.description.3"),
+          t("work.colgate-ta.description.1"),
+          t("work.colgate-ta.description.2"),
+          t("work.colgate-ta.description.3"),
+          t("work.colgate-ta.description.4"),
         ],
       },
       {
-        company: "Microsoft",
-        link: "https://www.linkedin.com/company/microsoft",
-        badges: ["Remote", "Vendor"],
-        title: t("work.microsoft.title"),
-        logo: MicrosoftLogo,
-        start: "Apr 2021",
-        end: "Sep 2022",
+        company: "Colgate Data Science Collaboratory",
+        link: "https://shiny.colgate.edu/",
+        badges: ["Statistics", "R Shiny"],
+        title: t("work.colgate-research.title"),
+        logo: colgateJobLogo,
+        start: "Jun 2023",
+        end: "Sep 2023",
         description: [
-          t("work.microsoft.description.1"),
-          t("work.microsoft.description.2"),
-          t("work.microsoft.description.3"),
+          t("work.colgate-research.description.1"),
+          t("work.colgate-research.description.2"),
+          t("work.colgate-research.description.3"),
+          t("work.colgate-research.description.4"),
         ],
       },
       {
-        company: "Alphas",
-        link: "https://alphasremote.team/",
-        badges: ["Remote"],
-        title: t("work.alphas.title"),
-        logo: AlphasLogo,
-        start: "Jun 2019",
-        end: "Mar 2021",
+        company: "Colgate Department of Economics",
+        link: "https://www.colgate.edu/academics/departments-programs/department-economics",
+        badges: ["Remote", "Economics"],
+        title: t("work.colgate-econ.title"),
+        logo: colgateJobLogo,
+        start: "Jun 2022",
+        end: "Aug 2022",
         description: [
-          t("work.alphas.description.1"),
-          t("work.alphas.description.2"),
-          t("work.alphas.description.3"),
+          t("work.colgate-econ.description.1"),
+          t("work.colgate-econ.description.2"),
+          t("work.colgate-econ.description.3"),
+          t("work.colgate-econ.description.4"),
+          t("work.colgate-econ.description.5"),
+          t("work.colgate-econ.description.6"),
         ],
       },
       {
@@ -153,13 +139,21 @@ export const useResumeData = () => {
       },
     ],
     skills: [
-      "JavaScript",
+      "Java",
+      "Python",
+      "R",
+      "C",
       "TypeScript",
-      "React/Next.js/Remix",
-      "Node.js",
-      ".NET/C#/ASP.NET",
-      "Go",
-      "Rust",
+      "JavaScript",
+      "HTML/CSS",
+      "MATLAB",
+      "React Native",
+      "SQL",
+      "MongoDB",
+      "CouchBase",
+      "Docker",
+      "AWS",
+      "ETL Processes",
     ],
     projects: [
       {
@@ -169,24 +163,6 @@ export const useResumeData = () => {
         link: {
           label: "jsantanders.dev",
           href: "https://jsantanders.dev/",
-        },
-      },
-      {
-        title: t("projects.learning.title"),
-        techStack: ["Side Project", "Quarto", "R", "Statistics"],
-        description: t("projects.learning.description"),
-        link: {
-          label: "learning.jsantanders.dev",
-          href: "https://learning.jsantanders.dev/",
-        },
-      },
-      {
-        title: t("projects.ddd.title"),
-        techStack: ["Side Project", "Nest.js", "DDD", "CQRS"],
-        description: t("projects.ddd.description"),
-        link: {
-          label: "github.com",
-          href: "https://github.com/jsantanders/modular-monolith-nestjs",
         },
       },
     ],

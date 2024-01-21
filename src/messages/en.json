@@ -1,61 +1,56 @@
 {
-  "name": "Jesus Santander",
+  "name": "James Njoroge",
   "sections":{
     "about": "About",
     "workExperience": "Work Experience",
     "education": "Education",
-    "certifications": "Certifications",
-    "publications": "Publications",
     "skills": "Skills",
     "projects": "Projects"
   },
-  "about": "Node | React | .NET Senior Software Engineer. Distributed systems enthusiast",
-  "summary": "I am a seasoned full-stack web developer with over 7 years of expertise in scalable architectures, distributed computing, cloud infrastructure, and web applications. Proficient in .NET, Node, Azure, and React. Curious, self-motivated, and interested in learning and mastering new technologies to overcome unique challenges.",
+  "about": "Student Software and Data Engineer",
+  "summary": "I am an ambitious, diligent, and analytical student leader with a portfolio in software development, data analytics, and research, exemplified by outstanding academic performance and co-founding a student-run tech startup at Colgate University.",
   "education": {
     "bachelor": {
-      "school": "University of Carabobo",
-      "degree": "B.Eng. Telecommunication Engineer"
+      "school": "Colgate Univiersity",
+      "major": "Computer Science | Applied Mathematics"
     },
-    "master": {
-      "school":"University of Carabobo",
-      "degree": "MSc. Applied Mathematics"
-    } 
-  },
-  "certifications": {
-    "azure": {
-      "issuer": "Microsoft",
-      "title": "Azure Developer - Associate"
-    }
-  },
-  "publications": {
-    "1": {
-      "title": "Letter to the editor: Procedure for access to the ERS and ENVISAT missiondata through the ESA portal and the interactive tool EOLI-SA",
-      "publisher": "Revista Ingeniería UC"
+    "abroad": {
+      "school": "University of Manchester (Study Abroad)",
+      "classes": "Artificial Intelligence | Probability | Database Systems"
+    },
+    "highSchool": {
+      "school": "Choate Rosemary Hall",
+      "degree": "High School Diploma"
     }
   },
   "work": {
-    "laika" : {
-      "title": "Senior Software Engineer",
+    "colgate-ta" : {
+      "title": "Teaching Assistant",
       "description": {
-        "1": "Crafted a comprehensive microservice migration plan to dismantle a monolithic system, boosting reliability.",
-        "2": "Optimized product search quality, accuracy, and response time by implementing Algolia as the search service.",
-        "3": "Developed a collaborative filtering recommendation system, boosting sales and enhancing product visibility."
+        "1": "Develop and maintain strong and trustworthy relationships with professors and students to provide academic support and reinforcement.",
+        "2": "Assist students with homework and lab assignments in Python and Java Programming languages.",
+        "3": "Guide and debug students' work to strengthen their understanding of computer science concepts.",
+        "4": "Provide one-on-one tutoring and serve as mentor for introductory Python/Java courses, and the Data Structures and Algorithms course."
       }
     },
-    "microsoft" : {
-      "title": "Senior Software Engineer",
+    "colgate-research" : {
+      "title": "Research Intern",
       "description": {
-        "1": "Created mission-critical React components for the new MVP site focused on accessibility and performance.",
-        "2": "Established Azure Cognitive Search indexes, enhancing the precision of text-based queries.",
-        "3": "Enhanced Microsoft MVP application performance by optimizing Entity Framework queries, minimizing database data retrieval and client-side data transmission for increased eficiency."
+        "1": "Developed and maintained R Shiny applications for advanced statistical analysis of geospatial data, social networks, and textual corpora.",
+        "2": "Collaborated with researchers on ongoing projects, utilizing R Shiny applications to evaluate hypotheses and extract insights from complex datasets.",
+        "3": "Created user-friendly interfaces using R Shiny, making powerful R-based analyses accessible to diverse users without extensive programming knowledge.",
+        "4": "Improved data science accessibility at Colgate University by creating interdisciplinary tools that bridge statistical modelling and researchers from diverse disciplines."
       }
     },
-    "alphas" : {
-      "title": "Senior Software Engineer → Lead Software Engineer",
+    "colgate-econ" : {
+      "title": "Survey and Research Analytics Assistant",
       "description": {
-        "1": "Accelerated data processing from minutes to seconds by optimizing distributed systems with RabbitMQ and MassTransit, enhancing operational eﬀiciency.",
-        "2": "Refactored legacy systems into modern microservices using Azure technologies like App Service, Storage, Service Bus, Functions, CosmosDB, and Active Directory, boosting system performance by up to 40%.",
-        "3": "Transferred an HTTP API from a VM to Azure App Service, cutting infrastructure costs by approximately 15%."
+        "1": "Conducted economic research on domestic violence and its effect on agricultural economics in Western Kenya.",
+        "2": "Collaborated with professor to acquire and clean collected survey data using Microsoft Excel.",
+        "3": "Examined research data for trends and anomalies in collaboration with a colleague, thus reducing the margin of error produced by the data.",
+        "4": "Translated qualitative survey data from Swahili to English for easier analysis.",
+        "5": "Supervised data collection and reviewed quality of collected data through field work.",
+        "6": "Evaluated research and survey-taking methods, and recommended bias-reduction techniques."
       }
     },
     "ferrisoft" : {
@@ -91,11 +86,6 @@
       "title": "modular-monolith-nestjs",
       "description": "A Modular Monolith application with Domain-Driven Design approach. Using NestJS as a backend framework."
     }
-  },
-  "switcher": {
-    "label": "Change language",
-    "en": "English",
-    "es": "Spanish"
   },
   "present": "Present",
   "seeMore": "See more",
