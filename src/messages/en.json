@@ -72,25 +72,19 @@
         "4": "Collaborated with colleagues to ensure full customer satisfaction in the advertisement sector of the company."
       }
     },
-    "tecfenix": {
-      "title": "Software Engineer", 
+    "colgate-cl": {
+      "title": "Residential Community Leader", 
       "description":{
-        "1": "Achieved a 20% throughput improvement by migrating a backend API from .NET Framework to .NET Core 1.1."
+        "1": "Led 33 resident students, ensuring a safe, academically-focused environment; organized monthly rapport-building activities.",
+        "2": "Acted as key liaison between students, residential advisors, and school administration, enhancing community communication.",
+        "3": "Resolved student welfare issues with strong leadership, communication skills, and trust-building, fostering a supportive residential community."
       }
     }
   },
   "projects": {
-    "blog": {
-      "title": "jsantanders.dev",
-      "description": "My personal website and blog. Built with Next.js and MDX"
-    },
-    "learning": {
-      "title": "learning.jsantanders.dev",
-      "description": "Solutions to problems found in books I’m reading"
-    },
-    "ddd": {
-      "title": "modular-monolith-nestjs",
-      "description": "A Modular Monolith application with Domain-Driven Design approach. Using NestJS as a backend framework."
+    "sloop": {
+      "title": "Sloop Software",
+      "description": "Student-run company that focuses on software development projects."
     }
   },
   "present": "Present",

@@ -1,14 +1,9 @@
-import LaikaLogo from "@/images/logos/laika-logo.png";
-import MicrosoftLogo from "@/images/logos/microsoft-logo.png";
-import AlphasLogo from "@/images/logos/alphas-logo.png";
-import FerrisoftLogo from "@/images/logos/ferrisoft-logo.png";
-import NavicuLogo from "@/images/logos/navicu-logo.png";
-import TecFenixLogo from "@/images/logos/tecfenix-logo.png";
 import ColgateLogo from "@/images/logos/colgate.png";
 import ManchesterLogo from "@/images/logos/manchester.png";
 import choateLogo from "@/images/logos/choate.png";
 import colgateJobLogo from "@/images/logos/colgate-work.png";
-import { GitHubLogoIcon, HomeIcon, LinkedInLogoIcon, TwitterLogoIcon } from "@radix-ui/react-icons";
+import marketingAfLogo from "@/images/logos/ma-logo.png";
+import { GitHubLogoIcon, EnvelopeOpenIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
 import { useTranslations } from "next-intl";
 
 export const useResumeData = () => {
@@ -34,6 +29,12 @@ export const useResumeData = () => {
           url: "https://www.linkedin.com/in/james-ngugi-njoroge/",
           icon: LinkedInLogoIcon,
         },
+        {
+          name: "Email",
+          url: "mailto:jnjoroge@colgate.edu?subject=Contacting James via Website",
+          icon: EnvelopeOpenIcon,
+        },
+
       ],
     },
     education: [
@@ -126,27 +127,31 @@ export const useResumeData = () => {
       {
         company: "Marketing Africa",
         badges: [],
-        link: "https://navicu.com/",
-        title: t("work.ferrisoft.title"),
-        logo: NavicuLogo,
+        link: "https://marketingafrica.co.ke/",
+        title: t("work.marketing-africa.title"),
+        logo: marketingAfLogo,
         start: "Jan 2017",
         end: "Dec 2017",
         description: [
-          t("work.navicu.description.1"),
-          t("work.navicu.description.1"),
-          t("work.navicu.description.1"),
-          t("work.navicu.description.1"),
+          t("work.marketing-africa.description.1"),
+          t("work.marketing-africa.description.2"),
+          t("work.marketing-africa.description.3"),
+          t("work.marketing-africa.description.4"),
         ],
       },
       {
-        company: "Tecfenix",
-        badges: [],
-        link: "http://www.tecfenix.com/",
-        title: t("work.tecfenix.title"),
-        logo: TecFenixLogo,
-        start: "Jan 206",
-        end: "Dec 2016",
-        description: [t("work.tecfenix.description.1")],
+        company: "Colgate Residential Services",
+        badges: ["Leadership"],
+        link: "https://www.colgate.edu/about/offices-centers-institutes/dean-college/residential-life",
+        title: t("work.colgate-cl.title"),
+        logo: colgateJobLogo,
+        start: "Aug 2022",
+        end: "Present",
+        description: [
+          t("work.colgate-cl.description.1"),
+          t("work.colgate-cl.description.2"),
+          t("work.colgate-cl.description.3")
+        ],
       },
     ],
     skills: [
@@ -158,7 +163,7 @@ export const useResumeData = () => {
       "JavaScript",
       "HTML/CSS",
       "MATLAB",
-      "React Native",
+      "ReactNative",
       "SQL",
       "MongoDB",
       "CouchBase",
@@ -168,12 +173,12 @@ export const useResumeData = () => {
     ],
     projects: [
       {
-        title: t("projects.blog.title"),
-        techStack: ["Side Project", "TypeScript", "Next.js", "MDX"],
-        description: t("projects.blog.description"),
+        title: t("projects.sloop.title"),
+        techStack: ["Startup", "ReactNative", "SQL", "JavaScript"],
+        description: t("projects.sloop.description"),
         link: {
-          label: "jsantanders.dev",
-          href: "https://jsantanders.dev/",
+          label: "Sloop software",
+          href: "https://www.colgate.edu/success-after-colgate/entrepreneurship-and-innovation/thought-action/thought-action-incubator",
         },
       },
     ],
