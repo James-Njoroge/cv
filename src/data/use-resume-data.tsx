@@ -126,7 +126,7 @@ export const useResumeData = () => {
       },
       {
         company: "Marketing Africa",
-        badges: [],
+        badges: ["First Internship"],
         link: "https://marketingafrica.co.ke/",
         title: t("work.marketing-africa.title"),
         logo: marketingAfLogo,
