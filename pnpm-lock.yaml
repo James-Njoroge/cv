@@ -30,25 +30,28 @@ dependencies:
     specifier: ^0.7.0
     version: 0.7.0
   clsx:
-    specifier: ^2.0.0
-    version: 2.0.0
+    specifier: ^2.1.0
+    version: 2.1.0
   cmdk:
     specifier: ^0.2.0
     version: 0.2.0(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)
   next:
-    specifier: 14.0.4
+    specifier: ^14.0.4
     version: 14.0.4(react-dom@18.2.0)(react@18.2.0)
   next-intl:
-    specifier: ^3.4.0
-    version: 3.4.0(next@14.0.4)(react@18.2.0)
+    specifier: ^3.4.5
+    version: 3.5.1(next@14.0.4)(react@18.2.0)
   next-themes:
     specifier: ^0.2.1
     version: 0.2.1(next@14.0.4)(react-dom@18.2.0)(react@18.2.0)
+  pnpm:
+    specifier: ^8.14.3
+    version: 8.14.3
   react:
-    specifier: ^18
+    specifier: ^18.2.0
     version: 18.2.0
   react-dom:
-    specifier: ^18
+    specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
   sharp:
     specifier: ^0.33.1
@@ -1976,6 +1979,11 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
+  /clsx@2.1.0:
+    resolution: {integrity: sha512-m3iNNWpd9rl3jvvcBnu70ylMdrXt8Vlq4HYadnU5fwcOtvkSQWPmj7amUcDT2qYI7risszBjI5AUIUox9D16pg==}
+    engines: {node: '>=6'}
+    dev: false
+
   /cmdk@0.2.0(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-JQpKvEOb86SnvMZbYaFKYhvzFntWBeSZdyii0rZPhKJj9uwJBxu4DaVYDrRN7r3mPop56oPhRw+JYWTKs66TYw==}
     peerDependencies:
@@ -3413,8 +3421,8 @@ packages:
     engines: {node: '>= 0.6'}
     dev: false
 
-  /next-intl@3.4.0(next@14.0.4)(react@18.2.0):
-    resolution: {integrity: sha512-pccnuQq6N6iyPi0Foiajp9JgZp99w7gRxHhBxmtBdjsCmrsik7QflKWq2a/US2kFP734JSsSoY98xK+acjozeQ==}
+  /next-intl@3.5.1(next@14.0.4)(react@18.2.0):
+    resolution: {integrity: sha512-ITKKJvSgeEUVnX/QGvNakXV9NjBe804n1mEPR4K7hKqcJgDa+gGelsXnAAM+lSjCU6MATsh0SyEgKzAkH4JTvQ==}
     peerDependencies:
       next: ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0 || ^14.0.0
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -3423,7 +3431,7 @@ packages:
       negotiator: 0.6.3
       next: 14.0.4(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
-      use-intl: 3.4.0(react@18.2.0)
+      use-intl: 3.5.1(react@18.2.0)
     dev: false
 
   /next-themes@0.2.1(next@14.0.4)(react-dom@18.2.0)(react@18.2.0):
@@ -3643,6 +3651,12 @@ packages:
   /pirates@4.0.6:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
     engines: {node: '>= 6'}
+
+  /pnpm@8.14.3:
+    resolution: {integrity: sha512-w+2A61g74+K37zHrlri5z6oFA+XUTscXUUEgtRh7L5M3NukDjFGlojrVgnkLpB1Kt4RhjIn6fiNl9mZWhdYS7g==}
+    engines: {node: '>=16.14'}
+    hasBin: true
+    dev: false
 
   /postcss-import@15.1.0(postcss@8.4.32):
     resolution: {integrity: sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==}
@@ -4435,8 +4449,8 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /use-intl@3.4.0(react@18.2.0):
-    resolution: {integrity: sha512-vFwyAm9RDXjQN83wle9LjmE5PB/k0vOU0FetHffjr7/wLW8xlX2tAABxIyG1gy9eS5IYixAezvJXYr8g6fRIXA==}
+  /use-intl@3.5.1(react@18.2.0):
+    resolution: {integrity: sha512-tsRGOjrRaKO1y97zErwcTq5CWCdWMvIXiPl/TwifGY7+h4O62RUq86TeijhOWk0oVwiZqtlP/wr88tv4QCpl5A==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
