@@ -112,7 +112,7 @@ export const useResumeData = () => {
         title: t("work.colgate-its.title"),
         logo: colgateJobLogo,
         start: "Aug 2021",
-        end: "Present",
+        end: t("present"),
         description: [
           t("work.colgate-its.description.1"), 
           t("work.colgate-its.description.2"),
@@ -143,7 +143,7 @@ export const useResumeData = () => {
         title: t("work.colgate-cl.title"),
         logo: colgateJobLogo,
         start: "Aug 2022",
-        end: "Present",
+        end: t("present"),
         description: [
           t("work.colgate-cl.description.1"),
           t("work.colgate-cl.description.2"),
