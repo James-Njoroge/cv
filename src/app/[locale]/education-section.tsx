@@ -1,4 +1,5 @@
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Section } from "@/components/ui/section";
 import { useResumeData } from "@/data/use-resume-data";
 import { useTranslations } from "next-intl";
@@ -19,7 +20,15 @@ export const EducationSection = () => {
               <Card key={education.school}>
                 <CardHeader>
                   <div className="flex items-center justify-between gap-x-2 text-base">
-                    <h3 className="font-semibold ">{education.school}</h3>
+                    <h3 className="font-semibold ">{education.school}
+                      <span className="inline-flex gap-x-1">
+                        {education.badges.map((badge) => (
+                          <Badge variant="secondary" className="align-middle text-sm font-medium" key={badge}>
+                            {badge}
+                          </Badge>
+                        ))}
+                      </span>
+                    </h3>
                   </div>
                 </CardHeader>
                 <CardContent>{education.degree}</CardContent>

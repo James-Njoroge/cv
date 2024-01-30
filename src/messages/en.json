@@ -4,14 +4,15 @@
     "about": "About",
     "workExperience": "Work Experience",
     "education": "Education",
-    "skills": "Skills",
+    "skills": "Technical Skills",
+    "coursework": "Coursework",
     "projects": "Projects"
   },
-  "about": "Student Software and Data Engineer",
+  "about": "Software and Data Engineering Student",
   "summary": "I am an ambitious, diligent, and analytical student leader with a portfolio in software development, data analytics, and research, exemplified by outstanding academic performance and co-founding a student-run tech startup at Colgate University.",
   "education": {
     "bachelor": {
-      "school": "Colgate Univiersity",
+      "school": "Colgate University ",
       "major": "Computer Science | Applied Mathematics"
     },
     "abroad": {
@@ -27,30 +28,24 @@
     "colgate-ta" : {
       "title": "Teaching Assistant",
       "description": {
-        "1": "Develop and maintain strong and trustworthy relationships with professors and students to provide academic support and reinforcement.",
-        "2": "Assist students with homework and lab assignments in Python and Java Programming languages.",
-        "3": "Guide and debug students' work to strengthen their understanding of computer science concepts.",
-        "4": "Provide one-on-one tutoring and serve as mentor for introductory Python/Java courses, and the Data Structures and Algorithms course."
+        "1": "Assist students with Python and Java programming assignments, offering guidance and debugging support to strengthen their comprehension of key computer science concepts in Algorithms and Data Structures.",
+        "2": "Foster and maintain robust, trust-based relationships with professors and students, providing essential academic support and reinforcement to enhance learning experiences."
       }
     },
     "colgate-research" : {
       "title": "Research Intern",
       "description": {
-        "1": "Developed and maintained R Shiny applications for advanced statistical analysis of geospatial data, social networks, and textual corpora.",
-        "2": "Collaborated with researchers on ongoing projects, utilizing R Shiny applications to evaluate hypotheses and extract insights from complex datasets.",
-        "3": "Created user-friendly interfaces using R Shiny, making powerful R-based analyses accessible to diverse users without extensive programming knowledge.",
-        "4": "Improved data science accessibility at Colgate University by creating interdisciplinary tools that bridge statistical modelling and researchers from diverse disciplines."
+        "1": "Designed intuitive user interfaces in R Shiny, enhancing access to complex R-based analyses for users with varying levels of programming expertise, notably enhancing data science accessibility at Colgate University.",
+        "2": "Developed and maintained R Shiny applications for advanced statistical analysis, focusing on geospatial data, social networks, and textual corpora, enhancing research capabilities.",
+        "3": "Collaborated with interdisciplinary research teams, leveraging R Shiny applications to test hypotheses and derive insights from complex data sets, contributing to significant academic advancements."
       }
     },
     "colgate-econ" : {
       "title": "Survey and Research Analytics Assistant",
       "description": {
-        "1": "Conducted economic research on domestic violence and its effect on agricultural economics in Western Kenya.",
+        "1": "Evaluated research and survey-taking methods, and recommended bias-reduction techniques.",
         "2": "Collaborated with professor to acquire and clean collected survey data using Microsoft Excel.",
-        "3": "Examined research data for trends and anomalies in collaboration with a colleague, thus reducing the margin of error produced by the data.",
-        "4": "Translated qualitative survey data from Swahili to English for easier analysis.",
-        "5": "Supervised data collection and reviewed quality of collected data through field work.",
-        "6": "Evaluated research and survey-taking methods, and recommended bias-reduction techniques."
+        "3": "Examined research data for trends and anomalies in collaboration with a colleague, thus reducing the margin of error produced by the data."
       }
     },
     "colgate-its" : {
@@ -85,6 +80,10 @@
     "sloop": {
       "title": "Sloop Software",
       "description": "Student-run company that focuses on software development projects."
+    },
+    "website": {
+      "title": "Personal Website",
+      "description": "My personal website and online CV. Built with Next.js and Tailwind CSS."
     }
   },
   "present": "Present",
