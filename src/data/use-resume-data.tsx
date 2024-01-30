@@ -41,6 +41,7 @@ export const useResumeData = () => {
       {
         school: t("education.bachelor.school"),
         degree: t("education.bachelor.major"),
+        badges: ["3.73/4.00"],
         start: "2021",
         end: "2025",
         logo: ColgateLogo,
@@ -48,6 +49,7 @@ export const useResumeData = () => {
       {
         school: t("education.abroad.school"),
         degree: t("education.abroad.classes"),
+        badges: [],
         start: "Sep 2023",
         end: "Jan 2024",
         logo: ManchesterLogo,
@@ -55,6 +57,7 @@ export const useResumeData = () => {
       {
         school: t("education.highSchool.school"),
         degree: t("education.highSchool.degree"),
+        badges: [],
         start: "2018",
         end: "2021",
         logo: choateLogo,
@@ -72,8 +75,6 @@ export const useResumeData = () => {
         description: [
           t("work.colgate-ta.description.1"),
           t("work.colgate-ta.description.2"),
-          t("work.colgate-ta.description.3"),
-          t("work.colgate-ta.description.4"),
         ],
       },
       {
@@ -88,7 +89,6 @@ export const useResumeData = () => {
           t("work.colgate-research.description.1"),
           t("work.colgate-research.description.2"),
           t("work.colgate-research.description.3"),
-          t("work.colgate-research.description.4"),
         ],
       },
       {
@@ -103,9 +103,6 @@ export const useResumeData = () => {
           t("work.colgate-econ.description.1"),
           t("work.colgate-econ.description.2"),
           t("work.colgate-econ.description.3"),
-          t("work.colgate-econ.description.4"),
-          t("work.colgate-econ.description.5"),
-          t("work.colgate-econ.description.6"),
         ],
       },
       {
@@ -115,7 +112,7 @@ export const useResumeData = () => {
         title: t("work.colgate-its.title"),
         logo: colgateJobLogo,
         start: "Aug 2021",
-        end: "Present",
+        end: t("present"),
         description: [
           t("work.colgate-its.description.1"), 
           t("work.colgate-its.description.2"),
@@ -126,7 +123,7 @@ export const useResumeData = () => {
       },
       {
         company: "Marketing Africa",
-        badges: [],
+        badges: ["First Internship"],
         link: "https://marketingafrica.co.ke/",
         title: t("work.marketing-africa.title"),
         logo: marketingAfLogo,
@@ -146,7 +143,7 @@ export const useResumeData = () => {
         title: t("work.colgate-cl.title"),
         logo: colgateJobLogo,
         start: "Aug 2022",
-        end: "Present",
+        end: t("present"),
         description: [
           t("work.colgate-cl.description.1"),
           t("work.colgate-cl.description.2"),
@@ -171,6 +168,17 @@ export const useResumeData = () => {
       "AWS",
       "ETL Processes",
     ],
+    coursework: [
+      "Linear Algebra",
+      "Data Structures and Algorithms",
+      "Artificial Intelligence",
+      "Computational Mathematics",
+      "Real Analysis",
+      "Numerical Analysis",
+      "Database Management Systems",
+      "Probability",
+      "Calculus"
+    ],
     projects: [
       {
         title: t("projects.sloop.title"),
@@ -180,6 +188,15 @@ export const useResumeData = () => {
           label: "Sloop software",
           href: "https://www.colgate.edu/success-after-colgate/entrepreneurship-and-innovation/thought-action/thought-action-incubator",
         },
+      },
+      {
+        title: t("projects.website.title"),
+        techStack: ["Next.js", "Tailwind CSS", "TypeScript", "React"],
+        description: t("projects.website.description"),
+        link: {
+          label: "Personal Website",
+          href: "https://www.jnjoroge.dev",
+        }
       },
     ],
   } as const;

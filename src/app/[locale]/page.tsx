@@ -8,6 +8,7 @@ import { useTranslations } from "next-intl";
 import { WorkExperienceSection } from "./work-experience-section";
 import { AboutSection } from "./about-section";
 import { EducationSection } from "./education-section";
+import { CourseworkSection } from "./coursework-section";
 import { SkillsSection } from "./skills-section";
 import { ProjectsSection } from "./projects-section";
 import { GlobeIcon } from "@radix-ui/react-icons";
@@ -67,6 +68,9 @@ export default function Page({ params: { locale } }: Props) {
           </Avatar>
         </div>
         <AboutSection />
+        <EducationSection />
+        <SkillsSection />
+        <CourseworkSection/>
         <WorkExperienceSection
           jobs={resumeData.work}
           dict={{
@@ -75,8 +79,6 @@ export default function Page({ params: { locale } }: Props) {
             workExperience: t("sections.workExperience"),
           }}
         />
-        <EducationSection />
-        <SkillsSection />
         <ProjectsSection />
       </section>
     </main>
