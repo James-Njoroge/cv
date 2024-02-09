@@ -12,12 +12,15 @@ import { CourseworkSection } from "./coursework-section";
 import { SkillsSection } from "./skills-section";
 import { ProjectsSection } from "./projects-section";
 import { GlobeIcon } from "@radix-ui/react-icons";
+import Head from 'next/head';
 
 type Props = {
   params: { locale: string };
 };
 
 interface ExtendedMetadata extends Metadata {
+  title: string;
+  description: string;
   image: string;
 }
 
@@ -30,62 +33,80 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<E
   };
 }
 
-export default function Page({ params: { locale } }: Props) {
+export default function Page({ params: { locale }, metadata }: Props & { metadata: ExtendedMetadata }) {
   unstable_setRequestLocale(locale);
   const t = useTranslations();
   const resumeData = useResumeData();
 
   return (
-    <main className="container relative mx-auto scroll-my-12 overflow-auto p-4 print:p-12 md:p-16">
-      <section className="mx-auto w-full max-w-2xl space-y-8 print:space-y-6">
-        <div className="flex flex-row justify-end   gap-x-2 print:hidden">
-          <ModeToggle />
-        </div>
-        <div className="flex items-center justify-between">
-          <div className="flex-1 space-y-1.5">
-            <h1 className="text-2xl font-bold">{resumeData.name}</h1>
-            <p className="max-w-md text-pretty font-mono text-sm text-muted-foreground">
-              {t("about")}
-            </p>
-            <p className="max-w-md items-center text-pretty font-mono text-xs text-muted-foreground">
-              <a
-                className="inline-flex gap-x-1.5 align-baseline leading-none hover:underline"
-                href={resumeData.locationLink}
-                target="_blank"
-              >
-                <GlobeIcon className="h-3 w-3" />
-                {resumeData.location}
-              </a>
-            </p>
-            <div className="flex gap-x-1 pt-1 font-mono text-sm text-muted-foreground print:hidden">
-              {resumeData.contact.social.map((social) => (
-                <Button key={social.name} className="h-8 w-8" variant="outline" size="icon" asChild>
-                  <a href={social.url}>
-                    <social.icon className="h-4 w-4" />
-                  </a>
-                </Button>
-              ))}
-            </div>
+    <>
+      <Head>
+        <title>{metadata.title.toString() || 'James Njoroge'}</title>
+        <meta name="description" content={metadata.description || 'Personal Website'} />
+        <meta property="og:image" content={metadata.image || '/images/headshot.png'} />
+        {/* Add more meta tags as needed */}
+      </Head>
+      <main className="container relative mx-auto scroll-my-12 overflow-auto p-4 print:p-12 md:p-16">
+        <section className="mx-auto w-full max-w-2xl space-y-8 print:space-y-6">
+          <div className="flex flex-row justify-end   gap-x-2 print:hidden">
+            <ModeToggle />
           </div>
-          <Avatar className="h-40 w-40">
-          <AvatarImage alt={resumeData.name} src={resumeData.avatarUrl} />
-            <AvatarFallback>{resumeData.initials}</AvatarFallback>
-          </Avatar>
-        </div>
-        <AboutSection />
-        <EducationSection />
-        <SkillsSection />
-        <CourseworkSection/>
-        <WorkExperienceSection
-          jobs={resumeData.work}
-          dict={{
-            seeMore: t("seeMore"),
-            seeLess: t("seeLess"),
-            workExperience: t("sections.workExperience"),
-          }}
-        />
-        <ProjectsSection />
-      </section>
-    </main>
+          <div className="flex items-center justify-between">
+            <div className="flex-1 space-y-1.5">
+              <h1 className="text-2xl font-bold">{resumeData.name}</h1>
+              <p className="max-w-md text-pretty font-mono text-sm text-muted-foreground">
+                {t("about")}
+              </p>
+              <p className="max-w-md items-center text-pretty font-mono text-xs text-muted-foreground">
+                <a
+                  className="inline-flex gap-x-1.5 align-baseline leading-none hover:underline"
+                  href={resumeData.locationLink}
+                  target="_blank"
+                >
+                  <GlobeIcon className="h-3 w-3" />
+                  {resumeData.location}
+                </a>
+              </p>
+              <div className="flex gap-x-1 pt-1 font-mono text-sm text-muted-foreground print:hidden">
+                {resumeData.contact.social.map((social) => (
+                  <Button key={social.name} className="h-8 w-8" variant="outline" size="icon" asChild>
+                    <a href={social.url}>
+                      <social.icon className="h-4 w-4" />
+                    </a>
+                  </Button>
+                ))}
+              </div>
+            </div>
+            <Avatar className="h-40 w-40">
+            <AvatarImage alt={resumeData.name} src={resumeData.avatarUrl} />
+              <AvatarFallback>{resumeData.initials}</AvatarFallback>
+            </Avatar>
+          </div>
+          <AboutSection />
+          <EducationSection />
+          <SkillsSection />
+          <CourseworkSection/>
+          <WorkExperienceSection
+            jobs={resumeData.work}
+            dict={{
+              seeMore: t("seeMore"),
+              seeLess: t("seeLess"),
+              workExperience: t("sections.workExperience"),
+            }}
+          />
+          <ProjectsSection />
+        </section>
+      </main>
+    </>
   );
+}
+
+export async function getServerSideProps({ params }: { params: { locale: string } }) {
+  const metadata = await generateMetadata({ params });
+
+  return {
+    props: {
+      metadata, 
+    },
+  };
 }
