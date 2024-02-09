@@ -12,26 +12,26 @@ import { CourseworkSection } from "./coursework-section";
 import { SkillsSection } from "./skills-section";
 import { ProjectsSection } from "./projects-section";
 import { GlobeIcon } from "@radix-ui/react-icons";
-import Head from 'next/head';
+//import Head from 'next/head';
 
 type Props = {
   params: { locale: string };
 };
 
-interface ExtendedMetadata extends Metadata {
-  title: string;
-  description: string;
-  image: string;
-}
+// interface ExtendedMetadata extends Metadata {
+//   title: string;
+//   description: string;
+//   image: string;
+// }
 
-export async function generateMetadata({ params: { locale } }: Props): Promise<ExtendedMetadata> {
-  const t = await getTranslations({ locale });
-  return {
-    title: `${t("name")} | ${t("about")}`,
-    description: t("summary"),
-    image: "/images/headshot.png",
-  };
-}
+// export async function generateMetadata({ params: { locale } }: Props): Promise<ExtendedMetadata> {
+//   const t = await getTranslations({ locale });
+//   return {
+//     title: `${t("name")} | ${t("about")}`,
+//     description: t("summary"),
+//     image: "/images/headshot.png",
+//   };
+// }
 
 export default function Page({ params: { locale }, metadata }: Props & { metadata: ExtendedMetadata }) {
   unstable_setRequestLocale(locale);
@@ -39,13 +39,6 @@ export default function Page({ params: { locale }, metadata }: Props & { metadat
   const resumeData = useResumeData();
 
   return (
-    <>
-      <Head>
-        <title>{metadata.title.toString() || 'James Njoroge'}</title>
-        <meta name="description" content={metadata.description || 'Personal Website'} />
-        <meta property="og:image" content={metadata.image || '/images/headshot.png'} />
-        {/* Add more meta tags as needed */}
-      </Head>
       <main className="container relative mx-auto scroll-my-12 overflow-auto p-4 print:p-12 md:p-16">
         <section className="mx-auto w-full max-w-2xl space-y-8 print:space-y-6">
           <div className="flex flex-row justify-end   gap-x-2 print:hidden">
@@ -97,16 +90,7 @@ export default function Page({ params: { locale }, metadata }: Props & { metadat
           <ProjectsSection />
         </section>
       </main>
-    </>
   );
 }
 
-export async function getServerSideProps({ params }: { params: { locale: string } }) {
-  const metadata = await generateMetadata({ params });
 
-  return {
-    props: {
-      metadata, 
-    },
-  };
-}

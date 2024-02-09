@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import Head from 'next/head';
 import { Analytics } from "@vercel/analytics/react";
 import { Inter } from "next/font/google";
 
@@ -23,22 +23,36 @@ export default function RootLayout({
   unstable_setRequestLocale(locale);
 
   return (
-    <html lang={locale} className={inter.className}>
-      <body>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
-      </body>
-      <Analytics />
-    </html>
+    <>
+      <Head>
+        <title>{'James Njoroge'}</title>
+        <meta name="description" content={'Personal Website'} />
+        <meta property="og:image" content={'/images/headshot.png'} />
+      </Head>
+      <html lang={locale} className={inter.className}>
+        <body>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </body>
+        <Analytics />
+      </html>
+    </>
   );
 }
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
+
+
+<head>
+  <title>{'James Njoroge'}</title>
+  <meta name="description" content={'Personal Website'} />
+  <meta property="og:image" content={'/images/headshot.png'} />
+</head>
