@@ -17,11 +17,16 @@ type Props = {
   params: { locale: string };
 };
 
-export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
+interface ExtendedMetadata extends Metadata {
+  image: string;
+}
+
+export async function generateMetadata({ params: { locale } }: Props): Promise<ExtendedMetadata> {
   const t = await getTranslations({ locale });
   return {
     title: `${t("name")} | ${t("about")}`,
     description: t("summary"),
+    image: "/images/headshot.png",
   };
 }
 
