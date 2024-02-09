@@ -41,10 +41,3 @@ export default function RootLayout({
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
-
-
-<head>
-  <title>{'James Njoroge'}</title>
-  <meta name="description" content={'Personal Website'} />
-  <meta property="og:image" content={'/images/headshot.png'} />
-</head>

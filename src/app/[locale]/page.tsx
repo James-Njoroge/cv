@@ -1,6 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Metadata } from "next";
-import Head from 'next/head';
 import { Button } from "@/components/ui/button";
 import { useResumeData } from "@/data/use-resume-data";
 import { ModeToggle } from "@/components/ui/mode-toggle";
@@ -19,20 +18,14 @@ type Props = {
   params: { locale: string };
 };
 
-// interface ExtendedMetadata extends Metadata {
-//   title: string;
-//   description: string;
-//   image: string;
-// }
 
-// export async function generateMetadata({ params: { locale } }: Props): Promise<ExtendedMetadata> {
-//   const t = await getTranslations({ locale });
-//   return {
-//     title: `${t("name")} | ${t("about")}`,
-//     description: t("summary"),
-//     image: "/images/headshot.png",
-//   };
-// }
+export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
+  const t = await getTranslations({ locale });
+  return {
+    title: `${t("name")} | ${t("about")}`,
+    description: t("summary"),
+  };
+}
 
 export default function Page({ params: { locale }}: Props) {
   unstable_setRequestLocale(locale);
@@ -40,15 +33,8 @@ export default function Page({ params: { locale }}: Props) {
   const resumeData = useResumeData();
 
   return (
-    <>
-      <Head>
-        <title>James Njoroge | Personal Website</title>
-        <meta name="description" content="James Njoroge's personal portfolio." />
-        <meta property="og:title" content="James Njoroge - Software Developer" />
-        <meta property="og:description" content="Explore my portfolio to see my projects, skills, and professional journey as a software developer." />
-        <meta name="image" property="og:image" content="'/images/headshot.png'" />
-      </Head>
       <main className="container relative mx-auto scroll-my-12 overflow-auto p-4 print:p-12 md:p-16">
+        <meta name="image" property="og:image" content="/images/headshot.png" />
         <section className="mx-auto w-full max-w-2xl space-y-8 print:space-y-6">
           <div className="flex flex-row justify-end   gap-x-2 print:hidden">
             <ModeToggle />
@@ -99,7 +85,6 @@ export default function Page({ params: { locale }}: Props) {
           <ProjectsSection />
         </section>
       </main>
-    </>
   );
 }
 
