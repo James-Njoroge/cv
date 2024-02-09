@@ -41,7 +41,7 @@ export const useResumeData = () => {
       {
         school: t("education.bachelor.school"),
         degree: t("education.bachelor.major"),
-        badges: ["3.73/4.00"],
+        badges: [],
         start: "2021",
         end: "2025",
         logo: ColgateLogo,
