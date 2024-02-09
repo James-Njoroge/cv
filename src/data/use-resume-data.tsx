@@ -195,7 +195,7 @@ export const useResumeData = () => {
         description: t("projects.website.description"),
         link: {
           label: "Personal Website",
-          href: "https://www.jnjoroge.dev",
+          href: "https://jnjoroge.dev/",
         }
       },
     ],
