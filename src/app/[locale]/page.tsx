@@ -33,7 +33,7 @@ type Props = {
 //   };
 // }
 
-export default function Page({ params: { locale }, metadata }: Props & { metadata: ExtendedMetadata }) {
+export default function Page({ params: { locale }}: Props) {
   unstable_setRequestLocale(locale);
   const t = useTranslations();
   const resumeData = useResumeData();
