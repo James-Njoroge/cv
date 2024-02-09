@@ -1,5 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Metadata } from "next";
+import Head from 'next/head';
 import { Button } from "@/components/ui/button";
 import { useResumeData } from "@/data/use-resume-data";
 import { ModeToggle } from "@/components/ui/mode-toggle";
@@ -12,7 +13,7 @@ import { CourseworkSection } from "./coursework-section";
 import { SkillsSection } from "./skills-section";
 import { ProjectsSection } from "./projects-section";
 import { GlobeIcon } from "@radix-ui/react-icons";
-//import Head from 'next/head';
+
 
 type Props = {
   params: { locale: string };
@@ -39,6 +40,14 @@ export default function Page({ params: { locale }}: Props) {
   const resumeData = useResumeData();
 
   return (
+    <>
+      <Head>
+        <title>James Njoroge | Personal Website</title>
+        <meta name="description" content="James Njoroge's personal portfolio." />
+        <meta property="og:title" content="James Njoroge - Software Developer" />
+        <meta property="og:description" content="Explore my portfolio to see my projects, skills, and professional journey as a software developer." />
+        <meta name="image" property="og:image" content="'/images/headshot.png'" />
+      </Head>
       <main className="container relative mx-auto scroll-my-12 overflow-auto p-4 print:p-12 md:p-16">
         <section className="mx-auto w-full max-w-2xl space-y-8 print:space-y-6">
           <div className="flex flex-row justify-end   gap-x-2 print:hidden">
@@ -90,6 +99,7 @@ export default function Page({ params: { locale }}: Props) {
           <ProjectsSection />
         </section>
       </main>
+    </>
   );
 }
 

@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import { Analytics } from "@vercel/analytics/react";
 import { Inter } from "next/font/google";
 
@@ -23,14 +22,6 @@ export default function RootLayout({
   unstable_setRequestLocale(locale);
 
   return (
-    <>
-      <Head>
-        <title>James Njoroge | Personal Website</title>
-        <meta name="description" content="James Njoroge's personal portfolio." />
-        <meta property="og:title" content="James Njoroge - Software Developer" />
-        <meta property="og:description" content="Explore my portfolio to see my projects, skills, and professional journey as a software developer." />
-        <meta name="image" property="og:image" content="'/images/headshot.png'" />
-      </Head>
       <html lang={locale} className={inter.className}>
         <body>
           <ThemeProvider
@@ -44,7 +35,6 @@ export default function RootLayout({
         </body>
         <Analytics />
       </html>
-    </>
   );
 }
 
