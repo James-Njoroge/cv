@@ -25,9 +25,11 @@ export default function RootLayout({
   return (
     <>
       <Head>
-        <title>{'James Njoroge'}</title>
-        <meta name="description" content={'Personal Website'} />
-        <meta property="og:image" content={'/images/headshot.png'} />
+        <title>James Njoroge | Personal Website</title>
+        <meta name="description" content="James Njoroge's personal portfolio." />
+        <meta property="og:title" content="James Njoroge - Software Developer" />
+        <meta property="og:description" content="Explore my portfolio to see my projects, skills, and professional journey as a software developer." />
+        <meta name="image" property="og:image" content="'/images/headshot.png'" />
       </Head>
       <html lang={locale} className={inter.className}>
         <body>
