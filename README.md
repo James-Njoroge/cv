@@ -5,7 +5,7 @@
 # Minimalist CV
 
 Simple web app that renders minimalist CV with print-friendly layout.
-Built with Next.js and shadcn/ui, not deployed yet.
+Built with Next.js and shadcn/ui. [Click here to see website](https://jnjoroge.dev/)
 
 # License
 
