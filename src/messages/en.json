@@ -25,6 +25,23 @@
     }
   },
   "work": {
+    "mdlz" : {
+      "title": "Digital Finance Intern",
+      "description": {
+        "1": "Built and migrated the MDLZ Incentive Program tracking tool from Excel to a combination of Excel, Essbase, and PowerBI, enhancing data visualization and reporting capabilities.",
+        "2": "Automated global FP&A team’s monthly financial data ETL processes using Python and Excel, reducing data processing time by 75% and saving the team 2 days of work per month.",
+        "3": "Optimized financial allocations with VBA scripts, reducing a 20-hour process to 1 hour.",
+        "4": "Collaborated closely with the CFO (Luca Zaramella) and key global FP&A stakeholders to ensure new tools met executive requirements, leading to improved user adoption and satisfaction.",
+        "5": "Presented final products and key improvements to MDLZ executive leadership, including the global CFO and treasurer, influencing strategic decision on future financial technology implementations."
+      }
+    },
+    "colgate-ai" : {
+      "title": "Generative AI Student Explorer",
+      "description": {
+        "1": "Conduct comprehensive research on emerging GenAI tools, technologies, and trends in academic environments",
+        "2": "Foster and maintain robust, trust-based relationships with professors and students, providing essential academic support and reinforcement to enhance learning experiences."
+      }
+    },
     "colgate-ta" : {
       "title": "Teaching Assistant",
       "description": {

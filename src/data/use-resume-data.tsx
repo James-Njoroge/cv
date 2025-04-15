@@ -3,6 +3,7 @@ import ManchesterLogo from "@/images/logos/manchester.png";
 import choateLogo from "@/images/logos/choate.png";
 import colgateJobLogo from "@/images/logos/colgate-work.png";
 import marketingAfLogo from "@/images/logos/ma-logo.png";
+import mdlzLogo from "@/images/logos/mdlz-logo.png"
 import { GitHubLogoIcon, EnvelopeOpenIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
 import { useTranslations } from "next-intl";
 
@@ -16,7 +17,7 @@ export const useResumeData = () => {
     about: t("about"),
     summary: t("summary"),
     locationLink: "https://www.google.com/maps/place/Hamilton,+NY+13346",
-    avatarUrl: "/images/headshot.png",
+    avatarUrl: "/images/headshot.jpg",
     contact: {
       social: [
         {
@@ -65,13 +66,45 @@ export const useResumeData = () => {
     ],
     work: [
       {
+        company: "Mondelez International",
+        link: "https://www.mondelezinternational.com/",
+        badges: ["PowerBI", "Tableau", "Oracle Essbase", "Python", "VBA"],
+        title: t("work.mdlz.title"),
+        logo: mdlzLogo,
+        start: "Jun 2024",
+        end: t("Aug 2024"),
+        description: [
+          t("work.mdlz.description.1"),
+          t("work.mdlz.description.2"),
+          t("work.mdlz.description.3"),
+          t("work.mdlz.description.4"),
+          t("work.mdlz.description.5"),
+        ],
+      },
+      {
+        company: "Colgate Centre for Learning, Teaching, and Research",
+        link: "https://www.colgate.edu/about/offices-centers-institutes/centers-institutes/center-learning-teaching-and-research",
+        badges: ["AI", "Academic Policy"],
+        title: t("work.mdlz.title"),
+        logo: mdlzLogo,
+        start: "Jun 2024",
+        end: t("Aug 2024"),
+        description: [
+          t("work.mdlz.description.1"),
+          t("work.mdlz.description.2"),
+          t("work.mdlz.description.3"),
+          t("work.mdlz.description.4"),
+          t("work.mdlz.description.5"),
+        ],
+      },
+      {
         company: "Colgate Computer Science",
         link: "https://www.colgate.edu/academics/departments-programs/department-computer-science",
         badges: ["Data Structures & Algorithms"],
         title: t("work.colgate-ta.title"),
         logo: colgateJobLogo,
         start: "Jan 2023",
-        end: t("present"),
+        end: t("Dec 2024"),
         description: [
           t("work.colgate-ta.description.1"),
           t("work.colgate-ta.description.2"),
