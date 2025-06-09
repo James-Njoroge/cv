@@ -3,7 +3,7 @@ import ManchesterLogo from "@/images/logos/manchester.png";
 import choateLogo from "@/images/logos/choate.png";
 import colgateJobLogo from "@/images/logos/colgate-work.png";
 import marketingAfLogo from "@/images/logos/ma-logo.png";
-import mdlzLogo from "@/images/logos/mdlz-logo.png"
+import mdlzLogo from "@/images/logos/mdlz-logo.jpeg"
 import { GitHubLogoIcon, EnvelopeOpenIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
 import { useTranslations } from "next-intl";
 
