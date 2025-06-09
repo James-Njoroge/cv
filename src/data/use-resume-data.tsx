@@ -72,7 +72,7 @@ export const useResumeData = () => {
         title: t("work.mdlz.title"),
         logo: mdlzLogo,
         start: "Jun 2024",
-        end: t("Aug 2024"),
+        end: "Aug 2024",
         description: [
           t("work.mdlz.description.1"),
           t("work.mdlz.description.2"),
@@ -88,7 +88,7 @@ export const useResumeData = () => {
         title: t("work.colgate-ai.title"),
         logo: mdlzLogo,
         start: "Aug 2024",
-        end: t("Jun 2025"),
+        end: "Jun 2025",
         description: [
           t("work.colgate-ai.description.1"),
           t("work.colgate-ai.description.2"),
@@ -101,7 +101,7 @@ export const useResumeData = () => {
         title: t("work.colgate-ta.title"),
         logo: colgateJobLogo,
         start: "Jan 2023",
-        end: t("Dec 2024"),
+        end: "Dec 2024",
         description: [
           t("work.colgate-ta.description.1"),
           t("work.colgate-ta.description.2"),
@@ -142,7 +142,7 @@ export const useResumeData = () => {
         title: t("work.colgate-its.title"),
         logo: colgateJobLogo,
         start: "Aug 2021",
-        end: t("present"),
+        end: "Jan 2023",
         description: [
           t("work.colgate-its.description.1"), 
           t("work.colgate-its.description.2"),
@@ -173,7 +173,7 @@ export const useResumeData = () => {
         title: t("work.colgate-cl.title"),
         logo: colgateJobLogo,
         start: "Aug 2022",
-        end: t("present"),
+        end: "May 2025",
         description: [
           t("work.colgate-cl.description.1"),
           t("work.colgate-cl.description.2"),
