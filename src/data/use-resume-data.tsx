@@ -86,7 +86,7 @@ export const useResumeData = () => {
         link: "https://www.colgate.edu/about/offices-centers-institutes/centers-institutes/center-learning-teaching-and-research",
         badges: ["AI", "Academic Policy"],
         title: t("work.colgate-ai.title"),
-        logo: mdlzLogo,
+        logo: colgateJobLogo,
         start: "Aug 2024",
         end: "Jun 2025",
         description: [t("work.colgate-ai.description.1"), t("work.colgate-ai.description.2")],
