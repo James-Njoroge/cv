@@ -1,7 +1,7 @@
 import { GlobeIcon } from "@radix-ui/react-icons";
 import { Metadata } from "next";
 import { useTranslations } from "next-intl";
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -28,7 +28,7 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
 }
 
 export default function Page({ params: { locale } }: Props) {
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
   const t = useTranslations();
   const resumeData = useResumeData();
 

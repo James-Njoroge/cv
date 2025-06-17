@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { Messages } from "next-intl";
+import type { AbstractIntlMessages } from "next-intl"; // Corrected import
 import { getRequestConfig } from "next-intl/server";
 
 /**
@@ -10,6 +10,11 @@ import { getRequestConfig } from "next-intl/server";
 export const locales = ["en"] as const;
 export type AppLocale = (typeof locales)[number];
 
+// A type guard function to check if a string is a valid AppLocale
+function isValidLocale(locale: any): locale is AppLocale {
+  return locales.includes(locale);
+}
+
 /**
  * Next‑intl request‑time configuration.
  *
@@ -17,17 +22,18 @@ export type AppLocale = (typeof locales)[number];
  * { locale: string; messages: Messages }
  */
 export default getRequestConfig(async ({ locale }) => {
-  // 1  Ensure the requested locale is supported; otherwise 404
-  if (!locales.includes(locale as AppLocale)) {
+  // 1. Validate that the incoming `locale` parameter is a valid locale.
+  if (!isValidLocale(locale)) {
     notFound();
   }
 
-  // 2  Dynamically import the JSON message catalog and type it
-  const messages: Messages = (await import(`./messages/${locale}.json`)).default;
+  // 2. Dynamically import the JSON message catalog.
+  // The official recommendation is to use AbstractIntlMessages.
+  const messages: AbstractIntlMessages = (await import(`./messages/${locale}.json`)).default;
 
-  // 3  Return the full RequestConfig (needs both locale & messages)
+  // 3. Return the full RequestConfig.
   return {
     locale,
     messages,
-  } as const;
+  };
 });

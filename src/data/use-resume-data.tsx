@@ -18,7 +18,7 @@ export const useResumeData = () => {
     about: t("about"),
     summary: t("summary"),
     locationLink: "https://www.google.com/maps/place/Hamilton,+NY+13346",
-    avatarUrl: "/images/headshot.jpg",
+    avatarUrl: "/images/headshot2.jpg",
     contact: {
       social: [
         {

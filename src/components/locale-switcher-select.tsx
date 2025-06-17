@@ -1,41 +1,45 @@
 "use client";
 
-import { ReactNode, useTransition } from "react";
+// THIS IS THE CORRECT IMPORT PATH
+import { useTransition } from "react";
 
-import clsx from "clsx";
+import { useLocale } from "next-intl";
 
-import { Select, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { AppLocale, locales } from "@/i18n";
 import { usePathname, useRouter } from "@/lib/navigation";
 
-type Props = {
-  children: ReactNode;
-  defaultValue: string;
-  label: string;
-};
-
-export function LocaleSwitcherSelect({ children, defaultValue, label }: Props) {
-  const [isPending, startTransition] = useTransition();
+export default function LocaleSwitcherSelect() {
   const router = useRouter();
-  const pathname = usePathname();
+  const pathname = usePathname(); // This now comes from your own navigation.ts
+  const locale = useLocale() as AppLocale;
+  const [isPending, startTransition] = useTransition();
 
-  function onSelectChange(lang: string) {
+  function onSelectChange(value: string) {
     startTransition(() => {
-      router.replace(pathname, { locale: lang });
+      // The router now has the correct context and will work as expected.
+      router.replace(pathname, { locale: value });
     });
   }
 
   return (
-    <Select onValueChange={onSelectChange} defaultValue={defaultValue}>
-      <SelectTrigger
-        className={clsx(
-          "relative text-muted-foreground",
-          isPending && "transition-opacity [&:disabled]:opacity-30",
-          "w-[120px]"
-        )}
-      >
-        <SelectValue placeholder={label} />
+    <Select defaultValue={locale} onValueChange={onSelectChange} disabled={isPending}>
+      <SelectTrigger className="w-fit">
+        <SelectValue placeholder="Language" />
       </SelectTrigger>
-      {children}
+      <SelectContent>
+        {locales.map((cur) => (
+          <SelectItem key={cur} value={cur}>
+            {cur.toUpperCase()}
+          </SelectItem>
+        ))}
+      </SelectContent>
     </Select>
   );
 }
