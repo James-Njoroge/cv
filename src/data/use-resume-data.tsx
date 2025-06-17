@@ -1,11 +1,12 @@
-import ColgateLogo from "@/images/logos/colgate.png";
-import ManchesterLogo from "@/images/logos/manchester.png";
+import { EnvelopeOpenIcon, GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
+import { useTranslations } from "next-intl";
+
 import choateLogo from "@/images/logos/choate.png";
+import ColgateLogo from "@/images/logos/colgate.png";
 import colgateJobLogo from "@/images/logos/colgate-work.png";
 import marketingAfLogo from "@/images/logos/ma-logo.png";
-import mdlzLogo from "@/images/logos/mdlz-logo.jpeg"
-import { GitHubLogoIcon, EnvelopeOpenIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
-import { useTranslations } from "next-intl";
+import ManchesterLogo from "@/images/logos/manchester.png";
+import mdlzLogo from "@/images/logos/mdlz-logo.jpeg";
 
 export const useResumeData = () => {
   const t = useTranslations();
@@ -35,7 +36,6 @@ export const useResumeData = () => {
           url: "mailto:jnjoroge@colgate.edu?subject=Contacting James via Website",
           icon: EnvelopeOpenIcon,
         },
-
       ],
     },
     education: [
@@ -89,10 +89,7 @@ export const useResumeData = () => {
         logo: mdlzLogo,
         start: "Aug 2024",
         end: "Jun 2025",
-        description: [
-          t("work.colgate-ai.description.1"),
-          t("work.colgate-ai.description.2"),
-        ],
+        description: [t("work.colgate-ai.description.1"), t("work.colgate-ai.description.2")],
       },
       {
         company: "Colgate Computer Science",
@@ -102,10 +99,7 @@ export const useResumeData = () => {
         logo: colgateJobLogo,
         start: "Jan 2023",
         end: "Dec 2024",
-        description: [
-          t("work.colgate-ta.description.1"),
-          t("work.colgate-ta.description.2"),
-        ],
+        description: [t("work.colgate-ta.description.1"), t("work.colgate-ta.description.2")],
       },
       {
         company: "Colgate Data Science Collaboratory",
@@ -144,7 +138,7 @@ export const useResumeData = () => {
         start: "Aug 2021",
         end: "Jan 2023",
         description: [
-          t("work.colgate-its.description.1"), 
+          t("work.colgate-its.description.1"),
           t("work.colgate-its.description.2"),
           t("work.colgate-its.description.3"),
           t("work.colgate-its.description.4"),
@@ -177,7 +171,7 @@ export const useResumeData = () => {
         description: [
           t("work.colgate-cl.description.1"),
           t("work.colgate-cl.description.2"),
-          t("work.colgate-cl.description.3")
+          t("work.colgate-cl.description.3"),
         ],
       },
     ],
@@ -207,7 +201,7 @@ export const useResumeData = () => {
       "Numerical Analysis",
       "Database Management Systems",
       "Probability",
-      "Calculus"
+      "Calculus",
     ],
     projects: [
       {
@@ -226,7 +220,7 @@ export const useResumeData = () => {
         link: {
           label: "Personal Website",
           href: "https://jnjoroge.dev/",
-        }
+        },
       },
     ],
   } as const;

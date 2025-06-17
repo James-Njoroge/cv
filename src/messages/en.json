@@ -1,6 +1,6 @@
 {
   "name": "James Njoroge",
-  "sections":{
+  "sections": {
     "about": "About",
     "workExperience": "Work Experience",
     "education": "Education",
@@ -25,7 +25,7 @@
     }
   },
   "work": {
-    "mdlz" : {
+    "mdlz": {
       "title": "Digital Finance Intern",
       "description": {
         "1": "Built and migrated the MDLZ Incentive Program tracking tool from Excel to a combination of Excel, Essbase, and PowerBI, enhancing data visualization and reporting capabilities.",
@@ -35,21 +35,21 @@
         "5": "Presented final products and key improvements to MDLZ executive leadership, including the global CFO and treasurer, influencing strategic decision on future financial technology implementations."
       }
     },
-    "colgate-ai" : {
+    "colgate-ai": {
       "title": "Generative AI Student Explorer",
       "description": {
         "1": "Conduct comprehensive research on emerging GenAI tools, technologies, and trends in academic environments",
         "2": "Foster and maintain robust, trust-based relationships with professors and students, providing essential academic support and reinforcement to enhance learning experiences."
       }
     },
-    "colgate-ta" : {
+    "colgate-ta": {
       "title": "Teaching Assistant",
       "description": {
         "1": "Assist students with Python and Java programming assignments, offering guidance and debugging support to strengthen their comprehension of key computer science concepts in Algorithms and Data Structures.",
         "2": "Foster and maintain robust, trust-based relationships with professors and students, providing essential academic support and reinforcement to enhance learning experiences."
       }
     },
-    "colgate-research" : {
+    "colgate-research": {
       "title": "Research Intern",
       "description": {
         "1": "Designed intuitive user interfaces in R Shiny, enhancing access to complex R-based analyses for users with varying levels of programming expertise, notably enhancing data science accessibility at Colgate University.",
@@ -57,7 +57,7 @@
         "3": "Collaborated with interdisciplinary research teams, leveraging R Shiny applications to test hypotheses and derive insights from complex data sets, contributing to significant academic advancements."
       }
     },
-    "colgate-econ" : {
+    "colgate-econ": {
       "title": "Survey and Research Analytics Assistant",
       "description": {
         "1": "Evaluated research and survey-taking methods, and recommended bias-reduction techniques.",
@@ -65,7 +65,7 @@
         "3": "Examined research data for trends and anomalies in collaboration with a colleague, thus reducing the margin of error produced by the data."
       }
     },
-    "colgate-its" : {
+    "colgate-its": {
       "title": "IT Consultant",
       "description": {
         "1": "Work in a customer-facing role on the phone and in-person.",
@@ -85,8 +85,8 @@
       }
     },
     "colgate-cl": {
-      "title": "Residential Community Leader", 
-      "description":{
+      "title": "Residential Community Leader",
+      "description": {
         "1": "Led 33 resident students, ensuring a safe, academically-focused environment; organized monthly rapport-building activities.",
         "2": "Acted as key liaison between students, residential advisors, and school administration, enhancing community communication.",
         "3": "Resolved student welfare issues with strong leadership, communication skills, and trust-building, fostering a supportive residential community."

@@ -1,13 +1,16 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
+import Image from "next/image";
+
+import { ChevronDownIcon, ChevronUpIcon } from "@radix-ui/react-icons";
+
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Section } from "@/components/ui/section";
 import { useResumeData } from "@/data/use-resume-data";
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import { ChevronDownIcon, ChevronUpIcon } from "@radix-ui/react-icons";
 
 type Props = {
   jobs: ReturnType<typeof useResumeData>["work"];

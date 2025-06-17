@@ -1,10 +1,12 @@
-import { Analytics } from "@vercel/analytics/react";
 import { Inter } from "next/font/google";
 
-import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
+import { unstable_setRequestLocale } from "next-intl/server";
+
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { locales } from "@/i18n";
-import { unstable_setRequestLocale } from "next-intl/server";
+
+import "./globals.css";
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({
@@ -22,19 +24,19 @@ export default function RootLayout({
   unstable_setRequestLocale(locale);
 
   return (
-      <html lang={locale} className={inter.className}>
-        <body>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-          </ThemeProvider>
-        </body>
-        <Analytics />
-      </html>
+    <html lang={locale} className={inter.className}>
+      <body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
+      <Analytics />
+    </html>
   );
 }
 

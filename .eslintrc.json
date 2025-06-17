@@ -14,7 +14,7 @@
     "react",
     "jsx-a11y",
     "prettier",
-    "react-hooks",
+    // "react-hooks",
     "simple-import-sort"
   ],
   "parserOptions": {
@@ -22,7 +22,8 @@
     "sourceType": "module", // Allows for the use of imports
     "ecmaFeatures": {
       "jsx": true // Allows for the parsing of JSX
-    }
+    },
+    "warnOnUnsupportedTypeScriptVersion": false
   },
   "rules": {
     "no-console": "error",
@@ -42,7 +43,7 @@
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": ["warn", { "varsIgnorePattern": "^_" }],
     "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
-    "react-hooks/exhaustive-deps": "warn"  // Checks effect dependencies
+    "react-hooks/exhaustive-deps": "warn" // Checks effect dependencies
   },
   "settings": {
     "react": {
@@ -50,6 +51,12 @@
     }
   },
   "overrides": [
+    {
+      "files": ["next.config.js", "next.config.*.js"],
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    },
     {
       "files": ["**/*.tsx"],
       "rules": {

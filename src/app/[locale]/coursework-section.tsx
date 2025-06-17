@@ -1,7 +1,8 @@
+import { useTranslations } from "next-intl";
+
 import { Badge } from "@/components/ui/badge";
 import { Section } from "@/components/ui/section";
 import { useResumeData } from "@/data/use-resume-data";
-import { useTranslations } from "next-intl";
 
 export const CourseworkSection = () => {
   const t = useTranslations();
