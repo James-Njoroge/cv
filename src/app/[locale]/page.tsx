@@ -3,6 +3,8 @@ import { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
+// Import the HireMePopup component
+import HireMePopup from "@/components/hire-me-popup";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/ui/mode-toggle";
@@ -84,6 +86,9 @@ export default function Page({ params: { locale } }: Props) {
         />
         <ProjectsSection />
       </section>
+
+      {/* Add the HireMePopup component here */}
+      <HireMePopup />
     </main>
   );
 }

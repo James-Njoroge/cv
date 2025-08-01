@@ -1,0 +1,140 @@
+/* --- Overlay and Popup Container --- */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6); /* Slightly darker for more focus */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  color: #000; /* Black text */
+  font-family:
+    "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* --- Buttons --- */
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.2s ease-in-out;
+}
+
+.button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.yesButton {
+  background-color: #28a745;
+  color: white;
+}
+.yesButton:hover {
+  background-color: #218838;
+}
+
+.noButton {
+  background-color: #dc3545;
+  color: white;
+}
+.noButton:hover {
+  background-color: #c82333;
+}
+
+.submitButton {
+  background-color: #007bff;
+  color: white;
+  width: 100%;
+  margin-top: 1rem;
+}
+.submitButton:hover {
+  background-color: #0056b3;
+}
+
+/* --- Form and Inputs --- */
+.inputGroup {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.labelContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.inputGroup label {
+  font-weight: 600;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
+  background-color: #f8f9fa; /* --- NEW: Brighter background for input --- */
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.inputGroup input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.charCounter {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+/* --- Error & Success States --- */
+.inputError {
+  border-color: #dc3545 !important;
+}
+
+.errorText {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  text-align: left;
+}
+
+.formError {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.successMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}

@@ -1,6 +1,7 @@
 import { EnvelopeOpenIcon, GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
 import { useTranslations } from "next-intl";
 
+import BULogo from "@/images/logos/bu-logo.png";
 import choateLogo from "@/images/logos/choate.png";
 import ColgateLogo from "@/images/logos/colgate.png";
 import colgateJobLogo from "@/images/logos/colgate-work.png";
@@ -33,12 +34,20 @@ export const useResumeData = () => {
         },
         {
           name: "Email",
-          url: "mailto:jnjoroge@colgate.edu?subject=Contacting James via Website",
+          url: "mailto:jobsnjoroge@gmail.com?subject=Contacting James via Personal Website",
           icon: EnvelopeOpenIcon,
         },
       ],
     },
     education: [
+      {
+        school: t("education.masters.school"),
+        degree: t("education.masters.major"),
+        badges: [],
+        start: "2025",
+        end: "2026",
+        logo: BULogo,
+      },
       {
         school: t("education.bachelor.school"),
         degree: t("education.bachelor.major"),

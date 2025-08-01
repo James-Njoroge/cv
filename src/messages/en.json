@@ -11,6 +11,10 @@
   "about": "Software and Data Engineering Student",
   "summary": "I am an ambitious, diligent, and analytical student leader with a portfolio in software development, data analytics, and research, exemplified by outstanding academic performance and co-founding a student-run tech startup at Colgate University.",
   "education": {
+    "masters": {
+      "school": "Boston University ",
+      "major": "Master of Science in Artificial Intelligence"
+    },
     "bachelor": {
       "school": "Colgate University (Cum Laude) ",
       "major": "Computer Science | Applied Mathematics"
