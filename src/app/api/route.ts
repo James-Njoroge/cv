@@ -67,7 +67,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ message: "Data saved successfully!" }, { status: 200 });
   } catch (error) {
-    console.error(error); // Log the full error for debugging
+    // console.error(error); // Log the full error for debugging
 
     // --- Re-enabled Zod error handling ---
     if (error instanceof z.ZodError) {
