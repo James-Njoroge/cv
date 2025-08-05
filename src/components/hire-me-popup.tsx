@@ -40,7 +40,7 @@ const HireMePopup = () => {
     const newErrors: { email?: string; company?: string } = {};
     if (!email) newErrors.email = "Email is required.";
     else if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = "Email is invalid.";
-    if (!company) newErrors.company = "Company name is required.";
+    if (!company) newErrors.company = "Full Name and Company is required.";
     else if (company.length > 45) newErrors.company = "Company name must be 45 characters or less.";
     return newErrors;
   };
@@ -124,8 +124,8 @@ const HireMePopup = () => {
             </div>
             <div className={styles.inputGroup}>
               <div className={styles.labelContainer}>
-                <label htmlFor="company">Company</label>
-                <span className={styles.charCounter}>{company.length}/45</span>
+                <label htmlFor="company">Full Name - Company</label>
+                <span className={styles.charCounter}>{company.length}/50</span>
               </div>
               <input
                 id="company"
