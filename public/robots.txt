@@ -1,0 +1,14 @@
+# Allow normal crawling of the site
+User-agent: *
+Allow: /
+
+# Keep API routes out of crawl budgets (polite hint; not security)
+Disallow: /api/
+
+# Optional: if I ever create any of these, they will be blocked too
+Disallow: /admin/
+Disallow: /drafts/
+Disallow: /private/
+Disallow: /tmp/
+
+Sitemap: https://jnjoroge.dev/sitemap.xml
