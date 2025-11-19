@@ -87,9 +87,7 @@ export async function POST(request: NextRequest) {
     try {
       body = await request.json();
     } catch {
-      return NextResponse.json(
-        { message: "Invalid JSON body." },
-        { status: 400 },
+      return NextResponse.json({ message: "Invalid JSON body." }, { status: 400 }
       );
     }
 
@@ -106,7 +104,7 @@ export async function POST(request: NextRequest) {
     }
 
     if (!sheets || !sheetId) {
-      console.error("Google Sheets configuration is missing or invalid.");
+      // console.error("Google Sheets configuration is missing or invalid.");
       return NextResponse.json(
         {
           message:
@@ -129,15 +127,11 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    return NextResponse.json(
-      { message: "Data saved successfully!" },
-      { status: 200 },
+    return NextResponse.json({ message: "Data saved successfully!" }, { status: 200 }
     );
   } catch (error) {
-    console.error("Unexpected error in /api POST handler:", error);
-    return NextResponse.json(
-      { message: "An internal server error occurred." },
-      { status: 500 },
+    // console.error("Unexpected error in /api POST handler:", error);
+    return NextResponse.json({ message: "An internal server error occurred." }, { status: 500 }
     );
   }
 }
