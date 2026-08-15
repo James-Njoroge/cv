@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="14" fill="#14170F"></rect>
+  <rect x="1" y="1" width="62" height="62" rx="13.5" fill="none" stroke="#2C3226" stroke-width="2"></rect>
+  <circle cx="52" cy="12" r="4.5" fill="#9BE07A"></circle>
+  <text x="32" y="45" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, ui-monospace, monospace" font-size="30" font-weight="700" letter-spacing="-1" fill="#F2F4EE">JN</text>
+  <rect x="14" y="52" width="36" height="4" rx="2" fill="#2C3226"></rect>
+  <rect x="14" y="52" width="24" height="4" rx="2" fill="#9BE07A"></rect>
+</svg>

@@ -1,14 +1,17 @@
 import createMiddleware from "next-intl/middleware";
 
 export default createMiddleware({
-  // A list of all locales that are supported
   locales: ["en"],
   localePrefix: "as-needed",
-  // Used when no locale matches
   defaultLocale: "en",
 });
 
 export const config = {
-  // Match only internationalized pathnames
-  matcher: ["/", "/(en)/:path*"],
+  // Run on all localized pages, but skip:
+  //  - /api            (route handlers)
+  //  - /_next, /_vercel (framework internals)
+  //  - /og             (dynamic OG image route handler, not under [locale])
+  //  - any path with a dot (feed.xml, resume.json, llms.txt, sitemap.xml,
+  //    robots.txt, images, favicons, etc.)
+  matcher: ["/((?!api|_next|_vercel|og|.*\\..*).*)"],
 };

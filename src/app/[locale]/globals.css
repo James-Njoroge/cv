@@ -2,67 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
+/**
+ * jn-1 design system v1.0 — see /design.
+ *
+ * Warm near-black surfaces, monospace instrumentation, one signal green.
+ * Colours are stored as bare OKLCH components so Tailwind can inject an
+ * alpha channel: `oklch(var(--primary) / <alpha-value>)`.
+ *
+ * The system commits to a single (dark) look, so there is no `.dark` block —
+ * print styles below flip to ink-on-paper for the resume.
+ */
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 224 71.4% 4.1%;
+    --background: 0.165 0.008 125; /* --bg  */
+    --foreground: 0.955 0.006 110; /* --tx  */
 
-    --card: 0 0% 100%;
-    --card-foreground: 224 71.4% 4.1%;
+    --card: 0.205 0.01 125; /* --bg2 */
+    --card-foreground: 0.955 0.006 110;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 224 71.4% 4.1%;
+    --popover: 0.205 0.01 125;
+    --popover-foreground: 0.955 0.006 110;
 
-    --primary: 220.9 39.3% 11%;
-    --primary-foreground: 210 20% 98%;
+    /* Signal green: live / current / affirmative */
+    --primary: 0.8 0.15 145; /* --acc  */
+    --primary-foreground: 0.185 0.012 130;
 
-    --secondary: 220 14.3% 95.9%;
-    --secondary-foreground: 220.9 39.3% 11%;
+    --secondary: 0.245 0.012 125; /* --bg3 */
+    --secondary-foreground: 0.955 0.006 110;
 
-    --muted: 220 14.3% 95.9%;
-    --muted-foreground: 220 8.9% 46.1%;
+    --muted: 0.245 0.012 125;
+    --muted-foreground: 0.7 0.012 118; /* --mut */
 
-    --accent: 220 14.3% 95.9%;
-    --accent-foreground: 220.9 39.3% 11%;
+    --accent: 0.245 0.012 125;
+    --accent-foreground: 0.955 0.006 110;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 20% 98%;
+    --destructive: 0.63 0.19 27;
+    --destructive-foreground: 0.955 0.006 110;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 224 71.4% 4.1%;
+    --border: 0.315 0.014 125; /* --ln  */
+    --input: 0.315 0.014 125;
+    --ring: 0.8 0.15 145;
 
-    --radius: 0.5rem;
-  }
+    /* Amber: secondary emphasis and metadata highlights */
+    --signal: 0.8 0.15 145; /* --acc  */
+    --amber: 0.8 0.15 72; /* --acc2 */
 
-  .dark {
-    --background: 216, 28%, 7%;
-    --foreground: 210 20% 98%;
+    --radius: 0.875rem;
 
-    --card: 216, 28%, 7%;
-    --card-foreground: 210 20% 98%;
-
-    --popover: 216, 28%, 7%;
-    --popover-foreground: 210 20% 98%;
-
-    --primary: 210 20% 98%;
-    --primary-foreground: 220.9 39.3% 11%;
-
-    --secondary: 215 27.9% 16.9%;
-    --secondary-foreground: 210 20% 98%;
-
-    --muted: 215 27.9% 16.9%;
-    --muted-foreground: 217.9 10.6% 64.9%;
-
-    --accent: 215 27.9% 16.9%;
-    --accent-foreground: 210 20% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 20% 98%;
-
-    --border: 215 27.9% 16.9%;
-    --input: 215 27.9% 16.9%;
-    --ring: 216 12.2% 83.9%;
+    /* Space Grotesk carries both display and body — one family, two roles. */
+    --font-display: var(--font-sans);
   }
 }
 
@@ -70,11 +58,128 @@
   * {
     @apply border-border;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background font-sans text-foreground antialiased;
+  }
+  ::selection {
+    background: oklch(var(--signal));
+    color: oklch(var(--primary-foreground));
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
-.print-force-new-page {
-  page-break-before: always;
+@layer components {
+  /* Section rhythm: 1180px container, 28px gutter (20px under 720px) */
+  .container-jn {
+    @apply mx-auto w-full max-w-[1180px] px-5 sm:px-7;
+  }
+}
+
+@layer utilities {
+  /* Mono instrumentation: if a string looks like telemetry, it wears this */
+  .telemetry {
+    @apply font-mono text-[11px] uppercase leading-none tracking-[0.06em];
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  /* Diagonal hatch used for image placeholders and empty states */
+  .hatch {
+    background-image: repeating-linear-gradient(
+      135deg,
+      oklch(var(--secondary)) 0 8px,
+      oklch(var(--card)) 8px 16px
+    );
+  }
+  /* Faint instrument grid behind the hero */
+  .grid-drift {
+    background-image:
+      linear-gradient(oklch(var(--card)) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(var(--card)) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: drift 12s linear infinite;
+    -webkit-mask-image: radial-gradient(120% 80% at 50% 30%, #000 20%, transparent 75%);
+    mask-image: radial-gradient(120% 80% at 50% 30%, #000 20%, transparent 75%);
+  }
+}
+
+/* Blog prose — hand-rolled so we don't need @tailwindcss/typography */
+.prose-jn {
+  @apply text-[1.0125rem] leading-[1.7] text-muted-foreground;
+}
+.prose-jn h2 {
+  @apply mb-3 mt-10 font-display text-2xl font-semibold tracking-[-0.02em] text-foreground;
+}
+.prose-jn h3 {
+  @apply mb-2 mt-8 font-display text-xl font-semibold tracking-[-0.02em] text-foreground;
+}
+.prose-jn p {
+  @apply my-4;
+}
+.prose-jn strong {
+  @apply font-semibold text-foreground;
+}
+.prose-jn a {
+  @apply font-medium text-primary underline underline-offset-4 hover:text-amber;
+}
+.prose-jn ul {
+  @apply my-4 ml-6 list-disc space-y-1;
+}
+.prose-jn ol {
+  @apply my-4 ml-6 list-decimal space-y-1;
+}
+.prose-jn blockquote {
+  @apply my-6 border-l-2 border-primary/60 pl-4 italic;
+}
+.prose-jn code {
+  @apply rounded-md bg-secondary px-1.5 py-0.5 font-mono text-[0.85em] text-foreground;
+}
+.prose-jn pre {
+  @apply my-5 overflow-x-auto rounded-xl border bg-card p-4 text-foreground;
+}
+.prose-jn pre code {
+  @apply bg-transparent p-0;
+}
+.prose-jn img {
+  @apply my-6 rounded-xl;
+}
+.prose-jn hr {
+  @apply my-8 border-border;
+}
+
+/* The page doubles as a printable resume: flip to ink on paper. */
+@media print {
+  :root {
+    --background: 1 0 0;
+    --foreground: 0.15 0 0;
+    --card: 1 0 0;
+    --card-foreground: 0.15 0 0;
+    --muted-foreground: 0.4 0 0;
+    --border: 0.85 0 0;
+    --primary: 0.35 0.09 145;
+    --secondary: 0.96 0 0;
+  }
+  .print-force-new-page {
+    page-break-before: always;
+  }
+  body {
+    background: white;
+  }
 }
