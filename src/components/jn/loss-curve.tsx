@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
+import { copy } from "@/lib/copy";
 import { curvePoint, curvePoints, lossAt, subscribeToScroll } from "@/lib/scroll-clock";
 
 /** Full-run ghost curve, drawn once behind the live one. */
@@ -54,7 +55,7 @@ export function LossCurve({
     <div className="flex flex-col gap-4">
       <div className="rounded-lg border border-border bg-card p-4">
         <div className="mb-3 flex justify-between font-mono text-[11px] font-medium leading-none text-muted-foreground">
-          <span>train/loss</span>
+          <span>{copy.lossCurve.readoutLabel}</span>
           <span ref={readout} className="text-primary">
             4.812
           </span>
@@ -99,13 +100,14 @@ export function LossCurve({
           />
         </svg>
         <div className="mt-2.5 flex justify-between font-mono text-[10px] leading-none text-muted-foreground">
-          <span>step 0</span>
-          <span>step 2400</span>
+          <span>{copy.lossCurve.axisStart}</span>
+          <span>{copy.lossCurve.axisEnd}</span>
         </div>
       </div>
 
       <p className="pl-0.5 font-mono text-xs font-medium leading-[1.7] text-muted-foreground">
-        active: ckpt&#8209;{active.step}
+        {copy.lossCurve.activePrefix}
+        {active.step}
         <br />
         <span className="text-foreground">{active.label}</span>
       </p>

@@ -33,3 +33,25 @@ Open either `.dc.html` file directly in a browser to view it.
 - **Reveals fire once.** Never re-animate on scroll-back.
 - **Numbers only when they're real.** Every metric on the site traces to the
   résumé or to a shipped system.
+
+## Editing the copy
+
+Every string on the site lives in `content/site-copy.json`. Components read it
+through `src/lib/copy.ts`, so editing that file *is* editing the site — there is
+no build step or codegen in between.
+
+To edit it in a browser instead of a text editor, run the dev server and open
+**http://localhost:3000/studio**. Fields are grouped by section, each one
+labelled with where it appears, and **Save to file** writes back to
+`content/site-copy.json`. `Cmd/Ctrl+S` saves; **Undo last save** restores the
+previous version from `content/.site-copy.backup.json` (gitignored).
+
+The studio 404s and its API returns 403 outside `next dev` — it is a local
+authoring tool, not a production CMS.
+
+`{count}`, `{live}`, `{name}`, `{year}`, and `{contact}` in a string are
+placeholders the site fills in. Leave them in place.
+
+New fields: add to the JSON, read it in the component, then give it a friendly
+label in `src/lib/copy-schema.ts`. The studio picks up unlabelled fields on its
+own — the schema only supplies nicer names and hints.

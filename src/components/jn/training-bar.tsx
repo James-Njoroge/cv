@@ -2,16 +2,10 @@
 
 import { useEffect, useRef } from "react";
 
+import { copy } from "@/lib/copy";
 import { formatStep, lossAt, subscribeToScroll } from "@/lib/scroll-clock";
 
-const NAV = [
-  { href: "#run", label: "run" },
-  { href: "#caps", label: "capabilities" },
-  { href: "#built", label: "built" },
-  { href: "#evals", label: "evals" },
-  { href: "#writing", label: "writing" },
-  { href: "#chat", label: "chat" },
-];
+const NAV = copy.nav;
 
 /**
  * The fixed instrument bar: progress through the page is progress through the

@@ -1,4 +1,5 @@
 import type { Build } from "@/lib/builds";
+import { copy } from "@/lib/copy";
 
 import { Kicker, Pill, Sep, TechChip } from "./atoms";
 
@@ -58,7 +59,7 @@ export function BuildCard({ build, detailed = false }: { build: Build; detailed?
             rel="noopener noreferrer"
             className="font-mono text-[11px] font-bold uppercase leading-none tracking-[0.06em] text-primary hover:text-amber"
           >
-            Live &#8594;
+            {copy.buildCard.liveLabel}
           </a>
         )}
         {build.repoUrl && (
@@ -68,7 +69,7 @@ export function BuildCard({ build, detailed = false }: { build: Build; detailed?
             rel="noopener noreferrer"
             className="font-mono text-[11px] font-bold uppercase leading-none tracking-[0.06em] text-primary hover:text-amber"
           >
-            Code &#8594;
+            {copy.buildCard.codeLabel}
           </a>
         )}
         {!build.repoUrl && build.availability && (

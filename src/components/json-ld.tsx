@@ -1,3 +1,4 @@
+import { copy } from "@/lib/copy";
 import { site } from "@/lib/site";
 
 /**
@@ -14,38 +15,23 @@ export function personJsonLd() {
     url: site.url,
     image: `${site.url}/images/headshot2.jpg`,
     email: `mailto:${site.email}`,
-    jobTitle: ["Founder & CEO", "Chief Technology Officer", site.role],
+    jobTitle: [...copy.seo.jobTitles, site.role],
     description: site.description,
     telephone: site.phone,
-    worksFor: [
-      {
-        "@type": "Organization",
-        name: "Kuja, Inc.",
-        url: "https://www.kuja.app",
-        description: "Event-led social network. James is the founder and CEO.",
-      },
-      {
-        "@type": "Organization",
-        name: "Berverly Gardens",
-        description: "Kenyan property developer. James is the Chief Technology Officer.",
-      },
-    ],
+    worksFor: copy.seo.worksFor.map((org) => ({
+      "@type": "Organization",
+      name: org.name,
+      url: org.url || undefined,
+      description: org.description,
+    })),
     nationality: { "@type": "Country", name: "Kenya" },
     birthPlace: { "@type": "Place", name: "Nairobi, Kenya" },
     homeLocation: { "@type": "Place", name: site.location },
-    alumniOf: [
-      {
-        "@type": "CollegeOrUniversity",
-        name: "Boston University",
-        description: "M.S. in Artificial Intelligence",
-      },
-      {
-        "@type": "CollegeOrUniversity",
-        name: "Colgate University",
-        description: "B.A. in Computer Science and Applied Mathematics, cum laude",
-      },
-      { "@type": "HighSchool", name: "Choate Rosemary Hall" },
-    ],
+    alumniOf: copy.seo.alumniOf.map((school) => ({
+      "@type": "EducationalOrganization",
+      name: school.name,
+      description: school.description,
+    })),
     knowsAbout: [...site.knowsAbout],
     sameAs: [site.social.github, site.social.linkedin],
     seeks: {

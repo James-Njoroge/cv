@@ -4,13 +4,14 @@ import { BuildCard } from "@/components/jn/build-card";
 import { Reveal } from "@/components/jn/reveal";
 import { SectionHeading } from "@/components/jn/section-heading";
 import { getFeaturedBuilds } from "@/lib/builds";
+import { copy } from "@/lib/copy";
 
 export async function BuiltSection() {
   const builds = await getFeaturedBuilds();
 
   return (
     <section id="built" className="container-jn scroll-mt-24 pb-28">
-      <SectionHeading index="03" title="What the model has built." meta="shipped · not shelved" />
+      <SectionHeading {...copy.sections.built} />
 
       <div className="grid gap-3.5 lg:grid-cols-2">
         {builds.map((build, i) => (
@@ -25,7 +26,7 @@ export async function BuiltSection() {
           href="/projects"
           className="font-mono text-xs font-bold uppercase leading-none tracking-[0.06em] text-primary hover:text-amber"
         >
-          Everything else &#8594;
+          {copy.buildCard.allBuildsLabel}
         </Link>
       </Reveal>
     </section>

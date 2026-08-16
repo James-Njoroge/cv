@@ -3,10 +3,13 @@ import { LossCurve } from "@/components/jn/loss-curve";
 import { Reveal } from "@/components/jn/reveal";
 import { SectionHeading } from "@/components/jn/section-heading";
 import { checkpoints, deployments } from "@/data/training-run";
+import { copy, fill } from "@/lib/copy";
+
+const DEPLOY = copy.deploymentCard;
 
 const MARKS = [
   ...checkpoints.map((c) => ({ id: c.id, step: c.step, label: c.id.replace("-", " ") })),
-  { id: "deployment", step: "2400", label: "deployment" },
+  { id: "deployment", step: DEPLOY.step, label: "deployment" },
 ];
 
 function CheckpointCard({ ckpt, index }: { ckpt: (typeof checkpoints)[number]; index: number }) {
@@ -127,13 +130,14 @@ function DeploymentRow({ job }: { job: (typeof deployments)[number] }) {
 
 export function TrainingRunSection() {
   const liveCount = deployments.filter((d) => d.live).length;
+  const heading = copy.sections.run;
 
   return (
     <section id="run" className="container-jn scroll-mt-24 pb-28 pt-10">
       <SectionHeading
-        index="01"
-        title="The training run"
-        meta={`${checkpoints.length + 1} checkpoints · 2018–present`}
+        index={heading.index}
+        title={heading.title}
+        meta={fill(heading.meta, { count: checkpoints.length + 1 })}
       />
 
       <div className="grid items-start gap-14 lg:grid-cols-[300px_minmax(0,1fr)]">
@@ -153,19 +157,17 @@ export function TrainingRunSection() {
           >
             <div className="mb-4 flex flex-wrap items-center gap-3">
               <span className="font-mono text-[11px] font-bold uppercase leading-none tracking-[0.08em] text-primary">
-                CKPT&#8209;2400
+                CKPT&#8209;{DEPLOY.step}
               </span>
               <Sep live />
-              <Kicker tone="signal">Deployed in production</Kicker>
+              <Kicker tone="signal">{DEPLOY.kicker}</Kicker>
             </div>
 
             <h3 className="m-0 font-display text-[1.875rem] font-semibold leading-tight tracking-[-0.02em]">
-              Where the weights are running
+              {DEPLOY.title}
             </h3>
             <p className="mb-6 mt-3 max-w-[60ch] text-pretty leading-relaxed text-muted-foreground">
-              {deployments.length} deployments so far, {liveCount} of them still live — a company I
-              founded, a company I run engineering for, finance automation inside a Fortune 500, and
-              four years of teaching and research.
+              {fill(DEPLOY.body, { count: deployments.length, live: liveCount })}
             </p>
 
             <div className="flex flex-col gap-0.5 overflow-hidden rounded-md border border-border bg-background">

@@ -2,18 +2,10 @@ import Image from "next/image";
 
 import { StatusDot } from "@/components/jn/atoms";
 import { TokenStream } from "@/components/jn/token-stream";
+import { copy } from "@/lib/copy";
 import { site } from "@/lib/site";
 
-const STREAM =
-  "Ideated in Kenya. Pretrained at Choate. Trained at Colgate. Fine-tuned at Boston University. Currently founder of Kuja and CTO of Berverly Gardens.";
-
-const SPECS: Array<[string, string, boolean?]> = [
-  ["params", "24y"],
-  ["context", "Nairobi → Boston"],
-  ["langs", "py, ts, java, r, sql"],
-  ["running", "kuja · berverly", true],
-  ["license", "open to hire", true],
-];
+const c = copy.hero;
 
 export function HeroSection() {
   return (
@@ -27,22 +19,20 @@ export function HeroSection() {
         <div>
           <p className="mb-6 flex items-center gap-2.5">
             <StatusDot />
-            <span className="telemetry font-medium text-muted-foreground">
-              Model card · jn&#8209;1 · status: available for work
-            </span>
+            <span className="telemetry font-medium text-muted-foreground">{c.kicker}</span>
           </p>
 
           <h1 className="m-0 text-balance font-display text-[clamp(2.875rem,6.6vw,5.75rem)] font-semibold leading-[0.94] tracking-[-0.035em]">
-            James Njoroge,
+            {c.titleLine1}
             <br />
-            <span className="text-muted-foreground">a </span>1&#8209;personality
+            <span className="text-muted-foreground">{c.titleLead}</span>
+            {c.titleAccent}
             <br />
-            model.
+            {c.titleLine3}
           </h1>
 
           <p className="mt-6 max-w-[46ch] text-pretty text-lg leading-[1.55] text-muted-foreground sm:text-[1.1875rem]">
-            AI &amp; data engineering. I build things fast — a firewall for LLM agents, a social
-            network shipped solo, ETL that gives finance teams two days a month back.
+            {c.intro}
           </p>
 
           {/* Inference terminal */}
@@ -52,16 +42,16 @@ export function HeroSection() {
               <span className="h-[9px] w-[9px] rounded-full bg-border" />
               <span className="h-[9px] w-[9px] rounded-full bg-border" />
               <span className="ml-1.5 font-mono text-[11px] font-medium leading-none text-muted-foreground">
-                POST /v1/messages
+                {c.terminalEndpoint}
               </span>
             </div>
             <div className="px-4 py-4 font-mono text-sm leading-[1.75] sm:px-[18px]">
               <p className="text-muted-foreground">
-                <span className="text-amber">user &#8250;</span> who are you?
+                <span className="text-amber">{c.terminalUserLabel}</span> {c.terminalUserLine}
               </p>
               <p className="mt-2.5 text-pretty text-foreground">
-                <span className="text-primary">jn&#8209;1 &#8250;</span>{" "}
-                <TokenStream text={STREAM} />
+                <span className="text-primary">{c.terminalModelLabel}</span>{" "}
+                <TokenStream text={c.stream} />
               </p>
             </div>
           </div>
@@ -71,20 +61,20 @@ export function HeroSection() {
               href="#run"
               className="rounded-full bg-primary px-6 py-3.5 font-display text-sm font-semibold leading-none text-primary-foreground transition-colors hover:bg-amber"
             >
-              Read the training run
+              {c.ctaPrimary}
             </a>
             <a
               href={site.resumePath}
               download
               className="rounded-full border border-border px-6 py-3.5 font-display text-sm font-semibold leading-none text-foreground transition-colors hover:border-primary hover:text-primary"
             >
-              Download résumé
+              {c.ctaResume}
             </a>
             <a
               href="#chat"
               className="rounded-full border border-border px-6 py-3.5 font-display text-sm font-semibold leading-none text-foreground transition-colors hover:border-primary hover:text-primary"
             >
-              Chat with the model
+              {c.ctaChat}
             </a>
           </div>
 
@@ -106,7 +96,7 @@ export function HeroSection() {
             <div className="relative overflow-hidden rounded-md">
               <Image
                 src="/images/headshot2.jpg"
-                alt="James Njoroge"
+                alt={c.imageAlt}
                 width={520}
                 height={650}
                 priority
@@ -119,13 +109,13 @@ export function HeroSection() {
               />
             </div>
             <dl className="mt-3.5 grid grid-cols-2 gap-x-2 gap-y-2.5 font-mono text-[11px] font-medium leading-[1.5]">
-              {SPECS.map(([key, value, highlight]) => (
-                <div key={key} className="contents">
-                  <dt className="text-muted-foreground">{key}</dt>
+              {c.specs.map((spec) => (
+                <div key={spec.key} className="contents">
+                  <dt className="text-muted-foreground">{spec.key}</dt>
                   <dd
-                    className={`m-0 text-right ${highlight ? "text-primary" : "text-foreground"}`}
+                    className={`m-0 text-right ${spec.highlight ? "text-primary" : "text-foreground"}`}
                   >
-                    {value}
+                    {spec.value}
                   </dd>
                 </div>
               ))}

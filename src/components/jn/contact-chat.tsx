@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import { copy, fill } from "@/lib/copy";
 import { cn } from "@/lib/utils";
 
 type Step = "name" | "contact" | "message" | "review" | "sending" | "done";
@@ -11,50 +12,25 @@ interface Turn {
   text: string;
 }
 
+const c = copy.chat;
+
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 /** Loose international phone check — at least 7 digits, common punctuation ok. */
 const PHONE = /^[+()\d][\d\s\-().]{6,}$/;
 
-const PROMPTS: Record<Exclude<Step, "sending" | "done">, string> = {
-  name: "Hey — I'm jn-1, running James's inbox. Three questions and I'll pass this straight to him. What should I call you?",
-  contact:
-    "Good to meet you. Where should he reply — email or phone, whichever you actually check?",
-  message: "Last one. What's on your mind?",
-  review: "Here's what I'll send. Look right?",
-};
-
-const PLACEHOLDERS: Record<Step, string> = {
-  name: "Ada Lovelace",
-  contact: "ada@company.com  ·  +1 555 010 1990",
-  message: "We're hiring an ML engineer and your UAV tracking work caught my eye…",
-  review: "",
-  sending: "",
-  done: "",
-};
-
-const INTENTS = ["I'm hiring", "Let's collaborate", "Question about a project", "Just saying hi"];
-
-const LABELS: Record<Exclude<Step, "sending" | "done" | "review">, string> = {
-  name: "Your name",
-  contact: "Email or phone",
-  message: "Your message",
-};
-
 function validate(step: Step, value: string): string | null {
   const v = value.trim();
   if (step === "name") {
-    if (v.length < 2) return "I'll need something to call you — two characters or more.";
-    if (v.length > 60) return "That's longer than 60 characters. Shorter is fine.";
+    if (v.length < 2) return c.validation.nameTooShort;
+    if (v.length > 60) return c.validation.nameTooLong;
   }
   if (step === "contact") {
-    if (!EMAIL.test(v) && !PHONE.test(v)) {
-      return "That doesn't parse as an email or a phone number. Try again?";
-    }
-    if (v.length > 120) return "That's too long to be either one.";
+    if (!EMAIL.test(v) && !PHONE.test(v)) return c.validation.contactInvalid;
+    if (v.length > 120) return c.validation.contactTooLong;
   }
   if (step === "message") {
-    if (v.length < 4) return "Give me a little more than that.";
-    if (v.length > 1200) return `That's ${v.length} characters — trim it to 1200 or fewer.`;
+    if (v.length < 4) return c.validation.messageTooShort;
+    if (v.length > 1200) return fill(c.validation.messageTooLong, { count: v.length });
   }
   return null;
 }
@@ -68,7 +44,7 @@ function validate(step: Step, value: string): string | null {
  */
 export function ContactChat() {
   const [step, setStep] = useState<Step>("name");
-  const [turns, setTurns] = useState<Turn[]>([{ from: "jn-1", text: PROMPTS.name }]);
+  const [turns, setTurns] = useState<Turn[]>([{ from: "jn-1", text: c.prompts.name }]);
   const [draft, setDraft] = useState("");
   const [answers, setAnswers] = useState({ name: "", contact: "", message: "" });
   const [error, setError] = useState<string | null>(null);
@@ -99,19 +75,19 @@ export function ContactChat() {
 
     if (step === "name") {
       setAnswers((a) => ({ ...a, name: value }));
-      say("jn-1", `Noted, ${value}. ${PROMPTS.contact}`);
+      say("jn-1", `${fill(c.nameAcknowledgement, { name: value })} ${c.prompts.contact}`);
       setStep("contact");
       return;
     }
     if (step === "contact") {
       setAnswers((a) => ({ ...a, contact: value }));
-      say("jn-1", PROMPTS.message);
+      say("jn-1", c.prompts.message);
       setStep("message");
       return;
     }
     if (step === "message") {
       setAnswers((a) => ({ ...a, message: value }));
-      say("jn-1", PROMPTS.review);
+      say("jn-1", c.prompts.review);
       setStep("review");
     }
   };
@@ -126,19 +102,18 @@ export function ContactChat() {
         body: JSON.stringify(answers),
       });
       const result = (await res.json()) as { message?: string };
-      if (!res.ok)
-        throw new Error(result.message ?? "Something went wrong. Try again in a moment.");
-      say("jn-1", `Delivered. James usually replies the same day — watch ${answers.contact}.`);
+      if (!res.ok) throw new Error(result.message ?? c.validation.genericError);
+      say("jn-1", fill(c.successMessage, { contact: answers.contact }));
       setStep("done");
     } catch (err) {
       setStep("review");
-      setError(err instanceof Error ? err.message : "Something went wrong. Try again in a moment.");
+      setError(err instanceof Error ? err.message : c.validation.genericError);
     }
   };
 
   const restart = () => {
     setAnswers({ name: "", contact: "", message: "" });
-    setTurns([{ from: "jn-1", text: PROMPTS.name }]);
+    setTurns([{ from: "jn-1", text: c.prompts.name }]);
     setDraft("");
     setError(null);
     setStep("name");
@@ -156,7 +131,7 @@ export function ContactChat() {
         <span className="h-[9px] w-[9px] rounded-full bg-border" />
         <span className="h-[9px] w-[9px] rounded-full bg-border" />
         <span className="ml-1.5 font-mono text-[11px] font-medium leading-none text-muted-foreground">
-          POST /v1/messages
+          {c.endpointLabel}
         </span>
         {collecting && (
           <span className="ml-auto font-mono text-[11px] font-medium leading-none text-muted-foreground">
@@ -184,11 +159,11 @@ export function ContactChat() {
 
         {step === "review" && (
           <dl className="mt-4 grid grid-cols-[5.5rem_minmax(0,1fr)] gap-x-3 gap-y-2 rounded-md border border-border bg-background p-4 text-[13px]">
-            <dt className="text-muted-foreground">name</dt>
+            <dt className="text-muted-foreground">{c.reviewLabels.name}</dt>
             <dd className="m-0 text-foreground">{answers.name}</dd>
-            <dt className="text-muted-foreground">reply to</dt>
+            <dt className="text-muted-foreground">{c.reviewLabels.contact}</dt>
             <dd className="m-0 text-foreground">{answers.contact}</dd>
-            <dt className="text-muted-foreground">message</dt>
+            <dt className="text-muted-foreground">{c.reviewLabels.message}</dt>
             <dd className="m-0 whitespace-pre-wrap text-foreground">{answers.message}</dd>
           </dl>
         )}
@@ -199,7 +174,7 @@ export function ContactChat() {
           <>
             {step === "message" && (
               <div className="mb-3 flex flex-wrap gap-2">
-                {INTENTS.map((intent) => (
+                {c.intents.map((intent) => (
                   <button
                     key={intent}
                     type="button"
@@ -223,7 +198,7 @@ export function ContactChat() {
               className="flex items-center gap-3"
             >
               <label htmlFor="chat-input" className="sr-only">
-                {LABELS[step]}
+                {c.labels[step]}
               </label>
               <span aria-hidden className="font-mono text-sm leading-none text-amber">
                 &#8250;
@@ -236,7 +211,7 @@ export function ContactChat() {
                   setDraft(e.target.value);
                   if (error) setError(null);
                 }}
-                placeholder={PLACEHOLDERS[step]}
+                placeholder={c.placeholders[step]}
                 autoComplete={step === "name" ? "name" : step === "contact" ? "email tel" : "off"}
                 maxLength={step === "message" ? 1200 : 120}
                 aria-invalid={error ? true : undefined}
@@ -247,7 +222,7 @@ export function ContactChat() {
                 type="submit"
                 className="shrink-0 rounded-full bg-primary px-5 py-2.5 font-sans text-[13px] font-semibold leading-none text-primary-foreground transition-colors hover:bg-amber"
               >
-                {step === "message" ? "Review" : "Next"}
+                {step === "message" ? c.buttons.review : c.buttons.next}
               </button>
             </form>
           </>
@@ -261,7 +236,7 @@ export function ContactChat() {
               disabled={step === "sending"}
               className="rounded-full bg-primary px-5 py-3 font-sans text-[13px] font-semibold leading-none text-primary-foreground transition-colors hover:bg-amber disabled:opacity-60"
             >
-              {step === "sending" ? "Sending…" : "Send it"}
+              {step === "sending" ? c.buttons.sending : c.buttons.send}
             </button>
             <button
               type="button"
@@ -269,7 +244,7 @@ export function ContactChat() {
               disabled={step === "sending"}
               className="rounded-full border border-border px-5 py-3 font-sans text-[13px] font-semibold leading-none text-foreground transition-colors hover:border-primary hover:text-primary disabled:opacity-60"
             >
-              Start over
+              {c.buttons.restart}
             </button>
           </div>
         )}
@@ -277,14 +252,14 @@ export function ContactChat() {
         {step === "done" && (
           <div className="flex flex-wrap items-center gap-3">
             <span className="font-mono text-[11px] font-bold uppercase leading-none tracking-[0.08em] text-primary">
-              200 OK
+              {c.successBadge}
             </span>
             <button
               type="button"
               onClick={restart}
               className="rounded-full border border-border px-5 py-3 font-sans text-[13px] font-semibold leading-none text-foreground transition-colors hover:border-primary hover:text-primary"
             >
-              Send another
+              {c.buttons.sendAnother}
             </button>
           </div>
         )}

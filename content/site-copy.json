@@ -1,0 +1,689 @@
+{
+  "site": {
+    "name": "James Njoroge",
+    "fullName": "James Ngugi Njoroge",
+    "headline": "AI Engineer · Founder · CTO",
+    "role": "AI & Machine Learning Engineer",
+    "description": "James Njoroge is an AI engineer with an M.S. in Artificial Intelligence from Boston University. He is the founder and CEO of Kuja, CTO of Berverly Gardens, and builds production ML systems — fast!",
+    "email": "jngugi@bu.edu",
+    "phone": "",
+    "location": "Boston, MA, USA",
+    "origin": "Nairobi, Kenya",
+    "availabilityLabel": "Available for work",
+    "availabilityDetail": "Available for full-time AI/ML engineering and project management roles.",
+    "keywords": [
+      "James Njoroge",
+      "James Ngugi Njoroge",
+      "AI engineer",
+      "machine learning engineer",
+      "artificial intelligence",
+      "LLM security",
+      "AI firewall",
+      "computer vision",
+      "UAV detection",
+      "data engineering",
+      "NLP",
+      "Kuja",
+      "Berverly Gardens",
+      "Kenyan engineer",
+      "Kenyan AI engineer",
+      "Boston University MS Artificial Intelligence",
+      "Colgate University computer science",
+      "Nairobi",
+      "Boston"
+    ],
+    "knowsAbout": [
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Natural Language Processing",
+      "Computer Vision",
+      "LLM Safety and Security",
+      "Data Engineering",
+      "Software Engineering",
+      "Technical Leadership",
+      "Technical Development",
+      "Prompt Engineering",
+      "System Thinker",
+      "Entrepreneurship"
+    ]
+  },
+  "nav": [
+    {
+      "href": "#run",
+      "label": "run"
+    },
+    {
+      "href": "#caps",
+      "label": "capabilities"
+    },
+    {
+      "href": "#built",
+      "label": "built"
+    },
+    {
+      "href": "#evals",
+      "label": "evals"
+    },
+    {
+      "href": "#writing",
+      "label": "writing"
+    },
+    {
+      "href": "#chat",
+      "label": "chat"
+    }
+  ],
+  "hero": {
+    "kicker": "Model card · jn-1 · status: available for work",
+    "titleLine1": "James Njoroge,",
+    "titleLead": "a ",
+    "titleAccent": "1-personality",
+    "titleLine3": "model.",
+    "intro": "AI & data engineering. I build things fast!",
+    "terminalEndpoint": "POST /v1/messages",
+    "terminalUserLabel": "user ›",
+    "terminalUserLine": "who are you?",
+    "terminalModelLabel": "jn-1 ›",
+    "stream": "Ideated in Kenya. Pre-trained at Choate. Trained at Colgate. Fine-tuned at Boston University. Currently founder of Kuja.app and CTO of Berverly Gardens.",
+    "ctaPrimary": "Read the training run",
+    "ctaResume": "Download résumé",
+    "ctaChat": "Chat with the model",
+    "imageAlt": "James Njoroge",
+    "specs": [
+      {
+        "key": "params",
+        "value": "young, likes footy, learning via reinforcement",
+        "highlight": true
+      },
+      {
+        "key": "context",
+        "value": "global citizen",
+        "highlight": false
+      },
+      {
+        "key": "langs",
+        "value": "py, ts, java, r, sql, prompts",
+        "highlight": false
+      },
+      {
+        "key": "running",
+        "value": "kuja · berverly",
+        "highlight": true
+      },
+      {
+        "key": "license",
+        "value": "open to hire",
+        "highlight": true
+      }
+    ]
+  },
+  "sections": {
+    "run": {
+      "index": "01",
+      "title": "The training run",
+      "meta": "{count} checkpoints · 2018–present"
+    },
+    "caps": {
+      "index": "02",
+      "title": "Capabilities",
+      "meta": "self-reported confidence"
+    },
+    "built": {
+      "index": "03",
+      "title": "What the model has built.",
+      "meta": "shipped · not shelved"
+    },
+    "evals": {
+      "index": "04",
+      "title": "Evals",
+      "meta": "{count} benchmarks passed · coursework"
+    },
+    "writing": {
+      "index": "05",
+      "title": "Discover the model's thoughts.",
+      "meta": "{count} entries · sampled at temp 0.7",
+      "metaEmpty": "warming up"
+    },
+    "chat": {
+      "index": "06",
+      "title": "Chat with the model.",
+      "meta": "latency: usually same day"
+    }
+  },
+  "lossCurve": {
+    "readoutLabel": "train/loss",
+    "axisStart": "step 0",
+    "axisEnd": "step 2400",
+    "activePrefix": "active: ckpt-"
+  },
+  "checkpoints": [
+    {
+      "id": "ideation",
+      "step": "0000",
+      "label": "Ideated in Kenya",
+      "title": "Nairobi, Kenya",
+      "honour": "",
+      "period": "",
+      "body": "Initialized from scratch. Curiosity, a very slow internet connection, and a habit of taking things apart to see what was inside — the pretraining corpus for everything that came after.",
+      "tags": ["random init", "high curiosity"]
+    },
+    {
+      "id": "pretraining",
+      "step": "0300",
+      "label": "Pretrained in Connecticut",
+      "title": "Choate Rosemary Hall",
+      "honour": "",
+      "period": "2018 — 2021",
+      "body": "High school diploma, and a first real pass over a broad dataset: first lines of code, first taste of building for other people, built the entrepreneurial mindset.",
+      "tags": ["broad corpus", "first code"]
+    },
+    {
+      "id": "training",
+      "step": "0900",
+      "label": "Trained at Colgate",
+      "title": "Colgate University",
+      "honour": "cum laude",
+      "period": "2021 — 2025",
+      "body": "B.A. Computer Science & Applied Mathematics. Where the objective function got specific: algorithms, proofs, and four years of teaching, building, and absorbing experiences.",
+      "augmentation": {
+        "kicker": "+ Data augmentation",
+        "title": "University of Manchester · study abroad",
+        "period": "Sep 2023 — Jan 2024",
+        "detail": "Artificial Intelligence · Probability · Database Systems · Culture · Travel"
+      },
+      "tags": ["CS", "applied math", "teaching"]
+    },
+    {
+      "id": "fine-tuning",
+      "step": "1600",
+      "label": "Fine-tuned at Boston University",
+      "title": "Boston University",
+      "honour": "",
+      "period": "Sep 2025 — May 2026",
+      "body": "M.S. Artificial Intelligence, 3.64 GPA. A narrow, high-quality dataset: NLP, machine learning, image and video computing, and the engineering that separates a notebook from something in production.",
+      "tags": ["M.S. AI", "LLMs", "computer vision", "ML systems"]
+    }
+  ],
+  "deploymentCard": {
+    "step": "2400",
+    "kicker": "Deployed in production",
+    "title": "Where the weights are running",
+    "body": "{count} deployments so far, {live} of them still live — a company I founded, a company I run engineering for, finance automation inside a Fortune 500, and four years of teaching and research."
+  },
+  "deployments": [
+    {
+      "org": "Berverly Gardens",
+      "role": "Chief Technology Officer",
+      "link": "",
+      "period": "2026 — present",
+      "live": true,
+      "location": "Nairobi, Kenya",
+      "points": [
+        "Own the technology direction of a Kenyan real-estate developer — architecture, delivery, and the systems the sales and marketing teams run on every day.",
+        "Designed and drove the company platform mainly using Cloudflare, Google, and other services.",
+        "First-hand designer for the Digital Marketing process to be able to collect information and trace marketing costs and customers.",
+        "Run the vendor relationship and delivery schedules, owning the digital process from start to finish in the wild tech savannah that is Kenya."
+      ],
+      "stack": ["Cloudflare", "TypeScript", "React", "Google Workspace"]
+    },
+    {
+      "org": "Kuja, Inc.",
+      "role": "Founder & CEO",
+      "link": "https://www.kuja.app",
+      "period": "Feb 2026 — present",
+      "live": true,
+      "location": "Delaware, USA",
+      "points": [
+        "Founded Kuja and shipped it solo — an event-led social network for finding gatherings, hosting them, and meeting people in the real world. Live at kuja.app.",
+        "Empty repository to production in under 3 weeks.",
+        "Innovating and implementing Spot Codes, a place-resolution scheme that pins an event to a real location without exposing more of anyone's whereabouts than it has to.",
+        "Own the whole loop: allows me to continuously iterate, learn, and build with my community in mind."
+      ],
+      "stack": ["Flutter", "Dart", "Postgres", "Edge Functions", "Sentry"]
+    },
+    {
+      "org": "Mondelez International",
+      "role": "Digital Finance Intern",
+      "link": "https://www.mondelezinternational.com/",
+      "period": "Jun — Aug 2024",
+      "live": false,
+      "location": "Chicago, IL",
+      "points": [
+        "Rebuilt the global incentive-program tracker as an integrated Excel, Essbase, and Power BI solution.",
+        "Automated the global FP&A team's monthly financial-data ETL in Python — 75% less processing time, roughly two days a month given back.",
+        "Optimized financial allocations with VBA scripts, taking a 20-hour process down to one hour.",
+        "Worked closely on the finished tooling with executive leadership, including the global CFO and treasurer."
+      ],
+      "stack": ["Python", "Power BI", "Oracle Essbase", "Tableau", "VBA"]
+    },
+    {
+      "org": "Colgate Learning, Teaching & Research",
+      "role": "Generative AI Committee",
+      "link": "https://www.colgate.edu/about/offices-centers-institutes/centers-institutes/center-learning-teaching-and-research",
+      "period": "Sep 2024 — May 2025",
+      "live": false,
+      "location": "Hamilton, NY",
+      "points": [
+        "Explored emerging generative-AI tools and assessed their real effect on student learning.",
+        "Met weekly with staff and faculty to share findings and guide how GenAI gets used in coursework."
+      ],
+      "stack": ["GenAI", "academic policy"]
+    },
+    {
+      "org": "Colgate Data Science Collaboratory",
+      "role": "Research Intern",
+      "link": "https://shiny.colgate.edu/",
+      "period": "Jun — Aug 2023",
+      "live": false,
+      "location": "Hamilton, NY",
+      "points": [
+        "Designed R Shiny interfaces that made complex R-based analyses usable by researchers across programming skill levels.",
+        "Built and maintained applications for statistical analysis of geospatial data, social networks, and textual corpora."
+      ],
+      "stack": ["R", "R Shiny", "Statistics"]
+    },
+    {
+      "org": "Colgate Computer Science",
+      "role": "Teaching Assistant",
+      "link": "https://www.colgate.edu/academics/departments-programs/department-computer-science",
+      "period": "Aug 2023 — Dec 2024",
+      "live": false,
+      "location": "Hamilton, NY",
+      "points": [
+        "Tutored Python and Java across four semesters, reinforcing data structures and algorithms.",
+        "Ran debugging sessions and office hours, and mentored students through the courses that make people quit CS by making them fun and giving perspective to what they could do with their newly gained skills."
+      ],
+      "stack": ["Data structures", "Algorithms", "Mentoring"]
+    },
+    {
+      "org": "Sloop Software",
+      "role": "Co-founder",
+      "link": "https://www.colgate.edu/success-after-colgate/entrepreneurship-and-innovation/thought-action/thought-action-incubator",
+      "period": "venture",
+      "live": false,
+      "location": "Hamilton, NY",
+      "points": [
+        "Student-run software company shipping client projects out of Colgate's Thought Into Action incubator.",
+        "React Native and SQL builds, scoped and delivered end to end."
+      ],
+      "stack": ["React Native", "SQL", "JavaScript"]
+    }
+  ],
+  "capabilityGroups": [
+    {
+      "label": "Languages",
+      "accent": "signal",
+      "items": [
+        {
+          "name": "Python",
+          "confidence": 0.96
+        },
+        {
+          "name": "SQL",
+          "confidence": 0.9
+        },
+        {
+          "name": "TypeScript",
+          "confidence": 0.88
+        },
+        {
+          "name": "Java",
+          "confidence": 0.85
+        },
+        {
+          "name": "R",
+          "confidence": 0.74
+        },
+        {
+          "name": "MATLAB",
+          "confidence": 0.7
+        },
+        {
+          "name": "C",
+          "confidence": 0.4
+        }
+      ]
+    },
+    {
+      "label": "ML & AI",
+      "accent": "amber",
+      "items": [
+        {
+          "name": "scikit-learn",
+          "confidence": 0.92
+        },
+        {
+          "name": "LLM systems",
+          "confidence": 0.9
+        },
+        {
+          "name": "NLP",
+          "confidence": 0.89
+        },
+        {
+          "name": "PyTorch",
+          "confidence": 0.88
+        },
+        {
+          "name": "Transformers",
+          "confidence": 0.86
+        },
+        {
+          "name": "Computer vision",
+          "confidence": 0.84
+        },
+        {
+          "name": "TensorFlow",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "label": "Data & platform",
+      "accent": "signal",
+      "items": [
+        {
+          "name": "ETL pipelines",
+          "confidence": 0.93
+        },
+        {
+          "name": "Power BI",
+          "confidence": 0.91
+        },
+        {
+          "name": "Supabase",
+          "confidence": 0.87
+        },
+        {
+          "name": "Cloudflare",
+          "confidence": 0.85
+        },
+        {
+          "name": "Essbase / VBA",
+          "confidence": 0.82
+        },
+        {
+          "name": "Docker / AWS",
+          "confidence": 0.78
+        },
+        {
+          "name": "NoSQL",
+          "confidence": 0.76
+        }
+      ]
+    }
+  ],
+  "evalGroups": [
+    {
+      "label": "Boston University",
+      "detail": "M.S. Artificial Intelligence · GPA 3.64",
+      "passLabel": "PASS",
+      "courses": [
+        "Natural Language Processing",
+        "Machine Learning",
+        "Artificial Intelligence",
+        "Image & Video Computing",
+        "Data Science Tools & Applications",
+        "Computer Graphics",
+        "Computational Fabrication",
+        "Advanced Topics in CS"
+      ]
+    },
+    {
+      "label": "Colgate University",
+      "detail": "B.A. Computer Science & Applied Mathematics",
+      "passLabel": "PASS",
+      "courses": [
+        "Data Structures & Algorithms",
+        "Linear Algebra",
+        "Real Analysis",
+        "Numerical Analysis",
+        "Computational Mathematics",
+        "Database Management Systems",
+        "Probability",
+        "Calculus"
+      ]
+    }
+  ],
+  "curatedBuilds": [
+    {
+      "slug": "agentgate",
+      "name": "AgentGate",
+      "tagline": "A policy-aware AI firewall that sits in front of LLM agents.",
+      "summary": "A reverse-proxy firewall that secures LLM agents by separating policy-based tool access from a five-layer NLP safety pipeline: semantic scope checking, prompt-injection detection, PII redaction, attachment inspection, and multimodal tool-misuse guarding. Prompt Guard 2 and Llama Guard sit behind an LLM-assisted policy compiler with deterministic validation, so a model proposes the rule and the system still proves it.",
+      "highlights": [
+        "96.5% held-out accuracy",
+        "4.6% false-positive rate",
+        "5-layer safety pipeline"
+      ],
+      "context": "Boston University · M.S. AI",
+      "role": "Design, pipeline engineering & evaluation",
+      "period": "Spring 2026",
+      "stack": ["Python", "FastAPI", "Transformers", "Llama Guard", "Prompt Guard 2"],
+      "liveUrl": "",
+      "repoUrl": "",
+      "featured": 4,
+      "availability": "Private — academic integrity hold"
+    },
+    {
+      "slug": "visionsentry",
+      "name": "VisionSentry",
+      "tagline": "Thermal and RGB detection and tracking for small UAVs.",
+      "summary": "A modular computer-vision pipeline that finds and follows small drones across thermal and RGB imagery, pairing a YOLOv12 detector with a BoT-SORT multi-object tracker and MOT-format trajectory export. Trained on a ~400K-image thermal dataset using sequence-level splits, so frames from one flight can never leak between train and validation.",
+      "highlights": ["0.92 mAP@0.50", "0.91 precision · 0.89 recall", "~400K thermal images"],
+      "context": "Boston University · M.S. AI",
+      "role": "Pipeline engineering, training & evaluation",
+      "period": "Spring 2026",
+      "stack": ["Python", "PyTorch", "YOLOv12", "BoT-SORT", "OpenCV"],
+      "liveUrl": "",
+      "repoUrl": "",
+      "featured": 3,
+      "availability": "Private — academic integrity hold"
+    },
+    {
+      "slug": "kuja",
+      "name": "Kuja",
+      "tagline": "An event-led social network — founded, built, and shipped solo.",
+      "summary": "Kuja is a live social network built around gatherings: find events near you on a map, host your own, RSVP, and meet the people who showed up.",
+      "highlights": ["Live in production", "Web · iOS · Android", "Founder & CEO"],
+      "context": "Kuja, Inc. · own venture",
+      "role": "Founder, CEO & sole engineer",
+      "period": "Feb 2026 — present",
+      "stack": ["Flutter", "Dart", "Supabase", "Postgres", "Edge Functions", "Render"],
+      "liveUrl": "https://www.kuja.app",
+      "repoUrl": "",
+      "featured": 1,
+      "availability": "Private — product code"
+    },
+    {
+      "slug": "berverly-gardens-platform",
+      "name": "Berverly Gardens Platform",
+      "tagline": "The edge-native platform a Kenyan property developer runs on.",
+      "summary": "The company stack, designed and driven as CTO.",
+      "highlights": ["Pages + Workers + D1 + R2", "Lead capture to CRM", "CMS-driven content ops"],
+      "context": "Berverly Gardens · CTO",
+      "role": "Architecture, delivery & vendor management",
+      "period": "2026 — present",
+      "stack": ["Cloudflare Workers", "TypeScript", "React", "Vite"],
+      "liveUrl": "",
+      "repoUrl": "",
+      "featured": 2,
+      "availability": "Private — client platform"
+    }
+  ],
+  "buildCard": {
+    "liveLabel": "Live →",
+    "codeLabel": "Code →",
+    "allBuildsLabel": "Everything else →"
+  },
+  "writing": {
+    "emptyTitle": "No tokens emitted yet.",
+    "emptyBody": "The first entries are being written — on anything I find interesting and willing to share. The feed will know before anyone else.",
+    "rssLabel": "Subscribe via RSS →",
+    "allLabel": "All writing →",
+    "readingTimeSuffix": "min read"
+  },
+  "chat": {
+    "endpointLabel": "POST /v1/messages",
+    "prompts": {
+      "name": "Hey — I'm James. Three questions and you will gain Premium access. What should I call you?",
+      "contact": "Good to meet you. Where should I reply — email or phone, whichever you actually check?",
+      "message": "Last one. What's on your mind?",
+      "review": "Here's what I'll send. Look right?"
+    },
+    "nameAcknowledgement": "Noted, {name}.",
+    "placeholders": {
+      "name": "Wanjiku Omondi",
+      "contact": "ada@company.com  ·  +1 555 010 1990",
+      "message": "We're hiring an ML engineer and your UAV tracking work caught my eye…"
+    },
+    "labels": {
+      "name": "Your name",
+      "contact": "Email or phone",
+      "message": "Your message"
+    },
+    "reviewLabels": {
+      "name": "name",
+      "contact": "reply to",
+      "message": "message"
+    },
+    "intents": ["I'm hiring", "Let's collaborate", "Question about a project", "Just saying hi"],
+    "validation": {
+      "nameTooShort": "I'll need something to call you — two characters or more.",
+      "nameTooLong": "That's longer than 60 characters. Shorter is fine.",
+      "contactInvalid": "That doesn't parse as an email or a phone number. Try again?",
+      "contactTooLong": "That's too long to be either one.",
+      "messageTooShort": "Give me a little more than that.",
+      "messageTooLong": "That's {count} characters — trim it to 1200 or fewer.",
+      "genericError": "Something went wrong. Try again in a moment."
+    },
+    "buttons": {
+      "next": "Next",
+      "review": "Review",
+      "send": "Send it",
+      "sending": "Sending…",
+      "restart": "Start over",
+      "sendAnother": "Send another"
+    },
+    "successMessage": "Delivered. James usually replies the same day — watch {contact}.",
+    "successBadge": "200 OK",
+    "endpoints": [
+      {
+        "label": "Email",
+        "value": "jngugi@bu.edu",
+        "href": "mailto:jngugi@bu.edu?subject=Hello%20James"
+      },
+      {
+        "label": "GitHub",
+        "value": "James-Njoroge",
+        "href": "https://github.com/James-Njoroge"
+      },
+      {
+        "label": "LinkedIn",
+        "value": "james-ngugi-njoroge",
+        "href": "https://www.linkedin.com/in/james-ngugi-njoroge/"
+      },
+      {
+        "label": "Deployed in",
+        "value": "Boston, MA · EST",
+        "href": "https://www.google.com/maps/place/Boston,+MA"
+      }
+    ]
+  },
+  "footer": {
+    "identity": "jn-1 · {name} · © {year}",
+    "closing": "weights available on request —",
+    "closingLink": "say hi",
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/James-Njoroge"
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/james-ngugi-njoroge/"
+      },
+      {
+        "label": "Writing",
+        "href": "/blog"
+      },
+      {
+        "label": "Projects",
+        "href": "/projects"
+      },
+      {
+        "label": "résumé.pdf",
+        "href": "/files/James-Njoroge-Resume.pdf"
+      },
+      {
+        "label": "resume.json",
+        "href": "/resume.json"
+      },
+      {
+        "label": "RSS",
+        "href": "/feed.xml"
+      },
+      {
+        "label": "llms.txt",
+        "href": "/llms.txt"
+      },
+      {
+        "label": "source",
+        "href": "https://github.com/James-Njoroge/cv"
+      }
+    ]
+  },
+  "seo": {
+    "ogKicker": "Model card",
+    "ogTitle": "James Njoroge, a 1-personality model.",
+    "ogSubtitle": "AI engineer · M.S. Artificial Intelligence, Boston University · Founder of Kuja · CTO at Berverly Gardens",
+    "ogStep": "step 2400/2400",
+    "jobTitles": ["Founder & CEO", "Chief Technology Officer"],
+    "worksFor": [
+      {
+        "name": "Kuja, Inc.",
+        "url": "https://www.kuja.app",
+        "description": "Event-led social network. James is the founder and CEO."
+      },
+      {
+        "name": "Berverly Gardens",
+        "url": "",
+        "description": "Kenyan property developer. James is the Chief Technology Officer."
+      }
+    ],
+    "alumniOf": [
+      {
+        "name": "Boston University",
+        "description": "M.S. in Artificial Intelligence"
+      },
+      {
+        "name": "Colgate University",
+        "description": "B.A. in Computer Science and Applied Mathematics, cum laude"
+      },
+      {
+        "name": "Choate Rosemary Hall",
+        "description": "High School Diploma"
+      }
+    ]
+  },
+  "projectsPage": {
+    "backLabel": "← jn-1",
+    "title": "What the model has built.",
+    "metaTitle": "What the model has built",
+    "meta": "{count} builds",
+    "subtitle": "Everything the model has shipped — course work, client platforms, and a product with users. Public repos link straight to the code.",
+    "allReposLabel": "All repos on GitHub →"
+  },
+  "blogPage": {
+    "backLabel": "← jn-1",
+    "title": "Discover the model's thoughts.",
+    "metaTitle": "Writing",
+    "meta": "{count} entries",
+    "metaEmpty": "warming up",
+    "subtitle": "Notes on anything.",
+    "emptyTitle": "No tokens emitted yet.",
+    "emptyBody": "The first entries are being written. The feed will know before anyone else.",
+    "rssLabel": "Subscribe via RSS →",
+    "postBackLabel": "← all writing"
+  }
+}

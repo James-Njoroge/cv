@@ -2,13 +2,15 @@ import { Kicker } from "@/components/jn/atoms";
 import { Reveal } from "@/components/jn/reveal";
 import { SectionHeading } from "@/components/jn/section-heading";
 import { evalGroups } from "@/data/capabilities";
+import { copy, fill } from "@/lib/copy";
 
 export function EvalsSection() {
   const total = evalGroups.reduce((n, group) => n + group.courses.length, 0);
+  const c = copy.sections.evals;
 
   return (
     <section id="evals" className="container-jn scroll-mt-24 pb-28">
-      <SectionHeading index="04" title="Evals" meta={`${total} benchmarks passed · coursework`} />
+      <SectionHeading index={c.index} title={c.title} meta={fill(c.meta, { count: total })} />
 
       <div className="flex flex-col gap-11">
         {evalGroups.map((group, groupIndex) => (
@@ -29,7 +31,7 @@ export function EvalsSection() {
                   className="flex items-center gap-3 rounded-md border border-border bg-card px-[18px] py-4"
                 >
                   <span className="font-mono text-[11px] font-bold leading-none text-primary">
-                    PASS
+                    {group.passLabel}
                   </span>
                   <span className="text-[0.9375rem]">{course}</span>
                 </Reveal>

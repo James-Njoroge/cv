@@ -7,16 +7,17 @@ import { Reveal } from "@/components/jn/reveal";
 import { SectionHeading } from "@/components/jn/section-heading";
 import { JsonLd } from "@/components/json-ld";
 import { getAllPosts } from "@/lib/blog";
+import { copy, fill } from "@/lib/copy";
 import { site } from "@/lib/site";
 
 type Props = { params: { locale: string } };
 
-const SUBTITLE =
-  "Notes on LLM safety, computer vision, shipping a product alone, and the route from Nairobi to Boston.";
+const c = copy.blogPage;
+const SUBTITLE = c.subtitle;
 
 export function generateMetadata(): Metadata {
   return {
-    title: "Writing",
+    title: c.metaTitle,
     description: SUBTITLE,
     alternates: {
       canonical: "/blog",
@@ -65,14 +66,14 @@ export default function BlogPage({ params: { locale } }: Props) {
         href="/"
         className="font-mono text-xs font-medium leading-none text-muted-foreground hover:text-primary"
       >
-        &#8592; jn&#8209;1
+        {c.backLabel}
       </Link>
 
       <div className="mt-8">
         <SectionHeading
-          index="05"
-          title="Discover the model's thoughts."
-          meta={posts.length > 0 ? `${posts.length} entries` : "warming up"}
+          index={copy.sections.writing.index}
+          title={c.title}
+          meta={posts.length > 0 ? fill(c.meta, { count: posts.length }) : c.metaEmpty}
         />
       </div>
 
@@ -82,15 +83,15 @@ export default function BlogPage({ params: { locale } }: Props) {
 
       {posts.length === 0 ? (
         <div className="hatch rounded-xl border border-dashed border-border p-12 text-center">
-          <p className="m-0 font-display text-lg font-semibold">No tokens emitted yet.</p>
+          <p className="m-0 font-display text-lg font-semibold">{c.emptyTitle}</p>
           <p className="mx-auto mt-2 max-w-md text-pretty text-sm leading-relaxed text-muted-foreground">
-            The first entries are being written. The feed will know before anyone else.
+            {c.emptyBody}
           </p>
           <a
             href="/feed.xml"
             className="mt-5 inline-block font-mono text-[11px] font-bold uppercase leading-none tracking-[0.06em] text-primary hover:text-amber"
           >
-            Subscribe via RSS &#8594;
+            {c.rssLabel}
           </a>
         </div>
       ) : (
@@ -106,7 +107,9 @@ export default function BlogPage({ params: { locale } }: Props) {
                     <time dateTime={post.date}>{formatDate(post.date)}</time>
                   </Kicker>
                   <Sep />
-                  <Kicker tone="amber">{post.readingTime} min read</Kicker>
+                  <Kicker tone="amber">
+                    {post.readingTime} {copy.writing.readingTimeSuffix}
+                  </Kicker>
                   {post.draft && (
                     <>
                       <Sep />

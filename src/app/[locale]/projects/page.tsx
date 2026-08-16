@@ -7,16 +7,17 @@ import { Reveal } from "@/components/jn/reveal";
 import { SectionHeading } from "@/components/jn/section-heading";
 import { JsonLd } from "@/components/json-ld";
 import { getBuilds } from "@/lib/builds";
+import { copy, fill } from "@/lib/copy";
 import { site } from "@/lib/site";
 
 type Props = { params: { locale: string } };
 
-const SUBTITLE =
-  "Everything the model has shipped — course work, client platforms, and a product with users. Public repos link straight to the code.";
+const c = copy.projectsPage;
+const SUBTITLE = c.subtitle;
 
 export function generateMetadata(): Metadata {
   return {
-    title: "What the model has built",
+    title: c.metaTitle,
     description: SUBTITLE,
     alternates: { canonical: "/projects" },
     openGraph: {
@@ -53,14 +54,14 @@ export default async function ProjectsPage({ params: { locale } }: Props) {
         href="/"
         className="font-mono text-xs font-medium leading-none text-muted-foreground hover:text-primary"
       >
-        &#8592; jn&#8209;1
+        {c.backLabel}
       </Link>
 
       <div className="mt-8">
         <SectionHeading
-          index="03"
-          title="What the model has built."
-          meta={`${builds.length} builds`}
+          index={copy.sections.built.index}
+          title={c.title}
+          meta={fill(c.meta, { count: builds.length })}
         />
       </div>
 
@@ -82,7 +83,7 @@ export default async function ProjectsPage({ params: { locale } }: Props) {
         rel="noopener noreferrer"
         className="mt-8 inline-block font-mono text-xs font-bold uppercase leading-none tracking-[0.06em] text-primary hover:text-amber"
       >
-        All repos on GitHub &#8594;
+        {c.allReposLabel}
       </a>
 
       <JsonLd data={collectionJsonLd} />

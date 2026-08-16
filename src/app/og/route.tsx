@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 
+import { copy } from "@/lib/copy";
 import { site } from "@/lib/site";
 
 export const runtime = "edge";
@@ -66,7 +67,7 @@ export function GET(request: Request) {
             }}
           >
             <div style={{ width: 10, height: 10, borderRadius: 99, backgroundColor: SIGNAL }} />
-            step 2400/2400
+            {copy.seo.ogStep}
           </div>
         </div>
 
@@ -81,7 +82,7 @@ export function GET(request: Request) {
               letterSpacing: 3,
             }}
           >
-            {isHome ? "Model card" : subtitle}
+            {isHome ? copy.seo.ogKicker : subtitle}
           </div>
           <div
             style={{
@@ -93,12 +94,10 @@ export function GET(request: Request) {
               maxWidth: 1000,
             }}
           >
-            {isHome ? "James Njoroge, a 1-personality model." : title}
+            {isHome ? copy.seo.ogTitle : title}
           </div>
           <div style={{ fontSize: 27, color: MUTED, marginTop: 6, maxWidth: 940 }}>
-            {isHome
-              ? "AI engineer · M.S. Artificial Intelligence, Boston University · Founder of Kuja · CTO at Berverly Gardens"
-              : `${site.name} — ${site.headline}`}
+            {isHome ? copy.seo.ogSubtitle : `${site.name} — ${site.headline}`}
           </div>
         </div>
 

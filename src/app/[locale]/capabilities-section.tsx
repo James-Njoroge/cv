@@ -3,11 +3,12 @@ import { ConfidenceBar } from "@/components/jn/confidence-bar";
 import { Reveal } from "@/components/jn/reveal";
 import { SectionHeading } from "@/components/jn/section-heading";
 import { capabilityGroups } from "@/data/capabilities";
+import { copy } from "@/lib/copy";
 
 export function CapabilitiesSection() {
   return (
     <section id="caps" className="container-jn scroll-mt-24 pb-28">
-      <SectionHeading index="02" title="Capabilities" meta="self-reported confidence" />
+      <SectionHeading {...copy.sections.caps} />
 
       <div className="grid gap-11 sm:grid-cols-2 sm:gap-x-16 lg:grid-cols-3">
         {capabilityGroups.map((group, i) => (

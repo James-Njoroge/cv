@@ -7,6 +7,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { Kicker, Pill, Sep } from "@/components/jn/atoms";
 import { JsonLd } from "@/components/json-ld";
 import { getAllPosts, getPost } from "@/lib/blog";
+import { copy } from "@/lib/copy";
 import { site } from "@/lib/site";
 
 type Props = { params: { locale: string; slug: string } };
@@ -69,7 +70,7 @@ export default function BlogPostPage({ params }: Props) {
         href="/blog"
         className="font-mono text-xs font-medium leading-none text-muted-foreground hover:text-primary"
       >
-        &#8592; all writing
+        {copy.blogPage.postBackLabel}
       </Link>
 
       <article className="mt-8">
@@ -79,7 +80,9 @@ export default function BlogPostPage({ params }: Props) {
               <time dateTime={post.date}>{formatDate(post.date)}</time>
             </Kicker>
             <Sep />
-            <Kicker tone="amber">{post.readingTime} min read</Kicker>
+            <Kicker tone="amber">
+              {post.readingTime} {copy.writing.readingTimeSuffix}
+            </Kicker>
           </div>
 
           <h1 className="m-0 text-balance font-display text-[clamp(2rem,5vw,3rem)] font-semibold leading-[1.05] tracking-[-0.03em]">
