@@ -1,8 +1,7 @@
-import crypto from "node:crypto";
-
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 import { NextRequest, NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 import { z } from "zod";
 
 export const runtime = "nodejs";
@@ -30,80 +29,87 @@ const FormDataSchema = z.object({
     .max(1200, { message: "Message must be 1200 characters or less." }),
 });
 
-// --- Google Sheets configuration ---------------------------------------
-// The row is appended over the plain Sheets REST API with a service-account
-// JWT signed here, so the route carries no Google SDK into the bundle.
-const sheetId = process.env.GOOGLE_SHEET_ID;
-const googleClientEmail = process.env.GOOGLE_SHEETS_CLIENT_EMAIL;
-const googlePrivateKey = process.env.GOOGLE_SHEETS_PRIVATE_KEY?.replace(/\\n/g, "\n");
+// --- Email delivery ------------------------------------------------------
+// Submissions are emailed over Gmail SMTP. GMAIL_APP_PASSWORD must be an
+// app password (Google account → Security → 2-Step Verification → App
+// passwords), not the account password.
+const gmailUser = process.env.GMAIL_USER;
+const gmailAppPassword = process.env.GMAIL_APP_PASSWORD?.replace(/\s/g, "");
+// Where the notification lands. Defaults to the sending account.
+const inquiryRecipient = process.env.CONTACT_TO_EMAIL ?? gmailUser;
 
-const isGoogleSheetsConfigured = Boolean(sheetId && googleClientEmail && googlePrivateKey);
+const isMailConfigured = Boolean(gmailUser && gmailAppPassword && inquiryRecipient);
 
-const GOOGLE_TOKEN_URL = "https://oauth2.googleapis.com/token";
-const SHEETS_SCOPE = "https://www.googleapis.com/auth/spreadsheets";
+// One transport, reused across warm invocations. Setting SMTP_HOST points it
+// at another server — used to exercise this route against a local SMTP sink
+// without sending real mail; unset everywhere else, so Gmail is the default.
+const transporter = isMailConfigured
+  ? nodemailer.createTransport(
+      process.env.SMTP_HOST
+        ? {
+            host: process.env.SMTP_HOST,
+            port: Number(process.env.SMTP_PORT ?? 587),
+            secure: false,
+            ignoreTLS: true,
+            auth: { user: gmailUser, pass: gmailAppPassword },
+          }
+        : {
+            service: "gmail",
+            auth: { user: gmailUser, pass: gmailAppPassword },
+          }
+    )
+  : null;
 
-// Access tokens live an hour; reuse one across warm invocations.
-let cachedToken: { value: string; expiresAt: number } | null = null;
+const EMAIL_SHAPE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-function b64url(input: string): string {
-  return Buffer.from(input).toString("base64url");
+/** Escapes the four characters that could otherwise inject markup into the HTML part. */
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
 }
 
-async function getAccessToken(clientEmail: string, privateKey: string): Promise<string> {
-  const now = Math.floor(Date.now() / 1000);
-  if (cachedToken && cachedToken.expiresAt > now + 60) return cachedToken.value;
+async function sendInquiry(fields: {
+  name: string;
+  contact: string;
+  message: string;
+  timestamp: string;
+}): Promise<void> {
+  const { name, contact, message, timestamp } = fields;
+  const contactIsEmail = EMAIL_SHAPE.test(contact);
 
-  const header = b64url(JSON.stringify({ alg: "RS256", typ: "JWT" }));
-  const claims = b64url(
-    JSON.stringify({
-      iss: clientEmail,
-      scope: SHEETS_SCOPE,
-      aud: GOOGLE_TOKEN_URL,
-      iat: now,
-      exp: now + 3600,
-    })
-  );
-  const signature = crypto
-    .createSign("RSA-SHA256")
-    .update(`${header}.${claims}`)
-    .sign(privateKey)
-    .toString("base64url");
+  const text = [
+    `Name:    ${name}`,
+    `Contact: ${contact}`,
+    `Sent:    ${timestamp} (ET)`,
+    "",
+    message,
+  ].join("\n");
 
-  const response = await fetch(GOOGLE_TOKEN_URL, {
-    method: "POST",
-    headers: { "content-type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams({
-      grant_type: "urn:ietf:params:oauth:grant-type:jwt-bearer",
-      assertion: `${header}.${claims}.${signature}`,
-    }),
+  const html = `
+    <div style="font-family:system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.6;color:#14170F">
+      <h2 style="margin:0 0 16px;font-size:18px">New inquiry from ${escapeHtml(name)}</h2>
+      <table style="border-collapse:collapse;margin-bottom:20px;font-size:14px">
+        <tr><td style="padding:2px 12px 2px 0;color:#6b7280">Contact</td><td>${escapeHtml(contact)}</td></tr>
+        <tr><td style="padding:2px 12px 2px 0;color:#6b7280">Sent</td><td>${escapeHtml(timestamp)} ET</td></tr>
+      </table>
+      <div style="white-space:pre-wrap;border-left:3px solid #9BE07A;padding-left:14px">${escapeHtml(message)}</div>
+    </div>
+  `.trim();
+
+  await transporter!.sendMail({
+    // Gmail rewrites `from` to the authenticated account, so the visitor's
+    // name goes in the display name and their address in Reply-To.
+    from: `"${name} (jnjoroge.dev)" <${gmailUser}>`,
+    to: inquiryRecipient,
+    // Replying goes straight back to the visitor when they left an email.
+    replyTo: contactIsEmail ? `"${name}" <${contact}>` : undefined,
+    subject: `Portfolio inquiry — ${name}`,
+    text,
+    html,
   });
-  if (!response.ok) {
-    throw new Error(`Google token request failed with ${response.status}`);
-  }
-
-  const token = (await response.json()) as { access_token: string; expires_in: number };
-  cachedToken = { value: token.access_token, expiresAt: now + token.expires_in };
-  return token.access_token;
-}
-
-async function appendRow(row: string[]): Promise<void> {
-  const accessToken = await getAccessToken(googleClientEmail!, googlePrivateKey!);
-  const url =
-    `https://sheets.googleapis.com/v4/spreadsheets/${encodeURIComponent(sheetId!)}` +
-    `/values/${encodeURIComponent("Sheet1!A:D")}:append?valueInputOption=RAW`;
-
-  const response = await fetch(url, {
-    method: "POST",
-    headers: {
-      authorization: `Bearer ${accessToken}`,
-      "content-type": "application/json",
-    },
-    body: JSON.stringify({ values: [row] }),
-  });
-
-  if (!response.ok) {
-    throw new Error(`Sheets append failed with ${response.status}`);
-  }
 }
 
 // --- Rate limiting ------------------------------------------------------
@@ -187,8 +193,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (!isGoogleSheetsConfigured) {
-      // console.error("Google Sheets configuration is missing or invalid.");
+    if (!transporter) {
+      // console.error("Gmail SMTP configuration is missing or invalid.");
       return NextResponse.json(
         {
           message: "The service is temporarily unavailable. Please try again later.",
@@ -198,12 +204,16 @@ export async function POST(request: NextRequest) {
     }
 
     const { name, contact, message } = parsed.data;
-    const timestamp = new Date().toISOString();
+    const timestamp = new Date().toLocaleString("en-US", {
+      dateStyle: "medium",
+      timeStyle: "short",
+      timeZone: "America/New_York",
+    });
 
-    // --- 4. Write to Google Sheets ---
-    await appendRow([timestamp, name, contact, message]);
+    // --- 4. Email the inquiry ---
+    await sendInquiry({ name, contact, message, timestamp });
 
-    return NextResponse.json({ message: "Data saved successfully!" }, { status: 200 });
+    return NextResponse.json({ message: "Message sent." }, { status: 200 });
   } catch (error) {
     // console.error("Unexpected error in /api POST handler:", error);
     return NextResponse.json({ message: "An internal server error occurred." }, { status: 500 });
