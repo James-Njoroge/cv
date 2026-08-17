@@ -10,7 +10,7 @@ import { getAllPosts } from "@/lib/blog";
 import { copy, fill } from "@/lib/copy";
 import { site } from "@/lib/site";
 
-type Props = { params: { locale: string } };
+type Props = { params: Promise<{ locale: string }> };
 
 const c = copy.blogPage;
 const SUBTITLE = c.subtitle;
@@ -40,7 +40,8 @@ function formatDate(iso: string) {
   });
 }
 
-export default function BlogPage({ params: { locale } }: Props) {
+export default async function BlogPage({ params }: Props) {
+  const { locale } = await params;
   const posts = getAllPosts();
 
   const blogJsonLd = {

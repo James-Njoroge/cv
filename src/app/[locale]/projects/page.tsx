@@ -10,7 +10,7 @@ import { getBuilds } from "@/lib/builds";
 import { copy, fill } from "@/lib/copy";
 import { site } from "@/lib/site";
 
-type Props = { params: { locale: string } };
+type Props = { params: Promise<{ locale: string }> };
 
 const c = copy.projectsPage;
 const SUBTITLE = c.subtitle;
@@ -28,7 +28,8 @@ export function generateMetadata(): Metadata {
   };
 }
 
-export default async function ProjectsPage({ params: { locale } }: Props) {
+export default async function ProjectsPage({ params }: Props) {
+  const { locale } = await params;
   const builds = await getBuilds();
 
   const collectionJsonLd = {

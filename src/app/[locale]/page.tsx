@@ -13,7 +13,7 @@ import { TrainingRunSection } from "./training-run-section";
 import { WritingSection } from "./writing-section";
 
 type Props = {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
 export function generateMetadata(): Metadata {
@@ -23,7 +23,8 @@ export function generateMetadata(): Metadata {
   };
 }
 
-export default function Page({ params: { locale } }: Props) {
+export default async function Page({ params }: Props) {
+  const { locale } = await params;
   setRequestLocale(locale);
 
   return (

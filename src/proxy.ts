@@ -1,12 +1,12 @@
 import createMiddleware from "next-intl/middleware";
 
-export default createMiddleware({
-  locales: ["en"],
-  localePrefix: "as-needed",
-  defaultLocale: "en",
-});
+import { routing } from "@/i18n/routing";
+
+export default createMiddleware(routing);
 
 export const config = {
+  // Next 16 renamed the `middleware` file convention to `proxy`; the matcher
+  // semantics are unchanged.
   // Run on all localized pages, but skip:
   //  - /api            (route handlers)
   //  - /_next, /_vercel (framework internals)

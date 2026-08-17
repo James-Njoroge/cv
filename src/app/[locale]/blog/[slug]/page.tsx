@@ -10,14 +10,15 @@ import { getAllPosts, getPost } from "@/lib/blog";
 import { copy } from "@/lib/copy";
 import { site } from "@/lib/site";
 
-type Props = { params: { locale: string; slug: string } };
+type Props = { params: Promise<{ locale: string; slug: string }> };
 
 export function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
 }
 
-export function generateMetadata({ params }: Props): Metadata {
-  const post = getPost(params.slug);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getPost(slug);
   if (!post) return {};
   const ogUrl = `/og?title=${encodeURIComponent(post.title)}&subtitle=${encodeURIComponent("Writing")}`;
   return {
@@ -46,8 +47,9 @@ function formatDate(iso: string) {
   });
 }
 
-export default function BlogPostPage({ params }: Props) {
-  const post = getPost(params.slug);
+export default async function BlogPostPage({ params }: Props) {
+  const { slug } = await params;
+  const post = getPost(slug);
   if (!post) notFound();
 
   const articleJsonLd = {

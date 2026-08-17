@@ -1,6 +1,7 @@
+import crypto from "node:crypto";
+
 import { Ratelimit } from "@upstash/ratelimit";
-import { kv } from "@vercel/kv";
-import { google } from "googleapis";
+import { Redis } from "@upstash/redis";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -29,43 +30,105 @@ const FormDataSchema = z.object({
     .max(1200, { message: "Message must be 1200 characters or less." }),
 });
 
-// Google Sheets configuration
+// --- Google Sheets configuration ---------------------------------------
+// The row is appended over the plain Sheets REST API with a service-account
+// JWT signed here, so the route carries no Google SDK into the bundle.
 const sheetId = process.env.GOOGLE_SHEET_ID;
 const googleClientEmail = process.env.GOOGLE_SHEETS_CLIENT_EMAIL;
 const googlePrivateKey = process.env.GOOGLE_SHEETS_PRIVATE_KEY?.replace(/\\n/g, "\n");
 
 const isGoogleSheetsConfigured = Boolean(sheetId && googleClientEmail && googlePrivateKey);
 
-const auth = isGoogleSheetsConfigured
-  ? new google.auth.GoogleAuth({
-      credentials: {
-        client_email: googleClientEmail,
-        private_key: googlePrivateKey,
-      },
-      scopes: ["https://www.googleapis.com/auth/spreadsheets"],
+const GOOGLE_TOKEN_URL = "https://oauth2.googleapis.com/token";
+const SHEETS_SCOPE = "https://www.googleapis.com/auth/spreadsheets";
+
+// Access tokens live an hour; reuse one across warm invocations.
+let cachedToken: { value: string; expiresAt: number } | null = null;
+
+function b64url(input: string): string {
+  return Buffer.from(input).toString("base64url");
+}
+
+async function getAccessToken(clientEmail: string, privateKey: string): Promise<string> {
+  const now = Math.floor(Date.now() / 1000);
+  if (cachedToken && cachedToken.expiresAt > now + 60) return cachedToken.value;
+
+  const header = b64url(JSON.stringify({ alg: "RS256", typ: "JWT" }));
+  const claims = b64url(
+    JSON.stringify({
+      iss: clientEmail,
+      scope: SHEETS_SCOPE,
+      aud: GOOGLE_TOKEN_URL,
+      iat: now,
+      exp: now + 3600,
     })
-  : undefined;
+  );
+  const signature = crypto
+    .createSign("RSA-SHA256")
+    .update(`${header}.${claims}`)
+    .sign(privateKey)
+    .toString("base64url");
 
-const sheets = auth ? google.sheets({ version: "v4", auth }) : undefined;
+  const response = await fetch(GOOGLE_TOKEN_URL, {
+    method: "POST",
+    headers: { "content-type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      grant_type: "urn:ietf:params:oauth:grant-type:jwt-bearer",
+      assertion: `${header}.${claims}.${signature}`,
+    }),
+  });
+  if (!response.ok) {
+    throw new Error(`Google token request failed with ${response.status}`);
+  }
 
-// Rate limiter (reused across requests)
-const ratelimit = new Ratelimit({
-  redis: kv,
-  // The chat can legitimately be sent more than once (a follow-up, or a retry
-  // after a transient failure), so this is a small allowance rather than one.
-  limiter: Ratelimit.slidingWindow(3, "24h"),
-  analytics: true,
-});
+  const token = (await response.json()) as { access_token: string; expires_in: number };
+  cachedToken = { value: token.access_token, expiresAt: now + token.expires_in };
+  return token.access_token;
+}
+
+async function appendRow(row: string[]): Promise<void> {
+  const accessToken = await getAccessToken(googleClientEmail!, googlePrivateKey!);
+  const url =
+    `https://sheets.googleapis.com/v4/spreadsheets/${encodeURIComponent(sheetId!)}` +
+    `/values/${encodeURIComponent("Sheet1!A:D")}:append?valueInputOption=RAW`;
+
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${accessToken}`,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({ values: [row] }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Sheets append failed with ${response.status}`);
+  }
+}
+
+// --- Rate limiting ------------------------------------------------------
+// Vercel KV moved to Upstash Redis, so accept either set of env vars.
+const redisUrl = process.env.UPSTASH_REDIS_REST_URL ?? process.env.KV_REST_API_URL;
+const redisToken = process.env.UPSTASH_REDIS_REST_TOKEN ?? process.env.KV_REST_API_TOKEN;
+
+const ratelimit =
+  redisUrl && redisToken
+    ? new Ratelimit({
+        redis: new Redis({ url: redisUrl, token: redisToken }),
+        // The chat can legitimately be sent more than once (a follow-up, or a
+        // retry after a transient failure), so this is a small allowance
+        // rather than one.
+        limiter: Ratelimit.slidingWindow(3, "24h"),
+        analytics: true,
+      })
+    : null;
 
 function getClientIdentifier(request: NextRequest): string {
   const forwardedFor = request.headers.get("x-forwarded-for");
   if (forwardedFor) {
     return forwardedFor.split(",")[0]!.trim();
   }
-  if (request.ip) {
-    return request.ip;
-  }
-  return "unknown";
+  return request.headers.get("x-real-ip") ?? "unknown";
 }
 
 export async function POST(request: NextRequest) {
@@ -73,15 +136,25 @@ export async function POST(request: NextRequest) {
 
   try {
     // --- 1. Rate limiting ---
-    const { success } = await ratelimit.limit(clientId);
-    if (!success) {
-      return NextResponse.json(
-        {
-          message:
-            "That's a few messages from this connection already — James has them. Try again in 24 hours, or email him directly.",
-        },
-        { status: 429 }
-      );
+    if (!ratelimit) {
+      // Never accept unthrottled submissions in production.
+      if (process.env.NODE_ENV === "production") {
+        return NextResponse.json(
+          { message: "The service is temporarily unavailable. Please try again later." },
+          { status: 503 }
+        );
+      }
+    } else {
+      const { success } = await ratelimit.limit(clientId);
+      if (!success) {
+        return NextResponse.json(
+          {
+            message:
+              "That's a few messages from this connection already — James has them. Try again in 24 hours, or email him directly.",
+          },
+          { status: 429 }
+        );
+      }
     }
 
     // --- 2. Basic request checks ---
@@ -114,7 +187,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (!sheets || !sheetId) {
+    if (!isGoogleSheetsConfigured) {
       // console.error("Google Sheets configuration is missing or invalid.");
       return NextResponse.json(
         {
@@ -128,14 +201,7 @@ export async function POST(request: NextRequest) {
     const timestamp = new Date().toISOString();
 
     // --- 4. Write to Google Sheets ---
-    await sheets.spreadsheets.values.append({
-      spreadsheetId: sheetId,
-      range: "Sheet1!A:D",
-      valueInputOption: "RAW",
-      requestBody: {
-        values: [[timestamp, name, contact, message]],
-      },
-    });
+    await appendRow([timestamp, name, contact, message]);
 
     return NextResponse.json({ message: "Data saved successfully!" }, { status: 200 });
   } catch (error) {

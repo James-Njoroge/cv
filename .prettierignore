@@ -1,0 +1,14 @@
+node_modules
+.next
+out
+build
+coverage
+.vercel
+
+# Vendored design-system reference exports
+design
+
+# Generated data snapshots
+src/data/github-snapshot.json
+content/.site-copy.backup.json
+package-lock.json

@@ -7,7 +7,7 @@ import { setRequestLocale } from "next-intl/server";
 import { TrainingBar } from "@/components/jn/training-bar";
 import { JsonLd, personJsonLd, webSiteJsonLd } from "@/components/json-ld";
 import { SiteFooter } from "@/components/site-footer";
-import { locales } from "@/i18n";
+import { locales } from "@/i18n/routing";
 import { site } from "@/lib/site";
 
 import "./globals.css";
@@ -76,15 +76,17 @@ export const viewport = {
 
 interface RootLayoutProps {
   children: React.ReactNode;
-  params: { locale: string };
+  // Next 15+ hands route params to layouts and pages as a promise.
+  params: Promise<{ locale: string }>;
 }
 
-export default function RootLayout({ children, params }: RootLayoutProps) {
-  setRequestLocale(params.locale);
+export default async function RootLayout({ children, params }: RootLayoutProps) {
+  const { locale } = await params;
+  setRequestLocale(locale);
 
   return (
     <html
-      lang={params.locale}
+      lang={locale}
       // jn-1 commits to a single look, so there is no theme to switch.
       className={`${fontSans.variable} ${fontMono.variable}`}
       suppressHydrationWarning
