@@ -9,11 +9,24 @@
  * Colours are stored as bare OKLCH components so Tailwind can inject an
  * alpha channel: `oklch(var(--primary) / <alpha-value>)`.
  *
- * The system commits to a single (dark) look, so there is no `.dark` block —
- * print styles below flip to ink-on-paper for the resume.
+ * Dark is the system's native look and lives on `:root`. Light is a warm
+ * ivory reading mode with the two accents darkened until they clear 4.5:1 on
+ * paper-white. Which one you get:
+ *
+ *   no [data-theme]        → whatever the OS asks for (the default)
+ *   [data-theme="light"]   → light, regardless of the OS
+ *   [data-theme="dark"]    → dark, regardless of the OS
+ *
+ * `[data-theme]` is set by the toggle in the instrument bar and re-applied
+ * before first paint by the inline script in `src/lib/theme.ts`.
+ *
+ * The light palette is written twice on purpose — a media query and an
+ * attribute selector can't share one rule. Edit both blocks together.
  */
 @layer base {
   :root {
+    color-scheme: dark;
+
     --background: 0.165 0.008 125; /* --bg  */
     --foreground: 0.955 0.006 110; /* --tx  */
 
@@ -47,10 +60,103 @@
     --signal: 0.8 0.15 145; /* --acc  */
     --amber: 0.8 0.15 72; /* --acc2 */
 
+    /* Hero instrument grid — reads as a lift in the dark, a recess in light */
+    --grid: 0.205 0.01 125;
+
     --radius: 0.875rem;
 
     /* Space Grotesk carries both display and body — one family, two roles. */
     --font-display: var(--font-sans);
+  }
+}
+
+/**
+ * Light mode. Two blocks, identical bodies: the first follows the OS unless
+ * the reader has explicitly chosen dark, the second is the explicit choice.
+ */
+@layer base {
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      color-scheme: light;
+
+      /* Claude-chat ivory: white with the blue taken out of it */
+      --background: 0.982 0.005 95; /* #FAF9F5 */
+      --foreground: 0.235 0.006 100; /* #1F1E1D */
+
+      --card: 1 0 95; /* #FFFFFF */
+      --card-foreground: 0.235 0.006 100;
+
+      --popover: 1 0 95;
+      --popover-foreground: 0.235 0.006 100;
+
+      /* The signal green drops to #0A7E3A — 4.9:1 on ivory, still unmistakably
+       the same hue as the dark theme's #9BE07A. */
+      --primary: 0.52 0.145 150;
+      --primary-foreground: 0.985 0.006 95;
+
+      --secondary: 0.948 0.011 95; /* #F0EEE6 */
+      --secondary-foreground: 0.235 0.006 100;
+
+      --muted: 0.948 0.011 95;
+      --muted-foreground: 0.52 0.012 100; /* #6A6961 — 5.2:1 */
+
+      --accent: 0.948 0.011 95;
+      --accent-foreground: 0.235 0.006 100;
+
+      --destructive: 0.52 0.19 27;
+      --destructive-foreground: 0.985 0.006 95;
+
+      --border: 0.893 0.012 95; /* #DFDCD1 */
+      --input: 0.893 0.012 95;
+      --ring: 0.52 0.145 150;
+
+      --signal: 0.52 0.145 150;
+      /* Amber becomes a burnt bronze — #9C5400, 5.4:1 */
+      --amber: 0.52 0.13 62;
+
+      --grid: 0.918 0.012 95;
+    }
+  }
+
+  :root[data-theme="light"] {
+    color-scheme: light;
+
+    /* Claude-chat ivory: white with the blue taken out of it */
+    --background: 0.982 0.005 95; /* #FAF9F5 */
+    --foreground: 0.235 0.006 100; /* #1F1E1D */
+
+    --card: 1 0 95; /* #FFFFFF */
+    --card-foreground: 0.235 0.006 100;
+
+    --popover: 1 0 95;
+    --popover-foreground: 0.235 0.006 100;
+
+    /* The signal green drops to #0A7E3A — 4.9:1 on ivory, still unmistakably
+       the same hue as the dark theme's #9BE07A. */
+    --primary: 0.52 0.145 150;
+    --primary-foreground: 0.985 0.006 95;
+
+    --secondary: 0.948 0.011 95; /* #F0EEE6 */
+    --secondary-foreground: 0.235 0.006 100;
+
+    --muted: 0.948 0.011 95;
+    --muted-foreground: 0.52 0.012 100; /* #6A6961 — 5.2:1 */
+
+    --accent: 0.948 0.011 95;
+    --accent-foreground: 0.235 0.006 100;
+
+    --destructive: 0.52 0.19 27;
+    --destructive-foreground: 0.985 0.006 95;
+
+    --border: 0.893 0.012 95; /* #DFDCD1 */
+    --input: 0.893 0.012 95;
+    --ring: 0.52 0.145 150;
+
+    --signal: 0.52 0.145 150;
+    /* Amber becomes a burnt bronze — #9C5400, 5.4:1 */
+    --amber: 0.52 0.13 62;
+
+    --grid: 0.918 0.012 95;
   }
 }
 
@@ -111,8 +217,8 @@
   /* Faint instrument grid behind the hero */
   .grid-drift {
     background-image:
-      linear-gradient(oklch(var(--card)) 1px, transparent 1px),
-      linear-gradient(90deg, oklch(var(--card)) 1px, transparent 1px);
+      linear-gradient(oklch(var(--grid)) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(var(--grid)) 1px, transparent 1px);
     background-size: 40px 40px;
     animation: drift 12s linear infinite;
     -webkit-mask-image: radial-gradient(120% 80% at 50% 30%, #000 20%, transparent 75%);
@@ -164,9 +270,12 @@
   @apply my-8 border-border;
 }
 
-/* The page doubles as a printable resume: flip to ink on paper. */
+/* The page doubles as a printable resume: flip to ink on paper. The
+   `[data-theme]` selector is there to outrank an explicit theme choice. */
 @media print {
-  :root {
+  :root,
+  :root[data-theme] {
+    color-scheme: light;
     --background: 1 0 0;
     --foreground: 0.15 0 0;
     --card: 1 0 0;
@@ -174,7 +283,10 @@
     --muted-foreground: 0.4 0 0;
     --border: 0.85 0 0;
     --primary: 0.35 0.09 145;
+    --signal: 0.35 0.09 145;
+    --amber: 0.45 0.11 62;
     --secondary: 0.96 0 0;
+    --grid: 0.9 0 0;
   }
   .print-force-new-page {
     page-break-before: always;

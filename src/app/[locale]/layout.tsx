@@ -9,6 +9,7 @@ import { JsonLd, personJsonLd, webSiteJsonLd } from "@/components/json-ld";
 import { SiteFooter } from "@/components/site-footer";
 import { locales } from "@/i18n/routing";
 import { site } from "@/lib/site";
+import { THEME_SCRIPT } from "@/lib/theme";
 
 import "./globals.css";
 
@@ -70,8 +71,12 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: "#14170F",
-  colorScheme: "dark",
+  // One per scheme so the browser chrome matches the palette the reader gets.
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FAF9F5" },
+    { media: "(prefers-color-scheme: dark)", color: "#14170F" },
+  ],
+  colorScheme: "light dark",
 };
 
 interface RootLayoutProps {
@@ -87,10 +92,15 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
   return (
     <html
       lang={locale}
-      // jn-1 commits to a single look, so there is no theme to switch.
       className={`${fontSans.variable} ${fontMono.variable}`}
+      // The theme script writes data-theme before React hydrates.
       suppressHydrationWarning
     >
+      <head>
+        {/* Blocking on purpose: it has to run before the first paint, or a
+            reader who picked light gets a frame of near-black. */}
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+      </head>
       <body className="flex min-h-screen flex-col overflow-x-hidden">
         <TrainingBar />
         <div className="flex-1">{children}</div>

@@ -214,7 +214,7 @@
     {
       "org": "Berverly Gardens",
       "role": "Chief Technology Officer",
-      "link": "",
+      "link": "https://berverlygardens.com/",
       "period": "2026 — present",
       "live": true,
       "location": "Nairobi, Kenya",
@@ -294,19 +294,6 @@
         "Ran debugging sessions and office hours, and mentored students through the courses that make people quit CS by making them fun and giving perspective to what they could do with their newly gained skills."
       ],
       "stack": ["Data structures", "Algorithms", "Mentoring"]
-    },
-    {
-      "org": "Sloop Software",
-      "role": "Co-founder",
-      "link": "https://www.colgate.edu/success-after-colgate/entrepreneurship-and-innovation/thought-action/thought-action-incubator",
-      "period": "venture",
-      "live": false,
-      "location": "Hamilton, NY",
-      "points": [
-        "Student-run software company shipping client projects out of Colgate's Thought Into Action incubator.",
-        "React Native and SQL builds, scoped and delivered end to end."
-      ],
-      "stack": ["React Native", "SQL", "JavaScript"]
     }
   ],
   "capabilityGroups": [
@@ -462,7 +449,7 @@
       "stack": ["Python", "FastAPI", "Transformers", "Llama Guard", "Prompt Guard 2"],
       "liveUrl": "",
       "repoUrl": "",
-      "featured": 4,
+      "featured": 5,
       "availability": "Private — academic integrity hold"
     },
     {
@@ -477,7 +464,7 @@
       "stack": ["Python", "PyTorch", "YOLOv12", "BoT-SORT", "OpenCV"],
       "liveUrl": "",
       "repoUrl": "",
-      "featured": 3,
+      "featured": 4,
       "availability": "Private — academic integrity hold"
     },
     {
@@ -505,7 +492,7 @@
       "role": "Architecture, delivery & vendor management",
       "period": "2026 — present",
       "stack": ["Cloudflare Workers", "TypeScript", "React", "Vite"],
-      "liveUrl": "",
+      "liveUrl": "https://berverlygardens.com/",
       "repoUrl": "",
       "featured": 2,
       "availability": "Private — client platform"
@@ -517,8 +504,8 @@
     "allBuildsLabel": "Everything else →"
   },
   "writing": {
-    "emptyTitle": "No tokens emitted yet.",
-    "emptyBody": "The first entries are being written — on anything I find interesting and willing to share. The feed will know before anyone else.",
+    "emptyTitle": "First article coming soon.",
+    "emptyBody": "No tokens emitted yet. The first piece is still being written — on whatever I'm building and think is worth sharing.",
     "rssLabel": "Subscribe via RSS →",
     "allLabel": "All writing →",
     "readingTimeSuffix": "min read"
@@ -526,7 +513,7 @@
   "chat": {
     "endpointLabel": "POST /v1/messages",
     "prompts": {
-      "name": "Hey — I'm James. Three questions and you will gain Premium access. What should I call you?",
+      "name": "Hey — I'm James. Three quick questions and this lands in my inbox. What should I call you?",
       "contact": "Good to meet you. Where should I reply — email or phone, whichever you actually check?",
       "message": "Last one. What's on your mind?",
       "review": "Here's what I'll send. Look right?"
@@ -604,10 +591,6 @@
         "href": "https://www.linkedin.com/in/james-ngugi-njoroge/"
       },
       {
-        "label": "Writing",
-        "href": "/blog"
-      },
-      {
         "label": "Projects",
         "href": "/projects"
       },
@@ -647,7 +630,7 @@
       },
       {
         "name": "Berverly Gardens",
-        "url": "",
+        "url": "https://berverlygardens.com/",
         "description": "Kenyan property developer. James is the Chief Technology Officer."
       }
     ],
@@ -681,8 +664,8 @@
     "meta": "{count} entries",
     "metaEmpty": "warming up",
     "subtitle": "Notes on anything.",
-    "emptyTitle": "No tokens emitted yet.",
-    "emptyBody": "The first entries are being written. The feed will know before anyone else.",
+    "emptyTitle": "First article coming soon.",
+    "emptyBody": "No tokens emitted yet. The first piece is still being written — on whatever I'm building and think is worth sharing.",
     "rssLabel": "Subscribe via RSS →",
     "postBackLabel": "← all writing"
   }

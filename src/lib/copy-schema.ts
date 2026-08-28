@@ -226,7 +226,10 @@ export const FIELD_HELP: Record<string, FieldHelp> = {
   "curatedBuilds[].stack": { label: "Tech chips" },
   "curatedBuilds[].liveUrl": { label: "Live URL", hint: "Blank hides the Live link." },
   "curatedBuilds[].repoUrl": { label: "Repo URL", hint: "Blank hides the Code link." },
-  "curatedBuilds[].featured": { label: "Rank", hint: "1 = first on the homepage." },
+  "curatedBuilds[].featured": {
+    label: "Rank",
+    hint: "Order on /projects; 1 = first. Which three builds the home page shows is set in src/lib/builds.ts.",
+  },
   "curatedBuilds[].availability": {
     label: "Why no repo",
     hint: "Shown when there's no repo link.",
@@ -244,7 +247,10 @@ export const FIELD_HELP: Record<string, FieldHelp> = {
   // Writing
   "writing.emptyTitle": { label: "Empty state — heading" },
   "writing.emptyBody": { label: "Empty state — body", multiline: true },
-  "writing.rssLabel": { label: "RSS link text" },
+  "writing.rssLabel": {
+    label: "RSS link text",
+    hint: "Shown on /blog only — the home page's empty state has no links.",
+  },
   "writing.allLabel": { label: "Link to /blog" },
   "writing.readingTimeSuffix": {
     label: "Reading-time suffix",

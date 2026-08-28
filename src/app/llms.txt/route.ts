@@ -47,7 +47,6 @@ ${site.knowsAbout.map((k) => `- ${k}`).join("\n")}
 - Generative AI Committee, Colgate University — research on GenAI tooling in academic settings.
 - Research Intern, Colgate Data Science Collaboratory — R Shiny interfaces for geospatial, network, and text analysis.
 - Teaching Assistant, Colgate Computer Science — Python and Java, data structures and algorithms, four semesters.
-- Co-founder, Sloop — student software startup (Colgate Thought Into Action incubator).
 
 ## Projects
 ${projectLines}

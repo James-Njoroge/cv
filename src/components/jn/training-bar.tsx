@@ -5,6 +5,8 @@ import { useEffect, useRef } from "react";
 import { copy } from "@/lib/copy";
 import { formatStep, lossAt, subscribeToScroll } from "@/lib/scroll-clock";
 
+import { ThemeToggle } from "./theme-toggle";
+
 const NAV = copy.nav;
 
 /**
@@ -74,6 +76,8 @@ export function TrainingBar() {
             </a>
           ))}
         </nav>
+
+        <ThemeToggle />
       </div>
     </div>
   );

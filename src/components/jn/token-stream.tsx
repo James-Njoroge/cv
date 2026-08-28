@@ -13,6 +13,10 @@ export function TokenStream({ text }: { text: string }) {
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      // Capability detection is browser-only, so the state starts at the
+      // SSR-safe value and is corrected here — a lazy initialiser would
+      // read `window` during render and cause a hydration mismatch.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setShown(text);
       return;
     }

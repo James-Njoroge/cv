@@ -17,7 +17,7 @@ export interface ProjectMeta {
   summary?: string;
   /** Metric / achievement chips, e.g. "82% R²" */
   highlights?: string[];
-  /** Rank among featured projects (1 = first). Unranked repos still appear on /projects. */
+  /** Display rank on /projects (1 = first), shared with the curated builds. Unranked repos sort after. */
   featured?: number;
   /** Where/why it was built, e.g. "Boston University · CS 506" */
   context?: string;
@@ -38,7 +38,7 @@ export const projectsMeta: Record<string, ProjectMeta> = {
     summary:
       "An end-to-end ML system that scores upcoming Premier League fixtures by predicted 'liveliness', helping fans pick the best match to watch. Covers the full lifecycle: scraping and feature engineering on historical team/player stats, model iteration from R² −0.15 to 0.82, and a production web app serving live rankings.",
     highlights: ["0.821 R²", "90% top-10 hit rate", "0.896 Spearman ρ", "Live in production"],
-    featured: 1,
+    featured: 6,
     context: "Boston University · CS 506 Data Science",
     role: "ML engineering, modeling & deployment (team of 3)",
     stack: ["Python", "scikit-learn", "Flask", "JavaScript", "Heroku"],
@@ -50,23 +50,15 @@ export const projectsMeta: Record<string, ProjectMeta> = {
     summary:
       "Applied NLP techniques to three decades of English Premier League data (1993–2024) to predict team performance metrics — from preprocessing pipelines and custom train/validation/test splits to model evaluation and error analysis.",
     highlights: ["30+ seasons of EPL data", "Full NLP pipeline"],
-    featured: 2,
+    featured: 7,
     context: "Colgate University · COSC 426 NLP",
     role: "Modeling & evaluation (team of 3)",
     stack: ["Python", "Jupyter", "Transformers"],
   },
+  // Retired venture — kept here only to keep the repo out of the live feed.
   "sloop-landing-page": {
     repo: "sloop-landing-page",
-    displayName: "Sloop",
-    tagline: "Landing page for the student software startup I co-founded.",
-    summary:
-      "Public face of Sloop, a student-run software company built through Colgate's Thought Into Action incubator. Designed and shipped with Next.js and Tailwind CSS.",
-    highlights: ["Co-founder", "Thought Into Action incubator"],
-    featured: 3,
-    context: "Sloop · student startup",
-    role: "Co-founder & engineer",
-    liveUrl: null, // repo homepage points at a template default
-    stack: ["Next.js", "TypeScript", "Tailwind CSS"],
+    hidden: true,
   },
   "nlp-midterm": {
     repo: "nlp-midterm",
@@ -84,7 +76,7 @@ export const projectsMeta: Record<string, ProjectMeta> = {
     tagline: "This website — an open-source, SEO-first portfolio and blog.",
     summary:
       "The site you are reading: a Next.js portfolio that pulls projects live from GitHub, ships structured data for search engines and LLMs, and doubles as a printable resume.",
-    featured: 4,
+    featured: 3,
     context: "Personal · open source",
     stack: ["Next.js", "TypeScript", "Tailwind CSS"],
   },

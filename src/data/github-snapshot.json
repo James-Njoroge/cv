@@ -72,21 +72,5 @@
     "stars": 0,
     "createdAt": "2024-10-03T17:34:07Z",
     "pushedAt": "2024-10-29T20:17:14Z"
-  },
-  {
-    "name": "sloop-landing-page",
-    "description": "NextJS app for the landing page of Sloop",
-    "htmlUrl": "https://github.com/James-Njoroge/sloop-landing-page",
-    "homepage": "https://builders.garden",
-    "language": "TypeScript",
-    "languages": [
-      "TypeScript",
-      "CSS",
-      "JavaScript"
-    ],
-    "topics": [],
-    "stars": 0,
-    "createdAt": "2024-04-06T01:06:11Z",
-    "pushedAt": "2024-04-07T00:49:57Z"
   }
 ]

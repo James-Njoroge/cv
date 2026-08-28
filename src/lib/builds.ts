@@ -22,7 +22,7 @@ export interface Build {
   stack: string[];
   repoUrl: string | null;
   liveUrl: string | null;
-  /** Rank among featured builds; unranked builds sort after by recency */
+  /** Display rank on /projects (1 = first); unranked builds sort after by recency */
   featured?: number;
   /** Mono note explaining a missing repo, e.g. "Private — client platform" */
   availability?: string;
@@ -32,8 +32,10 @@ export interface Build {
 }
 
 /**
- * Every build, featured first (by rank), then most recently touched.
- * Falls back to the bundled GitHub snapshot when the API is unreachable.
+ * Every build, ranked first (by `featured`), then most recently touched.
+ * Ranks are one shared namespace across both sources — a curated build and a
+ * repo can't both be rank 3. Falls back to the bundled GitHub snapshot when
+ * the API is unreachable.
  */
 export async function getBuilds(): Promise<Build[]> {
   const repos = await getProjects();
@@ -49,8 +51,7 @@ export async function getBuilds(): Promise<Build[]> {
     stack: p.stack,
     repoUrl: p.htmlUrl,
     liveUrl: p.liveUrl,
-    // Curated builds hold ranks 1–4, so repo ranks are offset behind them.
-    featured: p.meta?.featured === undefined ? undefined : p.meta.featured + curatedBuilds.length,
+    featured: p.meta?.featured,
     stars: p.stars,
     updatedAt: p.pushedAt,
   }));
@@ -83,6 +84,15 @@ export async function getBuilds(): Promise<Build[]> {
   });
 }
 
-export async function getFeaturedBuilds(): Promise<Build[]> {
-  return (await getBuilds()).filter((b) => b.featured !== undefined);
+/**
+ * The builds the home page leads with, in order. It's a highlight reel, not a
+ * catalogue — everything else lives on /projects.
+ */
+const HOME_BUILDS = ["kuja", "berverly-gardens-platform", "cv"];
+
+export async function getHomeBuilds(): Promise<Build[]> {
+  const builds = await getBuilds();
+  return HOME_BUILDS.map((slug) => builds.find((b) => b.slug === slug)).filter(
+    (b): b is Build => b !== undefined
+  );
 }

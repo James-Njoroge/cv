@@ -28,18 +28,14 @@ export function WritingSection() {
         meta={posts.length > 0 ? fill(heading.meta, { count: posts.length }) : heading.metaEmpty}
       />
 
+      {/* Nothing published yet: an inert placeholder. No link leads anywhere,
+          because everywhere it could lead is empty too. */}
       {posts.length === 0 ? (
         <Reveal className="hatch rounded-xl border border-dashed border-border p-12 text-center">
           <p className="m-0 font-display text-lg font-semibold">{c.emptyTitle}</p>
           <p className="mx-auto mt-2 max-w-md text-pretty text-sm leading-relaxed text-muted-foreground">
             {c.emptyBody}
           </p>
-          <a
-            href="/feed.xml"
-            className="mt-5 inline-block font-mono text-[11px] font-bold uppercase leading-none tracking-[0.06em] text-primary hover:text-amber"
-          >
-            {c.rssLabel}
-          </a>
         </Reveal>
       ) : (
         <div className="flex flex-col gap-3.5">

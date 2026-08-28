@@ -6,13 +6,26 @@ import { site } from "@/lib/site";
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
+  const allPosts = getAllPosts();
+
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: site.url, lastModified: now, changeFrequency: "monthly", priority: 1 },
     { url: `${site.url}/projects`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${site.url}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
+    // No point pointing crawlers at an empty index; it comes back with the
+    // first post.
+    ...(allPosts.length > 0
+      ? [
+          {
+            url: `${site.url}/blog`,
+            lastModified: now,
+            changeFrequency: "weekly" as const,
+            priority: 0.7,
+          },
+        ]
+      : []),
   ];
 
-  const posts: MetadataRoute.Sitemap = getAllPosts().map((post) => ({
+  const posts: MetadataRoute.Sitemap = allPosts.map((post) => ({
     url: `${site.url}/blog/${post.slug}`,
     lastModified: new Date(post.date),
     changeFrequency: "yearly",

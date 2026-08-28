@@ -151,7 +151,20 @@ export async function POST(request: NextRequest) {
         );
       }
     } else {
-      const { success } = await ratelimit.limit(clientId);
+      // An unreachable Redis (deleted database, expired token, network blip)
+      // must not read as a bug in the form. Still fail closed — an outage in
+      // the throttle is not a licence to accept unthrottled submissions — but
+      // say so honestly instead of returning a bare 500.
+      let success: boolean;
+      try {
+        ({ success } = await ratelimit.limit(clientId));
+      } catch {
+        // console.error("Rate limiter unreachable:", error);
+        return NextResponse.json(
+          { message: "The service is temporarily unavailable. Please try again later." },
+          { status: 503 }
+        );
+      }
       if (!success) {
         return NextResponse.json(
           {

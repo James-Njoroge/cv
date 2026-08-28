@@ -3,11 +3,11 @@ import Link from "next/link";
 import { BuildCard } from "@/components/jn/build-card";
 import { Reveal } from "@/components/jn/reveal";
 import { SectionHeading } from "@/components/jn/section-heading";
-import { getFeaturedBuilds } from "@/lib/builds";
+import { getHomeBuilds } from "@/lib/builds";
 import { copy } from "@/lib/copy";
 
 export async function BuiltSection() {
-  const builds = await getFeaturedBuilds();
+  const builds = await getHomeBuilds();
 
   return (
     <section id="built" className="container-jn scroll-mt-24 pb-28">
