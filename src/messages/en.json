@@ -1,113 +1,12 @@
 {
   "name": "James Njoroge",
   "sections": {
-    "about": "About",
-    "workExperience": "Work Experience",
-    "education": "Education",
-    "skills": "Technical Skills",
-    "coursework": "Coursework",
-    "projects": "Projects"
+    "run": "The training run",
+    "capabilities": "Capabilities",
+    "built": "What the model has built.",
+    "evals": "Evals",
+    "writing": "Discover the model's thoughts.",
+    "chat": "Chat with the model."
   },
-  "about": "Artificial Intelligence and Data Engineering Student",
-  "summary": "Master’s student in AI with a passion for building impactful tech. From co-founding a student startup to creating data tools for global teams, I enjoy turning complex problems into practical solutions while growing at the intersection of software and analytics.",
-  "education": {
-    "masters": {
-      "school": "Boston University ",
-      "major": "Master of Science in Artificial Intelligence"
-    },
-    "bachelor": {
-      "school": "Colgate University (Cum Laude) ",
-      "major": "Computer Science | Applied Mathematics"
-    },
-    "abroad": {
-      "school": "University of Manchester (Study Abroad)",
-      "classes": "Artificial Intelligence | Probability | Database Systems"
-    },
-    "highSchool": {
-      "school": "Choate Rosemary Hall",
-      "degree": "High School Diploma"
-    }
-  },
-  "work": {
-    "mdlz": {
-      "title": "Digital Finance Intern",
-      "description": {
-        "1": "Built and migrated the MDLZ Incentive Program tracking tool from Excel to a combination of Excel, Essbase, and PowerBI, enhancing data visualization and reporting capabilities.",
-        "2": "Automated global FP&A team’s monthly financial data ETL processes using Python and Excel, reducing data processing time by 75% and saving the team 2 days of work per month.",
-        "3": "Optimized financial allocations with VBA scripts, reducing a 20-hour process to 1 hour.",
-        "4": "Collaborated closely with the CFO (Luca Zaramella) and key global FP&A stakeholders to ensure new tools met executive requirements, leading to improved user adoption and satisfaction.",
-        "5": "Presented final products and key improvements to MDLZ executive leadership, including the global CFO and treasurer, influencing strategic decision on future financial technology implementations."
-      }
-    },
-    "colgate-ai": {
-      "title": "Generative AI Student Explorer",
-      "description": {
-        "1": "Conduct comprehensive research on emerging GenAI tools, technologies, and trends in academic environments",
-        "2": "Foster and maintain robust, trust-based relationships with professors and students, providing essential academic support and reinforcement to enhance learning experiences."
-      }
-    },
-    "colgate-ta": {
-      "title": "Teaching Assistant",
-      "description": {
-        "1": "Assist students with Python and Java programming assignments, offering guidance and debugging support to strengthen their comprehension of key computer science concepts in Algorithms and Data Structures.",
-        "2": "Foster and maintain robust, trust-based relationships with professors and students, providing essential academic support and reinforcement to enhance learning experiences."
-      }
-    },
-    "colgate-research": {
-      "title": "Research Intern",
-      "description": {
-        "1": "Designed intuitive user interfaces in R Shiny, enhancing access to complex R-based analyses for users with varying levels of programming expertise, notably enhancing data science accessibility at Colgate University.",
-        "2": "Developed and maintained R Shiny applications for advanced statistical analysis, focusing on geospatial data, social networks, and textual corpora, enhancing research capabilities.",
-        "3": "Collaborated with interdisciplinary research teams, leveraging R Shiny applications to test hypotheses and derive insights from complex data sets, contributing to significant academic advancements."
-      }
-    },
-    "colgate-econ": {
-      "title": "Survey and Research Analytics Assistant",
-      "description": {
-        "1": "Evaluated research and survey-taking methods, and recommended bias-reduction techniques.",
-        "2": "Collaborated with professor to acquire and clean collected survey data using Microsoft Excel.",
-        "3": "Examined research data for trends and anomalies in collaboration with a colleague, thus reducing the margin of error produced by the data."
-      }
-    },
-    "colgate-its": {
-      "title": "IT Consultant",
-      "description": {
-        "1": "Work in a customer-facing role on the phone and in-person.",
-        "2": "Assist the campus community in the usage of technology on campus, including multi-factor authentication, Office 365 Apps, Adobe Software, and Google software.",
-        "3": "Write detailed trouble tickets for users who have issues that need to be escalated to other departments.",
-        "4": "Use Salesforce software to provide support and solutions to affected students, faculty, and staff in various departments.",
-        "5": "Collaborate with a diverse team in a fast-paced atmosphere."
-      }
-    },
-    "marketing-africa": {
-      "title": "Marketing Intern",
-      "description": {
-        "1": "Worked within the sales team, selling our services and calling potential leads for attendance at the Marketer's Night in Nairobi and Marketer's Quiznite all over Kenya.",
-        "2": "Used Excel and mail analytics to manage and execute the distribution of the Marketing Africa magazine all over Kenya.",
-        "3": "Amalgamated the client database from various social media platforms using Microsoft Excel so as to broaden the reach of the company.",
-        "4": "Collaborated with colleagues to ensure full customer satisfaction in the advertisement sector of the company."
-      }
-    },
-    "colgate-cl": {
-      "title": "Residential Community Leader",
-      "description": {
-        "1": "Led 33 resident students, ensuring a safe, academically-focused environment; organized monthly rapport-building activities.",
-        "2": "Acted as key liaison between students, residential advisors, and school administration, enhancing community communication.",
-        "3": "Resolved student welfare issues with strong leadership, communication skills, and trust-building, fostering a supportive residential community."
-      }
-    }
-  },
-  "projects": {
-    "sloop": {
-      "title": "Sloop Software",
-      "description": "Student-run company that focuses on software development projects."
-    },
-    "website": {
-      "title": "Personal Website",
-      "description": "My personal website and online CV. Built with Next.js and Tailwind CSS."
-    }
-  },
-  "present": "Present",
-  "seeMore": "See more",
-  "seeLess": "See less"
+  "present": "Present"
 }

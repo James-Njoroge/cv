@@ -1,6 +1,12 @@
 /** @type {import('tailwindcss').Config} */
+
+/**
+ * Colours live in globals.css as bare OKLCH components (`L C H`) so that
+ * Tailwind's `/opacity` modifiers keep working through `<alpha-value>`.
+ */
+const oklchVar = (name) => `oklch(var(--${name}) / <alpha-value>)`;
+
 module.exports = {
-  darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
@@ -11,65 +17,84 @@ module.exports = {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: "1.75rem",
       screens: {
-        "2xl": "1400px",
+        "2xl": "1180px",
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "var(--font-sans)", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
+      },
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        border: oklchVar("border"),
+        input: oklchVar("input"),
+        ring: oklchVar("ring"),
+        background: oklchVar("background"),
+        foreground: oklchVar("foreground"),
+        /** Signal green — live / current / affirmative */
+        signal: oklchVar("signal"),
+        /** Amber — secondary emphasis and metadata highlights */
+        amber: oklchVar("amber"),
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: oklchVar("primary"),
+          foreground: oklchVar("primary-foreground"),
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: oklchVar("secondary"),
+          foreground: oklchVar("secondary-foreground"),
         },
         destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          DEFAULT: oklchVar("destructive"),
+          foreground: oklchVar("destructive-foreground"),
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: oklchVar("muted"),
+          foreground: oklchVar("muted-foreground"),
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          DEFAULT: oklchVar("accent"),
+          foreground: oklchVar("accent-foreground"),
         },
         popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          DEFAULT: oklchVar("popover"),
+          foreground: oklchVar("popover-foreground"),
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: oklchVar("card"),
+          foreground: oklchVar("card-foreground"),
         },
       },
       borderRadius: {
+        // 6 (tech tag) · 12 (row) · 14–18 (card) · 99 (pill)
+        sm: "0.375rem",
+        md: "0.75rem",
         lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        xl: "1.125rem",
+      },
+      transitionTimingFunction: {
+        jn: "cubic-bezier(.2,.8,.2,1)",
       },
       keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
+        blink: {
+          "0%,49%": { opacity: "1" },
+          "50%,100%": { opacity: "0" },
         },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
+        drift: {
+          from: { backgroundPosition: "0 0" },
+          to: { backgroundPosition: "0 -40px" },
+        },
+        "pulse-ring": {
+          "0%": { transform: "scale(1)", opacity: "0.55" },
+          "70%,100%": { transform: "scale(2.6)", opacity: "0" },
         },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
+        blink: "blink 1s step-end infinite",
+        drift: "drift 12s linear infinite",
+        "pulse-ring": "pulse-ring 2.4s ease-out infinite",
       },
     },
   },

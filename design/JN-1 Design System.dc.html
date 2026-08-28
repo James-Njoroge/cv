@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: oklch(0.165 0.008 125);
+    --bg2: oklch(0.205 0.010 125);
+    --bg3: oklch(0.245 0.012 125);
+    --ln: oklch(0.315 0.014 125);
+    --tx: oklch(0.955 0.006 110);
+    --mut: oklch(0.700 0.012 118);
+    --acc: oklch(0.800 0.150 145);
+    --acc2: oklch(0.800 0.150 72);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--tx);font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:var(--acc);text-decoration:none}
+  a:hover{color:var(--acc2)}
+</style>
+</helmet>
+
+<div style="max-width:1120px;margin:0 auto;padding:72px 32px 120px">
+
+  <header style="display:flex;align-items:flex-start;gap:28px;flex-wrap:wrap;padding-bottom:34px;border-bottom:1px solid var(--ln)">
+    <span style="width:64px;height:64px;border-radius:16px;background:var(--bg3);border:1px solid var(--ln);display:grid;place-items:center;font:700 26px/1 'JetBrains Mono',monospace;letter-spacing:-1px;color:var(--acc)">JN</span>
+    <div style="flex:1;min-width:280px">
+      <div style="font:500 12px/1 'JetBrains Mono',monospace;color:var(--acc);letter-spacing:0.1em;margin-bottom:12px">DESIGN SYSTEM v1.0</div>
+      <h1 style="margin:0;font-size:clamp(38px,5vw,60px);line-height:0.98;letter-spacing:-0.035em;font-weight:600">jn&#8209;1</h1>
+      <p style="margin:14px 0 0;max-width:56ch;font-size:17px;line-height:1.55;color:var(--mut);text-wrap:pretty">The visual language for James Njoroge&#8217;s portfolio. A machine&#8209;learning lab, dressed for a person: warm near&#8209;black surfaces, monospace instrumentation, one signal green.</p>
+    </div>
+    <a href="./Portfolio.dc.html" style="padding:12px 20px;border-radius:99px;border:1px solid var(--ln);font:600 13px/1 'Space Grotesk',sans-serif;color:var(--tx)" style-hover="border-color:var(--acc);color:var(--acc)">View the site &#8594;</a>
+  </header>
+
+  <section style="padding-top:64px">
+    <div style="font:500 11px/1 'JetBrains Mono',monospace;color:var(--acc2);letter-spacing:0.1em;margin-bottom:22px">01 &#183; COLOR</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px">
+      <div style="border:1px solid var(--ln);border-radius:14px;overflow:hidden">
+        <div style="height:88px;background:var(--bg)"></div>
+        <div style="padding:12px 14px;background:var(--bg2);font:400 11px/1.6 'JetBrains Mono',monospace"><span style="color:var(--tx)">--bg</span><br><span style="color:var(--mut)">0.165 0.008 125</span></div>
+      </div>
+      <div style="border:1px solid var(--ln);border-radius:14px;overflow:hidden">
+        <div style="height:88px;background:var(--bg2)"></div>
+        <div style="padding:12px 14px;background:var(--bg2);font:400 11px/1.6 'JetBrains Mono',monospace"><span style="color:var(--tx)">--bg2</span><br><span style="color:var(--mut)">0.205 0.010 125</span></div>
+      </div>
+      <div style="border:1px solid var(--ln);border-radius:14px;overflow:hidden">
+        <div style="height:88px;background:var(--bg3)"></div>
+        <div style="padding:12px 14px;background:var(--bg2);font:400 11px/1.6 'JetBrains Mono',monospace"><span style="color:var(--tx)">--bg3</span><br><span style="color:var(--mut)">0.245 0.012 125</span></div>
+      </div>
+      <div style="border:1px solid var(--ln);border-radius:14px;overflow:hidden">
+        <div style="height:88px;background:var(--ln)"></div>
+        <div style="padding:12px 14px;background:var(--bg2);font:400 11px/1.6 'JetBrains Mono',monospace"><span style="color:var(--tx)">--ln</span><br><span style="color:var(--mut)">0.315 0.014 125</span></div>
+      </div>
+      <div style="border:1px solid var(--ln);border-radius:14px;overflow:hidden">
+        <div style="height:88px;background:var(--acc)"></div>
+        <div style="padding:12px 14px;background:var(--bg2);font:400 11px/1.6 'JetBrains Mono',monospace"><span style="color:var(--acc)">--acc</span><br><span style="color:var(--mut)">0.800 0.150 145</span></div>
+      </div>
+      <div style="border:1px solid var(--ln);border-radius:14px;overflow:hidden">
+        <div style="height:88px;background:var(--acc2)"></div>
+        <div style="padding:12px 14px;background:var(--bg2);font:400 11px/1.6 'JetBrains Mono',monospace"><span style="color:var(--acc2)">--acc2</span><br><span style="color:var(--mut)">0.800 0.150 72</span></div>
+      </div>
+    </div>
+    <p style="margin:18px 0 0;max-width:70ch;font-size:14px;line-height:1.6;color:var(--mut)">Both accents share lightness and chroma and differ only in hue, so they can sit side by side without one shouting. Green = live / current / affirmative. Amber = secondary emphasis and metadata highlights. Never more than two accent uses per viewport.</p>
+  </section>
+
+  <section style="padding-top:64px">
+    <div style="font:500 11px/1 'JetBrains Mono',monospace;color:var(--acc2);letter-spacing:0.1em;margin-bottom:22px">02 &#183; TYPE</div>
+    <div style="border:1px solid var(--ln);border-radius:16px;background:var(--bg2);padding:34px 32px;display:flex;flex-direction:column;gap:26px">
+      <div style="display:flex;gap:24px;align-items:baseline;flex-wrap:wrap"><span style="width:180px;flex:none;font:500 11px/1 'JetBrains Mono',monospace;color:var(--mut)">display / 600 / -0.035em</span><span style="font-size:52px;line-height:1;letter-spacing:-0.035em;font-weight:600">Space Grotesk</span></div>
+      <div style="height:1px;background:var(--ln)"></div>
+      <div style="display:flex;gap:24px;align-items:baseline;flex-wrap:wrap"><span style="width:180px;flex:none;font:500 11px/1 'JetBrains Mono',monospace;color:var(--mut)">h2 / 46px</span><span style="font-size:38px;letter-spacing:-0.03em;font-weight:600">The training run</span></div>
+      <div style="height:1px;background:var(--ln)"></div>
+      <div style="display:flex;gap:24px;align-items:baseline;flex-wrap:wrap"><span style="width:180px;flex:none;font:500 11px/1 'JetBrains Mono',monospace;color:var(--mut)">body / 16&#8211;19px / 1.6</span><span style="font-size:17px;line-height:1.6;max-width:52ch;color:var(--mut)">AI &amp; data engineering. I build things fast &#8212; ETL that saves teams days, prototypes that ship in a weekend.</span></div>
+      <div style="height:1px;background:var(--ln)"></div>
+      <div style="display:flex;gap:24px;align-items:baseline;flex-wrap:wrap"><span style="width:180px;flex:none;font:500 11px/1 'JetBrains Mono',monospace;color:var(--mut)">mono / labels / 0.06em</span><span style="font:500 15px/1 'JetBrains Mono',monospace;letter-spacing:0.06em;color:var(--acc)">CKPT&#8209;0900 &#183; TRAINED AT COLGATE</span></div>
+    </div>
+    <p style="margin:18px 0 0;max-width:70ch;font-size:14px;line-height:1.6;color:var(--mut)">Two families only. Space Grotesk carries every human sentence; JetBrains Mono carries every machine sentence &#8212; labels, metrics, timestamps, endpoints. If a string looks like telemetry, it&#8217;s mono and uppercase with 0.06&#8211;0.1em tracking.</p>
+  </section>
+
+  <section style="padding-top:64px">
+    <div style="font:500 11px/1 'JetBrains Mono',monospace;color:var(--acc2);letter-spacing:0.1em;margin-bottom:22px">03 &#183; COMPONENTS</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px">
+
+      <div style="border:1px solid var(--ln);border-radius:16px;background:var(--bg2);padding:26px">
+        <div style="font:500 11px/1 'JetBrains Mono',monospace;color:var(--mut);margin-bottom:18px">buttons</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <span style="padding:13px 22px;border-radius:99px;background:var(--acc);color:#101208;font:600 14px/1 'Space Grotesk',sans-serif">Primary</span>
+          <span style="padding:13px 22px;border-radius:99px;border:1px solid var(--ln);font:600 14px/1 'Space Grotesk',sans-serif">Secondary</span>
+        </div>
+      </div>
+
+      <div style="border:1px solid var(--ln);border-radius:16px;background:var(--bg2);padding:26px">
+        <div style="font:500 11px/1 'JetBrains Mono',monospace;color:var(--mut);margin-bottom:18px">tags &amp; chips</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <span style="padding:6px 12px;border-radius:99px;border:1px solid var(--ln);font:500 11px/1 'JetBrains Mono',monospace;color:var(--mut)">outline</span>
+          <span style="padding:6px 12px;border-radius:99px;border:1px solid var(--acc);font:500 11px/1 'JetBrains Mono',monospace;color:var(--acc)">active</span>
+          <span style="padding:6px 10px;border-radius:6px;background:var(--bg3);font:500 10px/1 'JetBrains Mono',monospace;color:var(--mut)">tech</span>
+        </div>
+      </div>
+
+      <div style="border:1px solid var(--ln);border-radius:16px;background:var(--bg2);padding:26px">
+        <div style="font:500 11px/1 'JetBrains Mono',monospace;color:var(--mut);margin-bottom:18px">confidence bar</div>
+        <div style="display:grid;grid-template-columns:96px 1fr 40px;gap:12px;align-items:center">
+          <span style="font:500 13px/1 'JetBrains Mono',monospace">Python</span>
+          <span style="height:7px;border-radius:99px;background:var(--bg3);display:block;overflow:hidden"><span style="display:block;height:100%;width:96%;background:var(--acc);border-radius:99px"></span></span>
+          <span style="font:500 11px/1 'JetBrains Mono',monospace;color:var(--mut);text-align:right">.96</span>
+        </div>
+      </div>
+
+      <div style="border:1px solid var(--ln);border-radius:16px;background:var(--bg2);padding:26px">
+        <div style="font:500 11px/1 'JetBrains Mono',monospace;color:var(--mut);margin-bottom:18px">eval row</div>
+        <div style="display:flex;align-items:center;gap:12px;padding:16px 18px;border:1px solid var(--ln);border-radius:12px;background:var(--bg)"><span style="font:700 11px/1 'JetBrains Mono',monospace;color:var(--acc)">PASS</span><span style="font-size:15px">Real Analysis</span></div>
+      </div>
+
+      <div style="border:1px solid var(--ln);border-radius:16px;background:var(--bg2);padding:26px">
+        <div style="font:500 11px/1 'JetBrains Mono',monospace;color:var(--mut);margin-bottom:18px">checkpoint header</div>
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+          <span style="font:700 11px/1 'JetBrains Mono',monospace;color:var(--acc);letter-spacing:0.08em">CKPT&#8209;1600</span>
+          <span style="width:5px;height:5px;border-radius:99px;background:var(--ln)"></span>
+          <span style="font:500 11px/1 'JetBrains Mono',monospace;color:var(--mut);letter-spacing:0.06em">FINE&#8209;TUNED</span>
+        </div>
+        <div style="margin-top:12px;font-size:24px;font-weight:600;letter-spacing:-0.02em">Boston University</div>
+      </div>
+
+      <div style="border:1px solid var(--ln);border-radius:16px;background:var(--bg2);padding:26px">
+        <div style="font:500 11px/1 'JetBrains Mono',monospace;color:var(--mut);margin-bottom:18px">image placeholder</div>
+        <div style="height:104px;border-radius:10px;border:1px dashed var(--ln);background-image:repeating-linear-gradient(135deg, var(--bg3) 0 8px, var(--bg2) 8px 16px);display:grid;place-items:center;font:500 11px/1 'JetBrains Mono',monospace;color:var(--mut)">headshot.png</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section style="padding-top:64px">
+    <div style="font:500 11px/1 'JetBrains Mono',monospace;color:var(--acc2);letter-spacing:0.1em;margin-bottom:22px">04 &#183; IDENTITY</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px">
+      <div style="border:1px solid var(--ln);border-radius:16px;background:var(--bg2);padding:26px;display:flex;align-items:center;gap:20px">
+        <img src="./favicon.svg" alt="JN mark" style="width:64px;height:64px;border-radius:16px">
+        <img src="./favicon.svg" alt="JN mark small" style="width:32px;height:32px;border-radius:8px">
+        <img src="./favicon.svg" alt="JN mark tiny" style="width:16px;height:16px;border-radius:4px">
+      </div>
+      <div style="border:1px solid var(--ln);border-radius:16px;background:var(--bg2);padding:26px;font-size:14px;line-height:1.65;color:var(--mut)">
+        <div style="font:500 11px/1 'JetBrains Mono',monospace;color:var(--tx);margin-bottom:10px">THE MARK</div>
+        JN monogram in mono, a green status dot for &#8220;running,&#8221; and a progress bar at 66% &#8212; still training. Reads at 16px in a browser tab.
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:64px">
+    <div style="font:500 11px/1 'JetBrains Mono',monospace;color:var(--acc2);letter-spacing:0.1em;margin-bottom:22px">05 &#183; MOTION &amp; SCROLL</div>
+    <div style="border:1px solid var(--ln);border-radius:16px;background:var(--bg2);padding:30px 32px;display:grid;gap:18px;font-size:15px;line-height:1.6;color:var(--mut)">
+      <div style="display:flex;gap:18px;flex-wrap:wrap"><span style="width:150px;flex:none;font:500 11px/1.4 'JetBrains Mono',monospace;color:var(--tx)">SCROLL = TRAINING</span><span style="max-width:60ch">Page progress drives one global clock: the header bar, the step counter, the loss readout, and the loss curve all read the same scalar 0&#8594;1.</span></div>
+      <div style="height:1px;background:var(--ln)"></div>
+      <div style="display:flex;gap:18px;flex-wrap:wrap"><span style="width:150px;flex:none;font:500 11px/1.4 'JetBrains Mono',monospace;color:var(--tx)">EASING</span><span style="max-width:60ch">cubic&#8209;bezier(.2,.8,.2,1) at 700ms for reveals, 1100ms for bars. Nothing bounces.</span></div>
+      <div style="height:1px;background:var(--ln)"></div>
+      <div style="display:flex;gap:18px;flex-wrap:wrap"><span style="width:150px;flex:none;font:500 11px/1.4 'JetBrains Mono',monospace;color:var(--tx)">REVEAL</span><span style="max-width:60ch">20px rise + fade, once per element, staggered 60ms in groups of three. Never re&#8209;animates on scroll&#8209;back.</span></div>
+      <div style="height:1px;background:var(--ln)"></div>
+      <div style="display:flex;gap:18px;flex-wrap:wrap"><span style="width:150px;flex:none;font:500 11px/1.4 'JetBrains Mono',monospace;color:var(--tx)">TOKEN STREAM</span><span style="max-width:60ch">26ms per character, one pass, no loop. The cursor keeps blinking after it finishes.</span></div>
+    </div>
+  </section>
+
+  <section style="padding-top:64px">
+    <div style="font:500 11px/1 'JetBrains Mono',monospace;color:var(--acc2);letter-spacing:0.1em;margin-bottom:22px">06 &#183; SPACE &amp; VOICE</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px">
+      <div style="border:1px solid var(--ln);border-radius:16px;background:var(--bg2);padding:26px;font-size:14px;line-height:1.7;color:var(--mut)">
+        <div style="font:500 11px/1 'JetBrains Mono',monospace;color:var(--tx);margin-bottom:12px">SPACE</div>
+        4px base. Radii: 6 (tech tag), 12 (row), 14&#8211;18 (card), 99 (pill). Container 1180px, gutter 28px. Section rhythm: 120px bottom padding, 1px rule under every heading.
+      </div>
+      <div style="border:1px solid var(--ln);border-radius:16px;background:var(--bg2);padding:26px;font-size:14px;line-height:1.7;color:var(--mut)">
+        <div style="font:500 11px/1 'JetBrains Mono',monospace;color:var(--tx);margin-bottom:12px">VOICE</div>
+        The ML metaphor sits in the labels and headings; the sentences underneath are plain, specific, and human. One joke per section, maximum. Numbers only when they&#8217;re real.
+      </div>
+    </div>
+  </section>
+</div>
+
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,76 @@
+[
+  {
+    "name": "FootyLiveliness",
+    "description": "A project that models (in order to predict) liveliness in a football match based on historical statistics of teams and players. Final Project for CS 506 at Boston University. Enjoy!",
+    "htmlUrl": "https://github.com/James-Njoroge/FootyLiveliness",
+    "homepage": "https://www.footyliveliness.com",
+    "language": "Python",
+    "languages": [
+      "Python",
+      "JavaScript",
+      "Jupyter Notebook",
+      "HTML",
+      "Shell",
+      "Makefile",
+      "CSS",
+      "Procfile"
+    ],
+    "topics": [
+      "data",
+      "data-science",
+      "football",
+      "football-analytics",
+      "soccer",
+      "soccer-analytics"
+    ],
+    "stars": 0,
+    "createdAt": "2025-09-22T19:44:41Z",
+    "pushedAt": "2025-12-14T18:47:55Z"
+  },
+  {
+    "name": "cv",
+    "description": "My online CV",
+    "htmlUrl": "https://github.com/James-Njoroge/cv",
+    "homepage": "https://jnjoroge.dev",
+    "language": "TypeScript",
+    "languages": [
+      "TypeScript",
+      "CSS",
+      "JavaScript"
+    ],
+    "topics": [],
+    "stars": 0,
+    "createdAt": "2024-01-20T21:48:12Z",
+    "pushedAt": "2025-12-06T20:38:59Z"
+  },
+  {
+    "name": "nlp-final",
+    "description": "Final Project for COSC NLP at Colgate University",
+    "htmlUrl": "https://github.com/James-Njoroge/nlp-final",
+    "homepage": null,
+    "language": "Jupyter Notebook",
+    "languages": [
+      "Jupyter Notebook",
+      "Python",
+      "Shell"
+    ],
+    "topics": [],
+    "stars": 0,
+    "createdAt": "2024-11-01T23:51:05Z",
+    "pushedAt": "2024-12-17T17:44:58Z"
+  },
+  {
+    "name": "nlp-midterm",
+    "description": "NLP course repository for midterm project. By Toby Xu and James Njoroge",
+    "htmlUrl": "https://github.com/James-Njoroge/nlp-midterm",
+    "homepage": null,
+    "language": "Python",
+    "languages": [
+      "Python"
+    ],
+    "topics": [],
+    "stars": 0,
+    "createdAt": "2024-10-03T17:34:07Z",
+    "pushedAt": "2024-10-29T20:17:14Z"
+  }
+]
